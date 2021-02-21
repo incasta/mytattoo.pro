@@ -12,6 +12,7 @@
                 router-link(to="/articles") Статьи 
                 router-link(to="/styles") Стили
                 router-link(to="/meanings") Значения
+                router-link(to="/meanings") Test
             Dialogs
             UserProfile
 

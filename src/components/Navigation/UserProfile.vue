@@ -3,7 +3,7 @@
       .user-balance-wrap
         router-link(to="/").user-balance
           .user-balance--pay
-            div +
+            app-icon(name="info")
           .user-balance--current
             span.label Баланс
             span.value 1200 
@@ -12,9 +12,16 @@
         img(src='@/assets/img/users/user.jpg', alt='')
 </template>
 
+
 <script>
+
+import AppIcon from '@/components/common/app-icon.vue'
+
 export default {
   name: 'UserProfile',
+  components: {
+    AppIcon,
+  }
 }
 </script>
 

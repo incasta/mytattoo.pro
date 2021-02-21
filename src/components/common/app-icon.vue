@@ -16,7 +16,7 @@ export default {
       return () => import(
         /* webpackChunkName: "icons" */
         /* webpackMode: "lazy-once" */
-        `~/assets/icons/${this.name}.svg`
+        `@/assets/icons/${this.name}.svg`
       );
     },
   },
