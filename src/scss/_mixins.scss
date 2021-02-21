@@ -1,0 +1,35 @@
+@mixin flex-a_center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-j_center {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex-ja_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+// transition mixins
+@mixin trans-ease-in {
+    transition: {
+        property: all;
+        duration: .15s;
+        timing-function: ease-in;
+        delay: 0s;
+    };
+}
+
+@mixin trans-ease-out {
+    transition: {
+        property: all;
+        duration: .2s;
+        timing-function: ease-out;
+        delay: 0s;
+    };
+}
