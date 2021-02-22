@@ -7,7 +7,7 @@ module.exports = {
         test: /\.svg$/,
         oneOf: [
           {
-            include: path.resolve(__dirname, '/assets/icons'),
+            include: path.resolve(__dirname, '@/assets/icons'),
             use: [
               'vue-loader',
               'vue-svg-loader',

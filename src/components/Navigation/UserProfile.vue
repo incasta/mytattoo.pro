@@ -3,7 +3,7 @@
       .user-balance-wrap
         router-link(to="/").user-balance
           .user-balance--pay
-            app-icon(name="info")
+            //- app-icon(name="send")
           .user-balance--current
             span.label Баланс
             span.value 1200 
