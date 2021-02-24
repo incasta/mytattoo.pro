@@ -3,12 +3,12 @@
       .user-balance-wrap
         router-link(to="/").user-balance
           .user-balance--pay
-            //- app-icon(name="send")
+            app-icon(name="plus-small" size='18')
           .user-balance--current
             span.label Баланс
             span.value 1200 
             span.currency ₽
-      .user-avatar-wrap.dropDown(@click='show = !show' v-bind:class='{ show: show }')
+      .user-avatar-wrap.dropDown(@click='show = !show' :class='{ show }' ref='dropdown')
         .user-avatar
           .angle-small-down
             app-icon(name='angle-small-down' size='13')
@@ -17,16 +17,12 @@
           router-link(to='/')
             app-icon(name='user' size='16')
           router-link(to='/')
-            app-icon(name='bookmark-fill' size='16')
+            app-icon(name='bookmark-fill' size='14')
           router-link(to='/meanings')
-            app-icon(name='sign-out' size='16')
-        
+            app-icon(name='sign-out' size='16')        
 </template>
 
-
 <script>
-
-
 export default {
   name: 'UserProfile',
   data () {
@@ -35,18 +31,22 @@ export default {
     }
   },
 
-  mounted: function () {
-    document.addEventListener('click', (e) => {
-      const dropDown = document.querySelector('.dropDown');
-
-      if (dropDown !== null) {
-        if (dropDown.contains(e.target) === false) {
-          if (dropDown.classList.contains('show')) {
-            dropDown.classList.remove('show');
-          }
+  methods: {
+    dropDown () {
+      document.addEventListener('click', (e) => {
+        if (!this.$refs.dropdown.contains(e.target)) {
+          this.show = false;
         }
-      }
-    });
+      })
+    }
+  },
+
+  mounted ()  {
+    document.addEventListener('click', this.dropDown);
+  },
+
+  beforeDestroy () {
+    document.removeEventListener('click', this.dropDown);
   }
 }
 </script>
@@ -101,11 +101,31 @@ export default {
   }
 
   .user-balance--pay {
+    @include flex-ja_center;
+    @include trans-ease-in;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
     position: absolute;
     z-index: 1;
     left: 0;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
+    background-color: var(--pallete-yellow);
+
+    &:hover {
+      background-color: var(--pallete-pink);
+      
+      .icon {
+        transform: rotate(90deg);
+      }
+    }
+
+    .icon {
+      fill: var(--pallete-dark-regular);
+      @include trans-ease-in;
+    }
+    
   }
 }
 
@@ -151,12 +171,6 @@ $translateY: 0%;
       }
     }
 
-    &.for-mobile {
-      @include respond-to(wide-screens) {
-        display: none;
-      }
-    }
-
     .icon {
       fill: var(--pallete-pink);
       @include trans-ease-out;
@@ -168,22 +182,14 @@ $translateY: 0%;
   }
 }
 
-// .dropDown {
-//   &.show {
-//     max-height: 100vh;
-//     a {
-//       opacity: 1;
-//       transform: translate3d(0, 0, 0);
-//     }
-//   }
-// }
-
 .user-avatar-wrap {
-  // &:hover {
   @include trans-ease-in;
   cursor: pointer;
   &:hover {
-    opacity: .8;
+    img {
+      opacity: .8;
+    }
+    
   }
   &.show {
     .UserProfile-links {

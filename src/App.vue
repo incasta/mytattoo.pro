@@ -13,40 +13,6 @@ export default {
   components: {
     Navigation,
   },
-
-  // data () {
-  //   return {
-  //     showPopup: false
-  //   }
-  // },
-
-  // methods: {
-  //   onClose () {
-  //     this.showPopup = false
-  //   }
-  // }
-
-	// data() {
-	// 	return {
-	// 		showInside: false
-	// 	}
-	// },
-	// methods: {
-	// 	show: function () {
-	// 		this.showInside = true 
-	// 	},
-	// 	hide: function () {
-	// 		console.log('hide')
-	// 		this.showInside = false
-	// 	}
-	// },
-	// events: {
-	// 	closeEvent: function () {
-	// 		console.log('close event called')
-	// 		this.hide()
-	// 	}
-	// }
-
 }
 </script>
 
@@ -88,6 +54,9 @@ a {
   @include trans-ease-in;
 }
 
+img {
+  @include trans-ease-in;
+}
 
 // user avatar 
 .user-avatar {
