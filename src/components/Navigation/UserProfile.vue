@@ -8,13 +8,12 @@
             span.label Баланс
             span.value 1200 
             span.currency ₽
-      //- .user-avatar-wrap(v-bind:class='{ active: isActive }' @click='AvatarMenu')
-      .user-avatar-wrap(ref='button' @click='showPopup = !showPopup')
+      .user-avatar-wrap.dropDown(@click='show = !show' v-bind:class='{ show: show }')
         .user-avatar
           .angle-small-down
             app-icon(name='angle-small-down' size='13')
           img(src='@/assets/img/users/user.jpg', alt='')
-        .UserProfile-links(v-show="showPopup" v-closable='{ exclude: ['button'], handler: 'onClose' }')
+        .UserProfile-links
           router-link(to='/')
             app-icon(name='user' size='16')
           router-link(to='/')
@@ -30,38 +29,25 @@
 
 export default {
   name: 'UserProfile',
-
   data () {
     return {
-      showPopup: false
+      show: false
     }
   },
 
-  methods: {
-    onClose () {
-      this.showPopup = false
-    }
+  mounted: function () {
+    document.addEventListener('click', (e) => {
+      const dropDown = document.querySelector('.dropDown');
+
+      if (dropDown !== null) {
+        if (dropDown.contains(e.target) === false) {
+          if (dropDown.classList.contains('show')) {
+            dropDown.classList.remove('show');
+          }
+        }
+      }
+    });
   }
-  // data() {
-	// 	return {
-	// 		showInside: false
-	// 	}
-	// },
-	// methods: {
-	// 	show: function () {
-	// 		this.showInside = true 
-	// 	},
-	// 	hide: function () {
-	// 		console.log('hide')
-	// 		this.showInside = false
-	// 	}
-	// },
-	// events: {
-	// 	closeEvent: function () {
-	// 		console.log('close event called')
-	// 		this.hide()
-	// 	}
-	// }
 }
 </script>
 
@@ -182,6 +168,16 @@ $translateY: 0%;
   }
 }
 
+// .dropDown {
+//   &.show {
+//     max-height: 100vh;
+//     a {
+//       opacity: 1;
+//       transform: translate3d(0, 0, 0);
+//     }
+//   }
+// }
+
 .user-avatar-wrap {
   // &:hover {
   @include trans-ease-in;
@@ -189,7 +185,7 @@ $translateY: 0%;
   &:hover {
     opacity: .8;
   }
-  &.active {
+  &.show {
     .UserProfile-links {
       max-height: 100vh;
       a {
