@@ -1,4 +1,4 @@
 <template lang='pug'>
-    .masters 
+    .content 
         h1 Ты на странице Мастеров
 </template>

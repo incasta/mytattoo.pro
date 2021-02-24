@@ -1,24 +1,21 @@
 const path = require('path');
 
 module.exports = {
-  configureWebpack: {
-    module: {
-      rules: [{
-        test: /\.svg$/,
-        oneOf: [
-          {
-            include: path.resolve(__dirname, '@/assets/icons'),
-            use: [
-              'vue-loader',
-              'vue-svg-loader',
-            ],
-          },
-          {
-            use: 'file-loader',
-          },
-        ],
-      }],
-    }
+  chainWebpack: (config) => {
+    const rule = config.module.rule('svg');
+    rule.uses.clear();
+
+    rule.oneOf('svg-loader')
+      .include.add(path.resolve(__dirname, 'src/assets/icons'))
+      .end()
+    .use('vue-svg-loader')
+      .loader('vue-loader')
+      .loader('vue-svg-loader')
+      .end()
+    .end()
+    .oneOf('normal')
+    .use('file-loader')
+      .loader('file-loader');
   },
   css: {
     loaderOptions: {

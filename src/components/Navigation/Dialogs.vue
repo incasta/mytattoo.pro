@@ -1,5 +1,7 @@
 <template lang="pug">
-    router-link(to="/").Dialogs
+    .Dialogs
+      router-link(to="/news")
+        app-icon(name='chat')
         
 </template>
 
@@ -11,10 +13,40 @@ export default {
 
 <style lang="scss" scoped>
 .Dialogs {
-    width: 2em;
-    height: 2em;
-    background-color: #fff;
-    border-radius: 100%;
-    margin-right: var(--indent-h);
+  background-color: var(--pallete-transparent-bg);
+  border-radius: 100%;
+  margin: 0 1em;
+  grid-area: msg;
+
+  a {
+    @include flex-ja_center;
+    @include trans-ease-in;
+    width: 3em;
+    height: 3em;
+    &:hover {
+      filter: drop-shadow(0 0 5px var(--pallete-blue));
+      &.router-link-exact-active .icon {
+        filter: drop-shadow(0 0 15px var(--pallete-blue));
+      }
+    }
+
+    &.router-link-exact-active {
+      filter: drop-shadow(0 0 5px var(--pallete-blue));
+    }
+    &.router-link-exact-active .icon {
+      filter: drop-shadow(0 0 15px var(--pallete-blue));
+    }
+  }
+
+  @include respond-to(handlers) { 
+    margin: 0 1em 0 auto;
+  }
+
+  .icon {
+    @include trans-ease-in;
+    fill: var(--pallete-blue);
+  }
 }
+
+
 </style>

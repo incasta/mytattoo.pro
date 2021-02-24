@@ -1,4 +1,4 @@
 <template lang='pug'>
-    .styles
+    .content
         h1 Ты на странице Стилей
 </template>

@@ -1,4 +1,4 @@
 <template lang='pug'>
-    .sketches
+    .content
         h1 Ты на странице Эскизов
 </template>

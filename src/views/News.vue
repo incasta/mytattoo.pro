@@ -1,4 +1,4 @@
 <template lang='pug'>
-    .news
+    .content
         h1 Ты на странице Новостей
 </template>

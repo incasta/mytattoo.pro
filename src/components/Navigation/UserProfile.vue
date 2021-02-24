@@ -8,28 +8,69 @@
             span.label Баланс
             span.value 1200 
             span.currency ₽
-      router-link(to="/").user-avatar
-        img(src='@/assets/img/users/user.jpg', alt='')
+      //- .user-avatar-wrap(v-bind:class='{ active: isActive }' @click='AvatarMenu')
+      .user-avatar-wrap(ref='button' @click='showPopup = !showPopup')
+        .user-avatar
+          .angle-small-down
+            app-icon(name='angle-small-down' size='13')
+          img(src='@/assets/img/users/user.jpg', alt='')
+        .UserProfile-links(v-show="showPopup" v-closable='{ exclude: ['button'], handler: 'onClose' }')
+          router-link(to='/')
+            app-icon(name='user' size='16')
+          router-link(to='/')
+            app-icon(name='bookmark-fill' size='16')
+          router-link(to='/meanings')
+            app-icon(name='sign-out' size='16')
+        
 </template>
 
 
 <script>
 
-import AppIcon from '@/components/common/app-icon.vue'
 
 export default {
   name: 'UserProfile',
-  components: {
-    AppIcon,
+
+  data () {
+    return {
+      showPopup: false
+    }
+  },
+
+  methods: {
+    onClose () {
+      this.showPopup = false
+    }
   }
+  // data() {
+	// 	return {
+	// 		showInside: false
+	// 	}
+	// },
+	// methods: {
+	// 	show: function () {
+	// 		this.showInside = true 
+	// 	},
+	// 	hide: function () {
+	// 		console.log('hide')
+	// 		this.showInside = false
+	// 	}
+	// },
+	// events: {
+	// 	closeEvent: function () {
+	// 		console.log('close event called')
+	// 		this.hide()
+	// 	}
+	// }
 }
 </script>
 
 <style lang="scss" scoped>
 
 .UserProfile {
-  // @include flex-a_center;
   display: flex;
+  justify-content: flex-end;
+  grid-area: user;
 }
 
 .user-balance-wrap {
@@ -40,20 +81,20 @@ export default {
   margin-right: calc(-1.25 * var(--indent-h));
 
   &:hover {
-    .user-balance {
-      .user-balance--current {
-        span.label {
-          opacity: .5;
-          max-height: 1rem;
-        }
+    .user-balance--current {
+      span.label {
+        opacity: .5;
+        max-height: 1rem;
       }
     }
-  }
+  }  
+
 }
 
 .user-balance {
   background-color: var(--pallete-dark-regular);
-  padding: 0 calc(2 * var(--indent-h)) 0 var(--indent-h);
+  // padding: 0 calc(2 * var(--indent-h)) 0 var(--indent-h);
+  padding: 0 2.5em 0 1em;
   display: flex;
   align-items: center;
   color: var(--pallete-blue);
@@ -82,8 +123,112 @@ export default {
   }
 }
 
+.user-avatar-wrap {
+  position: relative;
+}
 
+$translateY: 0%;
 
+@for $i from 1 through 3 {
+  .UserProfile-links a:nth-child(#{$i}) {
+    transform: translate3d(0, $translateY + $i * -110, 0);
+    opacity: 0;
+  }
+}
 
+.UserProfile-links {
+  @include trans-ease-in;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  transform: translate3d(-50%, 10px, 0);
+  max-height: 0px;
+  a {
+    @include flex-ja_center;
+    @include trans-ease-in;
+    margin-bottom: 5px;
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    background-color: var(--pallete-dark-regular);
+    overflow: hidden;
+    &:hover {
+      .icon {
+        filter: drop-shadow(0 0 5px var(--pallete-pink));
+      }
+    }
+    &:focus {
+      .icon {
+        animation: swipe-right .3s ease;
+      }
+    }
+
+    &.for-mobile {
+      @include respond-to(wide-screens) {
+        display: none;
+      }
+    }
+
+    .icon {
+      fill: var(--pallete-pink);
+      @include trans-ease-out;
+    }
+
+    &.router-link-exact-active .icon {
+      filter: drop-shadow(0 0 15px var(--pallete-pink));
+    }
+  }
+}
+
+.user-avatar-wrap {
+  // &:hover {
+  @include trans-ease-in;
+  cursor: pointer;
+  &:hover {
+    opacity: .8;
+  }
+  &.active {
+    .UserProfile-links {
+      max-height: 100vh;
+      a {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .angle-small-down .icon {
+      transform: rotate(180deg)
+    }
+  }
+}
+
+.angle-small-down {
+  content: '';
+  @include flex-ja_center;
+  position: absolute;
+  z-index: 2;
+  right: -3px;
+  bottom: -3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background-color: var(--pallete-dark-regular);
+  .icon {
+    @include trans-ease-out;
+    fill: var(--pallete-blue);
+  }
+}
+
+.user-avatar {
+  @include respond-to(medium-screens) {
+    user-select: none;
+    pointer-events: none;
+    img {
+      width: 44px;
+      height: 44px;
+    }
+  }
+}
 
 </style>

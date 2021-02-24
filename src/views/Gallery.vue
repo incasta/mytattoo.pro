@@ -1,4 +1,5 @@
 <template lang='pug'>
-    .gallery
+    .content
         h1 Ты на странице Галереи
 </template>
+

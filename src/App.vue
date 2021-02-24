@@ -12,11 +12,49 @@ import Navigation from '@/components/Navigation/Navigation.vue'
 export default {
   components: {
     Navigation,
-  }
+  },
+
+  // data () {
+  //   return {
+  //     showPopup: false
+  //   }
+  // },
+
+  // methods: {
+  //   onClose () {
+  //     this.showPopup = false
+  //   }
+  // }
+
+	// data() {
+	// 	return {
+	// 		showInside: false
+	// 	}
+	// },
+	// methods: {
+	// 	show: function () {
+	// 		this.showInside = true 
+	// 	},
+	// 	hide: function () {
+	// 		console.log('hide')
+	// 		this.showInside = false
+	// 	}
+	// },
+	// events: {
+	// 	closeEvent: function () {
+	// 		console.log('close event called')
+	// 		this.hide()
+	// 	}
+	// }
+
 }
 </script>
 
 <style lang="scss">
+.content {
+  margin-top: 300px;
+}
+
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: Jura, sans-serif;
@@ -25,6 +63,10 @@ export default {
   text-align: center;
   color: white;
   letter-spacing: .1ex;
+  
+  @include respond-to(large-screens) {
+    font-size: 13px;
+  }
 }
 
 body, html { 
@@ -35,19 +77,34 @@ body, html {
 .container {
   max-width: 1280px;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 20px;
   margin: 0 auto;
+  @include respond-to(large-screens) {
+    max-width: 980px;
+  }
 }
 
 a {
   @include trans-ease-in;
 }
 
+
+// user avatar 
 .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  overflow: hidden;
   position: relative;
+  z-index: 1;
+  display: block;
+  img {
+    width: 54px;
+    height: 54px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: block;
+  }
+  
 }
+
+// 
+
+
 </style>

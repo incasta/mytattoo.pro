@@ -1,4 +1,4 @@
 <template lang='pug'>
-    .meanings
+    .content
         h1 Ты на странице Значений
 </template>

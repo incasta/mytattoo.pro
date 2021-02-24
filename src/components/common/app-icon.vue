@@ -35,8 +35,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon {
-  fill: #fff;
-}
-
+  .icon {
+    fill: #fff;
+    opacity: 1;
+  }
 </style>
