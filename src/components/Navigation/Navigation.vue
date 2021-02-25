@@ -6,6 +6,7 @@
                 .nav-mobile-navigation
                     .nav-links
                         router-link(v-for='item in links' v-bind:key='item.id' v-bind:to="item.link") {{ item.name }}
+                        router-link(to='/search') Поиск
                 .nav-mobile-overlay
         
             .MainNavigation
@@ -78,9 +79,11 @@ export default {
   },
   mounted () {
       window.addEventListener('scroll', this.onScroll);
+      document.addEventListener('click', this.closeMobNav);
   },
   beforeDestroy () {
       window.removeEventListener('scroll', this.onScroll);
+      document.removeEventListener('click', this.closeMobNav);
   },
   methods: {
       onScroll () {
@@ -106,6 +109,12 @@ export default {
 
       },
 
+  },
+
+  watch: {
+      $route () {
+          this.active = false;
+      }
   }
 }
 
@@ -136,19 +145,21 @@ export default {
     position: fixed;
     z-index: 98;
     left: 0;
-    padding-top: calc(65px + 2em);
     width: 100%;
-    height: 100%;
+    height: 0%;
+    bottom: 0;
     background-color: rgba(0,0,0,.5);
     opacity: 1;
-
     &.active {
-        // 
+        height: calc(100% - 65px - 1em);
+        .nav-mobile-overlay {
+            opacity: 1;
+        }
     }
 
     .nav-mobile-navigation {
         overflow: hidden auto;
-        height: calc(100% - 2em);
+         height: 100%;
         position: relative;
         z-index: 2;
     }
@@ -161,10 +172,13 @@ export default {
             padding: 1.25em 0;
             width: 100%;
             background: linear-gradient(90deg,transparent,rgba(0,0,0,.7) 49.48%,transparent);
+            transform: translate3d(0, -100%, 0);
         }
     }
 
     .nav-mobile-overlay {
+        @include trans-ease-out;
+        transition-duration: .5s;
         backdrop-filter: blur(8px);
         background: linear-gradient(90deg,rgba(18,18,18,.56471) 40%,rgba(1,1,1,0));
         position: fixed;
@@ -173,18 +187,36 @@ export default {
         height: 100%;
         top: 0;
         left: 0;
+        opacity: 0;
     }
-
 }
 
-// .nav-mobile-navigation {
-//     position: fixed;
-//     left: 0;
-//     top: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(0,0,0,.5);
+// @for $i from 1 through 3 {
+//   .UserProfile-links a:nth-child(#{$i}) {
+//     transform: translate3d(0, $translateY + $i * -110, 0);
+//     opacity: 0;
+//   }
 // }
+
+$translateY: 0%;
+
+@for $i from 8 through 1 {
+    .MobileNavigation .nav-links a:nth-child(9n - #{$i}) {
+        transform: translate3d(0, $translateY + $i * -10, 0);
+        opacity: 0;
+        // transition-duration: $i * .025s;
+    }
+}
+
+.MobileNavigation {
+    &.active {
+        .nav-links a {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+} 
+
 
 
 .MainNavigation {

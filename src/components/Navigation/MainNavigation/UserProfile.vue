@@ -2,7 +2,7 @@
     .UserProfile
       .user-balance-wrap
         router-link(to="/").user-balance
-          .user-balance--pay
+          .user-balance--pay.hidden
             app-icon(name="plus-small" size='18')
           .user-balance--current
             span.label Баланс
@@ -79,7 +79,6 @@ export default {
 
 .user-balance {
   background-color: var(--pallete-dark-regular);
-  // padding: 0 calc(2 * var(--indent-h)) 0 var(--indent-h);
   padding: 0 2.5em 0 1em;
   display: flex;
   align-items: center;
@@ -87,6 +86,10 @@ export default {
   font-weight: 700;
   text-decoration: none;
   position: relative;
+
+  @include respond-to(handlers) {
+    padding: 0 2.5em 0 .75em;
+  }
 
   .user-balance--current {
     span.label {

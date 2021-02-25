@@ -16,7 +16,7 @@ export default {
 .Dialogs {
   background-color: var(--pallete-transparent-bg);
   border-radius: 100%;
-  margin: 0 1em;
+  // margin: 0 1em;
   grid-area: msg;
 
   a {
@@ -40,12 +40,14 @@ export default {
   }
 
   @include respond-to(small-medium-screens) { 
-    margin: 0 1em 0 auto;
+    // margin: 0 1em 0 auto;
+    margin-left: auto
   }
 
   .icon {
     @include trans-ease-in;
     fill: var(--pallete-blue);
+    margin: 0 2px 2px 0;
   }
 }
 
