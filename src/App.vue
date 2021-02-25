@@ -48,6 +48,10 @@ body, html {
   @include respond-to(large-screens) {
     max-width: 980px;
   }
+
+  @include respond-to(small-medium-screens) {
+    padding: 0 10px;
+  }
 }
 
 a {

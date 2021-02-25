@@ -1,4 +1,5 @@
 <template lang="pug">
+
     .Dialogs
       router-link(to="/news")
         app-icon(name='chat')
