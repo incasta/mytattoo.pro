@@ -38,7 +38,7 @@ export default {
     }
   }
 
-  @include respond-to(handlers) { 
+  @include respond-to(small-medium-screens) { 
     margin: 0 1em 0 auto;
   }
 
