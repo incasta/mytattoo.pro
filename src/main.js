@@ -1,12 +1,16 @@
-import '@/scss/main.scss'
+import '@/scss/main.scss';
 
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import AppIcon from './components/common/app-icon.vue'
-import VScrollLock from 'v-scroll-lock'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import AppIcon from './components/common/app-icon.vue';
+import VScrollLock from 'v-scroll-lock';
+import VueFlicking from "@egjs/vue-flicking";
 
-Vue.component('app-icon', AppIcon)
+Vue.use(VueFlicking);
+
+Vue.component('app-icon', AppIcon);
+
 Vue.use(VScrollLock, {
   bodyScrollOptions: {
     reserveScrollBarGap: true,

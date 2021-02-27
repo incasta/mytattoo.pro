@@ -5,7 +5,7 @@
             .MobileNavigation(:class='{ active }')
                 .nav-mobile-navigation
                     .nav-links
-                        router-link(v-for='item in links' v-bind:key='item.id' v-bind:to="item.link") {{ item.name }}
+                        router-link(v-for='item in links' :key='item.id' :to="item.link") {{ item.name }}
                         router-link(to='/search') Поиск
                 .nav-mobile-overlay
         
@@ -19,7 +19,7 @@
                     router-link(to="/")
                         img(src="@/assets/img/logo.png", alt="")
                 .nav-links
-                    router-link(v-for='item in links' v-bind:key='item.id' v-bind:to="item.link") {{ item.name }}
+                    router-link(v-for='item in links' :key='item.id' class='hover-effect-glitch' :to="item.link" :data-text='item.name') {{ item.name }}
                     router-link(to="/").search
                         app-icon(name='search' size='15')
 
@@ -127,7 +127,7 @@ export default {
     @include trans-ease-in;
     background-color: rgba(0,0,0,.75);
     position: fixed;
-    z-index: 99;
+    z-index: 9998;
     width: 100%;
     top: 0;
     left: 0;
@@ -235,7 +235,7 @@ $translateY: 0%;
     }
 
     @include respond-to(handlers) {
-        padding: 0.75em 10px;
+        padding: 0.75em 0px;
         grid-template-columns: max-content 5em auto max-content;
         grid-template-areas: "burger logo msg user";
         grid-column-gap: 5px;
@@ -285,7 +285,8 @@ $translateY: 0%;
 
 .search {
     @include flex-ja_center;
-    background-color: var(--pallete-transparent-bg);
+    // background-color: var(--pallete-transparent-bg);
+    background-color: var(--pallete-dark-regular);
     border-radius: 100%;
     width: 3em;
     height: 3em;
@@ -331,7 +332,7 @@ $translateY: 0%;
     span {
         @include trans-ease-in;
         width: 100%;
-        height: 3px;
+        height: 2px;
         background-color: var(--pallete-pink);
         display: block;
         position: absolute;
@@ -344,14 +345,11 @@ $translateY: 0%;
         }
         &:nth-child(2) {
             top: 50%;
-            // transform: translate3d(0, -50%, 0);
             opacity: 1;
         }
         &:nth-child(3) {
             top: 100%;
-            // width: calc(100% / 1.5);
             transform: scaleX(.5) translate3d(-50%, 0, 0);
-            // width: 50%;
         }
     }
 }

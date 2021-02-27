@@ -64,6 +64,7 @@ export default {
   padding: 1px;
   border-radius: 2px;
   display: flex;
+  margin: 2px 0;
   margin-right: calc(-1.25 * var(--indent-h));
 
   &:hover {
