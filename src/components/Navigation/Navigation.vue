@@ -154,12 +154,13 @@ export default {
         height: calc(100% - 65px - 1em);
         .nav-mobile-overlay {
             opacity: 1;
+            height: 100%;
         }
     }
 
     .nav-mobile-navigation {
         overflow: hidden auto;
-         height: 100%;
+        height: 100%;
         position: relative;
         z-index: 2;
     }
@@ -184,7 +185,8 @@ export default {
         position: fixed;
         z-index: 1;
         width: 100%;
-        height: 100%;
+        // height: 100%;
+        height: 0%;
         top: 0;
         left: 0;
         opacity: 0;

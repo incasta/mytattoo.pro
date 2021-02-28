@@ -2,42 +2,59 @@
     
     .HeaderSection.animation-flickering
         .HeaderSectionWrap.container
-            flicking.HeaderSectionSlider(:options="{ circular: true, duration: 600, moveType: {type: 'snap', count: 5}, }" :plugins="plugins")
-                .Slide
-                    .SlideContent
-                        .header Мой аккаунт
-                        .userRememberStatus.pro PRO
-                        .userRememberTimer
-                            label Подписка истекает
-                            .timer Через 
-                                span 20 
-                                | дней
-                        .btn-wrap
-                            router-link(to="/").btn-neon.pink Продлить
+            splide(:options="options")
+                splide-slide
+                    .SlideContent Slide 1
+                splide-slide
+                    .SlideContent Slide 2
 
-                .Slide 
-                    .SlideContent МОЙ РЕЙТИНГ
-            .pagination.pagination0
+                //- .Slide
+                //-     .SlideContent
+                //-         .header Мой аккаунт
+                //-         .userRememberStatus.pro PRO
+                //-         .userRememberTimer
+                //-             label Подписка истекает
+                //-             .timer Через 
+                //-                 span 20 
+                //-                 | дней
+                //-         .btn-wrap
+                //-             router-link(to="/").btn-neon.pink Продлить
+
+                //- .Slide 
+                //-     .SlideContent МОЙ РЕЙТИНГ
         
 
 </template>
 
 
 <script>
-import { Flicking } from "@egjs/vue-flicking";
-import { AutoPlay } from "@egjs/flicking-plugins";
+
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
 
 export default {
-  components: {
-    Flicking: Flicking,
-  },
+    components: {
+        Splide,
+        SplideSlide
+    },
 
-  data () {
-      return {
-        plugins: [new AutoPlay(2000, "NEXT")]
-      }
-  },
-  
+    data () {
+        return {
+            options: {
+                type: "loop",
+                perPage: 1,
+                rewind: true,
+                speed: 600,
+                waitForTransition: false,
+                height: "500px",
+                padding: "0px",
+                // easing: "ease-in-out",
+                // easing: "ease-in",
+                easing: "cubic-bezier(0.75, 1, 0.5, 1)",
+                // swipeDistanceThreshold: 500,
+            },
+        };
+    },
 }
 </script>
 
@@ -64,24 +81,21 @@ export default {
 }
 
 .HeaderSectionWrap {
+    position: relative;
+    z-index: 9000;
     height: 100%;
-    width: 100%;
+    cursor: grab;
 }
 
-.HeaderSectionSlider {
-    height: 100%;
+.splide {
+    padding: 0;
+}
+
+.SlideContent {
+    @include flex-ja_center;
     width: 100%;
-    cursor: grab;
-    &:active {
-        cursor: grabbing;
-    }
-    .Slide {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-    }
-} 
+    height: 100%;
+}
+
 
 </style>
