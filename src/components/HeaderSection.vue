@@ -2,7 +2,7 @@
     
     .HeaderSection.animation-flickering
         .HeaderSectionWrap.container
-            flicking.HeaderSectionSlider(:options="{ circular: true, duration: 600, }" :plugins="plugins")
+            flicking.HeaderSectionSlider(:options="{ circular: true, duration: 600, moveType: {type: 'snap', count: 5}, }" :plugins="plugins")
                 .Slide
                     .SlideContent
                         .header Мой аккаунт
@@ -17,19 +17,27 @@
 
                 .Slide 
                     .SlideContent МОЙ РЕЙТИНГ
-            .pagination
+            .pagination.pagination0
         
 
 </template>
 
 
 <script>
-import { Component, Vue } from "vue-property-decorator";
-import { Fade, AutoPlay } from "@egjs/flicking-plugins";
+import { Flicking } from "@egjs/vue-flicking";
+import { AutoPlay } from "@egjs/flicking-plugins";
 
-@Component({})
-export default class DemoClass extends Vue {
-  plugins = [new Fade(), new AutoPlay(2000, "NEXT")];
+export default {
+  components: {
+    Flicking: Flicking,
+  },
+
+  data () {
+      return {
+        plugins: [new AutoPlay(2000, "NEXT")]
+      }
+  },
+  
 }
 </script>
 
@@ -63,6 +71,10 @@ export default class DemoClass extends Vue {
 .HeaderSectionSlider {
     height: 100%;
     width: 100%;
+    cursor: grab;
+    &:active {
+        cursor: grabbing;
+    }
     .Slide {
         width: 100%;
         display: flex;
