@@ -125,7 +125,8 @@ export default {
 
 .Navigation {
     @include trans-ease-in;
-    background-color: rgba(0,0,0,.75);
+    // background-color: rgba(0,0,0,.75);
+    background-color: rgba(0,0,0,.5);
     position: fixed;
     z-index: 9998;
     width: 100%;

@@ -182,3 +182,12 @@ skew to change the 'thickness' of the glitch.*/
         background-color: rgba(9, 10, 5, .5);
     }
 }
+
+
+// Анимация при наведении на неоновые кнопки
+.btn-neon.hover-effect-neon_glitch {
+    &:hover {
+        text-shadow: 0 0 1px var(--pallete-blue);
+        box-shadow: 0 0 1px var(--pallete-pink-dark), 0 0 15px var(--pallete-pink-dark) inset;
+    }
+}

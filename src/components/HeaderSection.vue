@@ -2,59 +2,20 @@
     
     .HeaderSection.animation-flickering
         .HeaderSectionWrap.container
-            splide(:options="options")
-                splide-slide
-                    .SlideContent Slide 1
-                splide-slide
-                    .SlideContent Slide 2
-
-                //- .Slide
-                //-     .SlideContent
-                //-         .header Мой аккаунт
-                //-         .userRememberStatus.pro PRO
-                //-         .userRememberTimer
-                //-             label Подписка истекает
-                //-             .timer Через 
-                //-                 span 20 
-                //-                 | дней
-                //-         .btn-wrap
-                //-             router-link(to="/").btn-neon.pink Продлить
-
-                //- .Slide 
-                //-     .SlideContent МОЙ РЕЙТИНГ
-        
-
+            HeaderSectionSlider
+            
 </template>
 
 
 <script>
 
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
+import HeaderSectionSlider from "@/components/Sliders/HeaderSectionSlider.vue";
 
 export default {
     components: {
-        Splide,
-        SplideSlide
+        HeaderSectionSlider,
     },
 
-    data () {
-        return {
-            options: {
-                type: "loop",
-                perPage: 1,
-                rewind: true,
-                speed: 600,
-                waitForTransition: false,
-                height: "500px",
-                padding: "0px",
-                // easing: "ease-in-out",
-                // easing: "ease-in",
-                easing: "cubic-bezier(0.75, 1, 0.5, 1)",
-                // swipeDistanceThreshold: 500,
-            },
-        };
-    },
 }
 </script>
 
@@ -66,7 +27,7 @@ export default {
     background-position: center 80%;
     background-repeat: no-repeat;
     background-blend-mode: darken;
-    height: 500px;
+    height: var(--HeaderSectionHeight);
     position: relative;
     &:before {
         content: "";
@@ -84,18 +45,6 @@ export default {
     position: relative;
     z-index: 9000;
     height: 100%;
-    cursor: grab;
 }
-
-.splide {
-    padding: 0;
-}
-
-.SlideContent {
-    @include flex-ja_center;
-    width: 100%;
-    height: 100%;
-}
-
 
 </style>
