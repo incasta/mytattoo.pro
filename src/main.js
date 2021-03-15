@@ -11,6 +11,7 @@ Vue.use(VueFlicking);
 
 Vue.component('app-icon', AppIcon);
 
+
 Vue.use(VScrollLock, {
   bodyScrollOptions: {
     reserveScrollBarGap: true,

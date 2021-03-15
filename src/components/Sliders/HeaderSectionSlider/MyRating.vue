@@ -4,7 +4,7 @@
         .header Мой рейтинг
         .userRating
             .userRating_Stars
-                .stars--3_5 ***
+                .star-rating(data-stars="3.5")
             .userRating_Points 
                 | 603 
                 app-icon(name='token')
@@ -21,14 +21,10 @@
 
 @include SlideContent;
 @include SlideHeader;
+@include RatingStars;
 
-.userRating_Points {
-    @include flex-ja_center;
-    font-weight: 700;
-    color: var(--pallete-blue);
-    .icon {
-        margin-left: 5px;
-    }
-}
+
+
+
 
 </style>

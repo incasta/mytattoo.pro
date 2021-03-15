@@ -2,7 +2,8 @@
     
     splide(:options="options")
         splide-slide
-            MySub
+            MyRating
+            //- MySub
                
         splide-slide
             MyRating
