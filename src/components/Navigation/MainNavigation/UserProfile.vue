@@ -47,6 +47,12 @@ export default {
 
   beforeDestroy () {
     document.removeEventListener('click', this.dropDown);
+  }, 
+
+  watch: {
+    $route () {
+      this.active = false;
+    }
   }
 }
 </script>

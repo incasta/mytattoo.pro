@@ -91,10 +91,14 @@
 // RATING STARS
 
 @mixin RatingStars {
-    .userRating_Points {
-        @include flex-ja_center;
+    .Rating_Points {
+        // @include flex-ja_center;
+        display: flex;
+        align-items: center;
         font-weight: 700;
         color: var(--pallete-blue);
+        // margin: 10px 0 20px 0;
+        font-size: 14px;
         .icon {
             margin-left: 5px;
         }

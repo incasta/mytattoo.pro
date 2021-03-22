@@ -11,6 +11,7 @@
 
 import HeaderSectionSlider from "@/components/Sliders/HeaderSectionSlider.vue";
 
+
 export default {
     components: {
         HeaderSectionSlider,
