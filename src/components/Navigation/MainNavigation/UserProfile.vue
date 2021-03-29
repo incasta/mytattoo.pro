@@ -14,7 +14,7 @@
             app-icon(name='angle-small-down' size='13')
           img(src='@/assets/img/users/user.jpg', alt='')
         .UserProfile-links
-          router-link(to='/')
+          router-link(to='/masterLK')
             app-icon(name='user' size='16')
           router-link(to='/')
             app-icon(name='bookmark-fill' size='14')
@@ -175,7 +175,7 @@ $translateY: 0%;
         filter: drop-shadow(0 0 5px var(--pallete-pink));
       }
     }
-    &:focus {
+    &.router-link-exact-active {
       .icon {
         animation: swipe-right .3s ease;
       }

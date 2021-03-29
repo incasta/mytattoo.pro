@@ -2,7 +2,7 @@
 
     //- .Dialogs.new-msg-msg.new-msg-request.new-msg-ts
     .Dialogs.new-msg-msg
-      router-link(to="/news")
+      router-link(to="/masterLK/messages")
         app-icon(name='chat')
         span.type-msg
           span

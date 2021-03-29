@@ -79,11 +79,11 @@ export default {
   },
   mounted () {
       window.addEventListener('scroll', this.onScroll);
-      document.addEventListener('click', this.closeMobNav);
+    //   document.addEventListener('click', this.closeMobNav);
   },
   beforeDestroy () {
       window.removeEventListener('scroll', this.onScroll);
-      document.removeEventListener('click', this.closeMobNav);
+    //   document.removeEventListener('click', this.closeMobNav);
   },
   methods: {
       onScroll () {
@@ -112,9 +112,9 @@ export default {
   },
 
   watch: {
-      $route () {
-          this.active = false;
-      }
+    $route () {
+        this.active = false;
+    }
   }
 }
 
@@ -265,6 +265,7 @@ $translateY: 0%;
         text-decoration: none;
         color: #fff;
         margin: 0 1em;
+        font-size: 13px;
         @include respond-to(large-screens) {
           margin: 0 auto;
         }
@@ -293,6 +294,12 @@ $translateY: 0%;
     border-radius: 100%;
     width: 3em;
     height: 3em;
+    overflow: hidden;
+    &.router-link-exact-active {
+        .icon {
+            animation: swipe-right .3s ease;
+        }
+    }
 }
 
 .nav-mobile-burger {

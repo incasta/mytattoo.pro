@@ -52,6 +52,25 @@ const routes = [
     name: 'Meanings',
     component: () => import(/* webpackChunkName: "meanings" */ '../views/Meanings.vue')
   }
+  ,
+  {
+    path: '/masterLK',
+    name: 'MasterLK',
+    redirect: { name: 'MyProfile' },
+    component: () => import(/* webpackChunkName: "masterLK" */ '../views/MasterLK.vue'),
+    children: [
+      {
+        name: 'MyProfile',
+        path: 'my-profile',
+        component: () => import(/* webpackChunkName: "masterLK_my-profile" */ '../views/MyProfile.vue')
+      },
+      {
+        path: 'messages',
+        component: () => import(/* webpackChunkName: "masterLK_my-profile" */ '../views/Messages.vue')
+      }
+    ]
+  }
+  
 ]
 
 const router = new VueRouter({

@@ -18,10 +18,6 @@ export default {
 
 <style lang="scss">
 
-.content {
-  margin-top: 300px;
-}
-
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: Jura, sans-serif;

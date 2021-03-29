@@ -138,11 +138,13 @@ skew to change the 'thickness' of the glitch.*/
 
 .animation-flickering {
     animation: flickering 5s linear infinite;
+    animation: flickering 8s linear infinite;
     transition: 0s;
     // background-color: rgba(39,39,39,.5);
     background-color: rgba(9, 10, 5, .5);
 }
 
+    
 @keyframes flickering {
     // $steps: 10; 
     // @for $i from 0 through $steps {
@@ -182,7 +184,6 @@ skew to change the 'thickness' of the glitch.*/
         background-color: rgba(9, 10, 5, .5);
     }
 }
-
 
 // Анимация при наведении на неоновые кнопки
 .btn-neon.hover-effect-neon_glitch {

@@ -6,6 +6,9 @@ import router from './router';
 import AppIcon from './components/common/app-icon.vue';
 import VScrollLock from 'v-scroll-lock';
 import VueFlicking from "@egjs/vue-flicking";
+import Sticky from 'vue-sticky-directive';
+
+Vue.use(Sticky);
 
 Vue.use(VueFlicking);
 
