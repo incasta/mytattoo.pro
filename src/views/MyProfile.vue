@@ -591,6 +591,13 @@ input[type="number"] {
             margin-bottom: 10px;
         }
     }
+
+    @include respond-to(handlers) {
+        height: unset;
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
 }
 
 .Data-Item {
@@ -599,6 +606,28 @@ input[type="number"] {
     width: 100%;
     cursor: pointer;
     
+    @include respond-to(handlers) {
+        flex-wrap: wrap;
+        .Data-Label, .Data-Input, .Data-Singleselect {
+            width: 100%;
+            margin: 0;
+            max-width: 100%;
+        }
+        .Data-Label {
+            margin-bottom: 5px;
+        }
+        .Toggler {
+            margin-left: 0;
+            & ~ .Data-Input.small {
+                margin-left: 0;
+                margin-right: 20px;
+                order: -1;
+            }
+            & ~ .Data-Label {
+                margin-bottom: 15px;
+            }
+        }
+    }
 }
 
 .Toggler {
@@ -885,6 +914,13 @@ input[type="number"] {
 }
 
 .Data-Multiselect-Tags, .Data-Singleselect {
+    .multiselect__placeholder {
+        display: inline-block;
+        white-space: nowrap;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .multiselect {
         box-sizing: content-box;
         display: block;

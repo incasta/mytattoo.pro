@@ -54,7 +54,7 @@ export default {
 }
 
 .Page-Block-Header {
-    background-color: var(--pallete-dark-light);
+    background-color: var(--palette-dark-light);
     padding: 15px 24px;
     position: relative;
     font-size: 16px;
@@ -74,12 +74,12 @@ export default {
         left: 0;
         height: 100%;
         width: 4px;
-        background-color: var(--pallete-blue);
+        background-color: var(--palette-blue);
     }
 }
 
 .Page-Block-Content {
-    background: var(--pallete-dark-medium);
+    background: var(--palette-dark-medium);
     padding: 20px;
     text-align: left;
     @include respond-to(small-medium-screens) {
