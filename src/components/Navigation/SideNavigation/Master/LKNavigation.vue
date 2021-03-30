@@ -114,8 +114,8 @@ export default {
         display: block;
         padding: 15px 20px;
         text-align: left;
-        background-color: var(--pallete-dark-light);
-        color: var(--pallete-white);
+        background-color: var(--palette-dark-light);
+        color: var(--palette-white);
         text-decoration: none;
         position: relative;
         // margin-bottom: 1px;
@@ -130,13 +130,13 @@ export default {
             left: 0;
             height: 100%;
             width: 4px;
-            background-color: var(--pallete-dark-semilight);
+            background-color: var(--palette-dark-semilight);
         }
         &.router-link-exact-active {
-            color: var(--pallete-blue);
-            text-shadow: 0 0 5px var(--pallete-blue);
+            color: var(--palette-blue);
+            text-shadow: 0 0 5px var(--palette-blue);
             &:before {
-                background-color: var(--pallete-blue);
+                background-color: var(--palette-blue);
             }
 
             ~ .Anchor-List {
@@ -160,7 +160,7 @@ export default {
         color: #fff;
         &.active, &.router-link-exact-active {
             background-color: #080D12;
-            color: var(--pallete-blue);
+            color: var(--palette-blue);
         }
     }
 }

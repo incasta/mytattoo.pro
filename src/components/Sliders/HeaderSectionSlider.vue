@@ -109,8 +109,8 @@ export default {
     opacity: .5;
     &.is-active {
         opacity: 1;
-        background-color: var(--pallete-blue);
-        box-shadow: 0 0 5px var(--pallete-blue);
+        background-color: var(--palette-blue);
+        box-shadow: 0 0 5px var(--palette-blue);
     }
 }
 

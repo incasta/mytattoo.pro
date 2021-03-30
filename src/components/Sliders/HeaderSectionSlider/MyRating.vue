@@ -68,7 +68,7 @@ export default {
 
 .userRatingProgress-Header {
     text-transform: uppercase;
-    color: var(--pallete-blue);
+    color: var(--palette-blue);
     font-weight: 700;
 }
 

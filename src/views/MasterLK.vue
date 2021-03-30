@@ -82,6 +82,9 @@ export default {
     background: var(--pallete-dark-medium);
     padding: 20px;
     text-align: left;
+    @include respond-to(small-medium-screens) {
+        padding: 10px;
+    }
 }
 
 .Content-Column {
@@ -102,6 +105,7 @@ export default {
     @include respond-to(large-screens) {
         min-width: unset;
         width: 100%;
+        padding-left: 0;
     }
 }
 

@@ -33,7 +33,7 @@ export default {
 }
 
 body, html { 
-  background-color: var(--pallete-black-bg);
+  background-color: var(--palette-black-bg);
   min-height: 300vh;
 }
 

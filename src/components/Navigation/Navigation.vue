@@ -270,9 +270,9 @@ $translateY: 0%;
           margin: 0 auto;
         }
         &.router-link-exact-active {
-            color: var(--pallete-pink);
+            color: var(--palette-pink);
             .icon {
-                fill: var(--pallete-pink);
+                fill: var(--palette-pink);
             }
         }
     }
@@ -289,8 +289,8 @@ $translateY: 0%;
 
 .search {
     @include flex-ja_center;
-    // background-color: var(--pallete-transparent-bg);
-    background-color: var(--pallete-dark-regular);
+    // background-color: var(--palette-transparent-bg);
+    background-color: var(--palette-dark-regular);
     border-radius: 100%;
     width: 3em;
     height: 3em;
@@ -343,7 +343,7 @@ $translateY: 0%;
         @include trans-ease-in;
         width: 100%;
         height: 2px;
-        background-color: var(--pallete-pink);
+        background-color: var(--palette-pink);
         display: block;
         position: absolute;
         z-index: 1;

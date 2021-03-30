@@ -66,7 +66,7 @@ export default {
 }
 
 .user-balance-wrap {
-  background: linear-gradient(270deg,rgba(255,255,112,0) 5%,rgba(255,255,112,.56471)), var(--pallete-dark-regular);
+  background: linear-gradient(270deg,rgba(255,255,112,0) 5%,rgba(255,255,112,.56471)), var(--palette-dark-regular);
   padding: 1px;
   border-radius: 2px;
   display: flex;
@@ -85,11 +85,11 @@ export default {
 }
 
 .user-balance {
-  background-color: var(--pallete-dark-regular);
+  background-color: var(--palette-dark-regular);
   padding: 0 2.5em 0 1em;
   display: flex;
   align-items: center;
-  color: var(--pallete-blue);
+  color: var(--palette-blue);
   font-weight: 700;
   text-decoration: none;
   position: relative;
@@ -121,10 +121,10 @@ export default {
     left: 0;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
-    background-color: var(--pallete-yellow);
+    background-color: var(--palette-yellow);
 
     &:hover {
-      background-color: var(--pallete-pink);
+      background-color: var(--palette-pink);
       
       .icon {
         transform: rotate(90deg);
@@ -132,7 +132,7 @@ export default {
     }
 
     .icon {
-      fill: var(--pallete-dark-regular);
+      fill: var(--palette-dark-regular);
       @include trans-ease-in;
     }
     
@@ -168,11 +168,11 @@ $translateY: 0%;
     width: 42px;
     height: 42px;
     border-radius: 100%;
-    background-color: var(--pallete-dark-regular);
+    background-color: var(--palette-dark-regular);
     overflow: hidden;
     &:hover {
       .icon {
-        filter: drop-shadow(0 0 5px var(--pallete-pink));
+        filter: drop-shadow(0 0 5px var(--palette-pink));
       }
     }
     &.router-link-exact-active {
@@ -182,12 +182,12 @@ $translateY: 0%;
     }
 
     .icon {
-      fill: var(--pallete-pink);
+      fill: var(--palette-pink);
       @include trans-ease-out;
     }
 
     &.router-link-exact-active .icon {
-      filter: drop-shadow(0 0 15px var(--pallete-pink));
+      filter: drop-shadow(0 0 15px var(--palette-pink));
     }
   }
 }
@@ -225,10 +225,10 @@ $translateY: 0%;
   width: 18px;
   height: 18px;
   border-radius: 100%;
-  background-color: var(--pallete-dark-regular);
+  background-color: var(--palette-dark-regular);
   .icon {
     @include trans-ease-out;
-    fill: var(--pallete-blue);
+    fill: var(--palette-blue);
   }
 }
 

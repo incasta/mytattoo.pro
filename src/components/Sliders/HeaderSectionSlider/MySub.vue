@@ -25,7 +25,7 @@
     text-transform: uppercase;
     font-weight: 700;
     label {
-        color: var(--pallete-blue);
+        color: var(--palette-blue);
         font-size: 14px;
         margin-bottom: 1.25em;
     }
