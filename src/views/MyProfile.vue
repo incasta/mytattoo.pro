@@ -9,6 +9,11 @@
                     .Content-Column
                         .User-Avatar
                             img(src="@/assets/img/users/master-ava.jpg")
+                            a.profile_preview(href="#")
+                                app-icon(name="profile_preview" size="16")
+                            .User-Avatar-Overlay
+                                a.User-Avatar-UploadPhoto(href="#")
+                                    app-icon(name="arrow-small-up" size="16")
                     .Content-Column
                         .Column-Heading
                             h3 Личная информация
@@ -37,7 +42,9 @@
                                         :show-labels="false",
                                         placeholder="Выбрать",
                                         label="name",
-                                        track-by="name",)
+                                        track-by="name",
+                                        :allow-empty="false",
+                                    )
                         .Data-Row
                             label.Data-Item
                                 span.Data-Label Дата рождения
@@ -46,8 +53,8 @@
                             label.Data-Item
                                 span.Data-Label Скрыть возраст
                                 input.Toggler.pink(type="checkbox" )
-                                span
-                                    app-icon.tooltip(name="tooltip" width="15")
+                                app-icon.tooltip(name="tooltip" width="18")
+                                    
                                     
                 //-
                 .Content-Row
@@ -74,7 +81,9 @@
                                         :show-labels="false",
                                         placeholder="Выбрать",
                                         label="name",
-                                        track-by="name",)
+                                        track-by="name",
+                                        :allow-empty="false",
+                                    )
                                 //- input.Data-Input(type="text" placeholder="ВЫБЕРИТЕ" value="")
                         .Data-Row
                             label.Data-Item
@@ -89,7 +98,9 @@
                                         :show-labels="false",
                                         placeholder="Выбрать",
                                         label="name",
-                                        track-by="name",)
+                                        track-by="name",
+                                        :allow-empty="false",
+                                    )
                         .Data-Row.disabled
                             label.Data-Item
                                 span.Data-Label Название студии или салона
@@ -184,6 +195,7 @@
                     .Content-Column.wide
                         .Data-Row
                             span.Data-Label Обучаю в следующих стилях *
+                                app-icon.tooltip(name="tooltip" width="15")
                             .Data-Multiselect-Tags
                                 multiselect(
                                     v-model="diseaseValue",
@@ -193,7 +205,8 @@
                                     :show-labels="false",
                                     :options="diseaseOptions",
                                     :multiple="true",
-                                    :taggable="true",
+                                    :taggable="false",
+                                    :hide-selected="true",
                                 )
                         .Data-Row
                             span.Data-Label Время длительности обучения *
@@ -356,6 +369,7 @@
                     .Content-Column.wide
                         .Data-Row
                             span.Data-Label В каких стилях я работаю
+                            app-icon.tooltip(name="tooltip" width="15")
                             .Data-Multiselect-Tags
                                 multiselect(
                                     v-model="styleValue",
@@ -365,8 +379,9 @@
                                     :show-labels="false",
                                     :options="styleOptions",
                                     :multiple="true",
-                                    :taggable="true",
+                                    :taggable="false",
                                     :max="5",
+                                    :hide-selected="true"
                                 )
         //- 
         .Page-Block
@@ -511,9 +526,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 // @include vue-multiselect;
+@include tooltip;
 
 input[type="number"] {
     appearance: textfield;
@@ -792,10 +808,86 @@ input[type="number"] {
 
 .User-Avatar {
     @include flex-j_center;
+    @include trans-ease-out;
+    position: relative;
     img {
         width: 285px;
         height: 375px;
         object-fit: cover;
+    }
+
+    &:hover {
+        .User-Avatar-Overlay {
+            opacity: 1;
+            .User-Avatar-UploadPhoto {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.User-Avatar-Overlay {
+    position: absolute;
+    @include flex-ja_center;
+    @include trans-ease-out;
+    z-index: 2;
+    top: 0;
+    // left: 0;
+    width: 285px;
+    height: 100%;
+    opacity: 0;
+    background-color: var(--palette-transparent-bg);
+    @include respond-to(small-medium-screens) {
+        opacity: 1;
+        // background-color: transparent;
+        .User-Avatar-UploadPhoto {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+.User-Avatar-UploadPhoto {
+    position: absolute;
+    z-index: 3;
+    @include flex-ja_center;
+    @include trans-ease-out;
+    transform: translateY(20px);
+    width: 42px;
+    height: 42px;
+    background-color: var(--palette-transparent-bg);
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 100%;
+    // bottom: 20px;
+    // opacity: 0.75;
+    .icon {
+        fill: var(--palette-blue);
+    }
+    &:hover {
+        background-color: rgba(0, 0, 0, .75);
+    }
+}
+
+
+.profile_preview {
+    position: absolute;
+    z-index: 3;
+    @include flex-ja_center;
+    @include trans-ease-out;
+    width: 42px;
+    height: 42px;
+    background-color: var(--palette-transparent-bg);
+    border-radius: 100%;
+    bottom: 20px;
+    opacity: 0.75;
+    .icon {
+        fill: var(--palette-blue);
+    }
+
+    &:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, .75);
     }
 }
 
@@ -914,201 +1006,191 @@ input[type="number"] {
 }
 
 .Data-Multiselect-Tags, .Data-Singleselect {
-    .multiselect__placeholder {
-        display: inline-block;
-        white-space: nowrap;
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .multiselect {
-        box-sizing: content-box;
-        display: block;
-        position: relative;
-        width: 100%;
-        min-height: 40px;
-        text-align: left;
-        outline: none;
-        &.multiselect--active {
-            .multiselect__select {
-                transform: rotate(180deg);
-            }
-        }
-    }
-    .multiselect__select {
-        position: absolute;
-        width: 40px;
-        height: 38px;
-        right: 1px;
-        top: 1px;
-        padding: 4px 8px;
-        text-align: center;
-        transition: transform .2s ease;
-        &:before {
-            position: relative;
-            right: 0;
-            top: 65%;
-            color: #999;
-            color: var(--palette-blue);
-            margin-top: 4px;
-            border-style: solid;
-            border-width: 5px 5px 0;
-            border-color: var(--palette-blue) transparent transparent;
-            content: "";
-        } 
-    }
-    .multiselect__current, .multiselect__select {
-        line-height: 16px;
-        box-sizing: border-box;
-        display: block;
-        margin: 0;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    .multiselect__tags {
-        min-height: 40px;
-        display: block;
-        padding: 10px 40px 0 20px;
-        border-radius: 5px;
-        // border: 1px solid var(--palette-dark-semilight);
-        // background: #fff;
-        background-color: var(--palette-dark-light);
-        font-size: 14px;
-        text-transform: uppercase;
-    }
-    .multiselect__tags-wrap {
-        display: inline;
-    }
-    .multiselect__tag {
-        position: relative;
-        display: inline-block;
-        padding: 4px 26px 4px 10px;
-        border-radius: 5px;
-        margin-right: 10px;
-        color: #fff;
-        line-height: 1;
-        // background: var(--palette-dark-medium);
-        background: #253850;
-        margin-bottom: 5px;
-        white-space: nowrap;
-        overflow: hidden;
-        max-width: 100%;
-        text-overflow: ellipsis;
-        font-weight: 700;
-        letter-spacing: .1ex;
-    }
-    .multiselect__tag-icon {
-        cursor: pointer;
-        margin-left: 7px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        font-weight: 700;
-        font-style: normal;
-        width: 22px;
-        text-align: center;
-        line-height: 22px;
-        transition: all .2s ease;
-        border-radius: 5px;
-        &:after {
-            content: "\D7";
-            color: var(--palette-pink);
-            font-size: 14px;
-        }
-    }
-
-    .multiselect__spinner {
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        width: 48px;
-        height: 35px;
-        background: #fff;
-        display: block;
-    }
-    .multiselect__input, .multiselect__single {
-        position: relative;
-        display: inline-block;
-        min-height: 20px;
-        line-height: 20px;
-        border: none;
-        border-radius: 5px;
-        // background: #fff;
-        background-color: var(--palette-dark-light);
-        // padding: 0 0 0 5px;
-        width: 100%;
-        transition: border .1s ease;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        vertical-align: top;
-        color: #fff;
-        text-transform: uppercase;
-        &:focus {
-            outline: none;
-        }
-    }
-
-    .multiselect__content-wrapper {
-        // @include trans-ease-in;
-        @include CustomScroll;
-        position: absolute;
-        display: block;
-        background: var(--palette-dark-semilight);
-        width: 100%;
-        max-height: 240px;
-        overflow: auto;
-        // border: 1px solid #e8e8e8;
-        border-top: none;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        z-index: 3;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .multiselect__content {
-        list-style: none;
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-        min-width: 100%;
-        vertical-align: top;
-        background: var(--palette-dark-semilight);
-    }
-
-    .multiselect__element {
-        display: block;
-    }
-    .multiselect__option--selected {
-        background: #f3f3f3;
-        color: #35495e;
-        font-weight: 700;
-        display: none !important;
-    }
-    .multiselect__option {
-        @include trans-ease-out;
-        display: block;
-        padding: 10px 20px;
-        min-height: 40px;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: .2ex;
-        line-height: 16px;
-        text-decoration: none;
-        text-transform: none;
-        vertical-align: middle;
-        position: relative;
-        cursor: pointer;
-        white-space: nowrap;
-        text-transform: uppercase;
-        &:hover {
-            background-color: var(--palette-dark-light);
-        }
-    }
-    .multiselect__option--highlight {
-        // display: none !important;
-    }
+    // 
 }
+
+
+
+// .multiselect__placeholder {
+//     display: inline-block;
+//     white-space: nowrap;
+//     max-width: 100%;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+// }
+// .multiselect {
+//     box-sizing: content-box;
+//     display: block;
+//     position: relative;
+//     width: 100%;
+//     min-height: 40px;
+//     text-align: left;
+//     outline: none;
+//     &.multiselect--active {
+//         .multiselect__select {
+//             transform: rotate(180deg);
+//         }
+//     }
+// }
+// .multiselect__select {
+//     position: absolute;
+//     width: 40px;
+//     height: 38px;
+//     right: 1px;
+//     top: 1px;
+//     padding: 4px 8px;
+//     text-align: center;
+//     transition: transform .2s ease;
+//     &:before {
+//         position: relative;
+//         right: 0;
+//         top: 65%;
+//         color: #999;
+//         color: var(--palette-blue);
+//         margin-top: 4px;
+//         border-style: solid;
+//         border-width: 5px 5px 0;
+//         border-color: var(--palette-blue) transparent transparent;
+//         content: "";
+//     } 
+// }
+// .multiselect__current, .multiselect__select {
+//     line-height: 16px;
+//     box-sizing: border-box;
+//     display: block;
+//     margin: 0;
+//     text-decoration: none;
+//     cursor: pointer;
+// }
+// .multiselect__tags {
+//     min-height: 40px;
+//     display: block;
+//     padding: 10px 40px 0 20px;
+//     border-radius: 5px;
+//     background-color: var(--palette-dark-light);
+//     font-size: 14px;
+//     text-transform: uppercase;
+// }
+// .multiselect__tags-wrap {
+//     display: inline;
+// }
+// .multiselect__tag {
+//     position: relative;
+//     display: inline-block;
+//     padding: 4px 26px 4px 10px;
+//     border-radius: 5px;
+//     margin-right: 10px;
+//     color: #fff;
+//     line-height: 1;
+//     background: #253850;
+//     margin-bottom: 5px;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     max-width: 100%;
+//     text-overflow: ellipsis;
+//     font-weight: 700;
+//     letter-spacing: .1ex;
+// }
+// .multiselect__tag-icon {
+//     cursor: pointer;
+//     margin-left: 7px;
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     font-weight: 700;
+//     font-style: normal;
+//     width: 22px;
+//     text-align: center;
+//     line-height: 22px;
+//     transition: all .2s ease;
+//     border-radius: 5px;
+//     &:after {
+//         content: "\D7";
+//         color: var(--palette-pink);
+//         font-size: 14px;
+//     }
+// }
+// .multiselect__spinner {
+//     position: absolute;
+//     right: 1px;
+//     top: 1px;
+//     width: 48px;
+//     height: 35px;
+//     background: #fff;
+//     display: block;
+// }
+// .multiselect__input, .multiselect__single {
+//     position: relative;
+//     display: inline-block;
+//     min-height: 20px;
+//     line-height: 20px;
+//     border: none;
+//     border-radius: 5px;
+//     background-color: var(--palette-dark-light);
+//     width: 100%;
+//     transition: border .1s ease;
+//     box-sizing: border-box;
+//     margin-bottom: 10px;
+//     vertical-align: top;
+//     color: #fff;
+//     text-transform: uppercase;
+//     &:focus {
+//         outline: none;
+//     }
+// }
+// .multiselect__content-wrapper {
+//     @include CustomScroll;
+//     position: absolute;
+//     display: block;
+//     background: var(--palette-dark-semilight);
+//     width: 100%;
+//     max-height: 240px;
+//     overflow: auto;
+//     border-top: none;
+//     border-bottom-left-radius: 5px;
+//     border-bottom-right-radius: 5px;
+//     z-index: 3;
+//     -webkit-overflow-scrolling: touch;
+// }
+// .multiselect__content {
+//     list-style: none;
+//     display: inline-block;
+//     padding: 0;
+//     margin: 0;
+//     min-width: 100%;
+//     vertical-align: top;
+//     background: var(--palette-dark-semilight);
+// }
+// .multiselect__element {
+//     display: block;
+// }
+// .multiselect__option--selected {
+//     background: #f3f3f3;
+//     color: #35495e;
+//     font-weight: 700;
+//     display: none !important;
+// }
+// .multiselect__option {
+//     @include trans-ease-out;
+//     display: block;
+//     padding: 10px 20px;
+//     min-height: 40px;
+//     font-size: 13px;
+//     font-weight: 700;
+//     letter-spacing: .2ex;
+//     line-height: 16px;
+//     text-decoration: none;
+//     text-transform: none;
+//     vertical-align: middle;
+//     position: relative;
+//     cursor: pointer;
+//     white-space: nowrap;
+//     text-transform: uppercase;
+//     &:hover {
+//         background-color: var(--palette-dark-light);
+//     }
+// }
 
 .Data-Singleselect {
     width: 100%;
