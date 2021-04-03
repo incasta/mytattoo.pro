@@ -2,7 +2,7 @@
     
     .content
         .Page-Block
-            .Page-Block-Header#main-info 
+            .Page-Block-Header#section-1
                 h2 Основная информация
             .Page-Block-Content
                 .Content-Row
@@ -134,7 +134,7 @@
         //- 
 
         .Page-Block
-            .Page-Block-Header 
+            .Page-Block-Header#section-2
                 h2 Мои услуги
             .Page-Block-Content
                 .Content-Row
@@ -188,7 +188,7 @@
         //- 
 
         .Page-Block
-            .Page-Block-Header 
+            .Page-Block-Header#section-3
                 h2 Информация об обучении татуировке
             .Page-Block-Content
                 .Content-Row
@@ -287,7 +287,7 @@
         //- 
 
         .Page-Block
-            .Page-Block-Header 
+            .Page-Block-Header#section-4
                 h2 Информация о сертификатах на тату
             .Page-Block-Content
                 .Content-Row
@@ -530,279 +530,16 @@ export default {
 
 // @include vue-multiselect;
 @include tooltip;
+@include toggler;
+@include radio;
+@include textarea;
+@include data-inputs;
 
 input[type="number"] {
     appearance: textfield;
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
         display: none;
-    }
-}
-
-.Content-Column {
-    width: calc(100% / 2 - 20px);
-    &:last-child {
-        margin-left: 20px;
-    }
-    &:first-child {
-        margin-left: 0px;
-    }
-    
-    &.width-auto {
-        width: auto;
-    }
-    &.wide {
-        width: 100%;
-        max-width: 670px;
-        .Data-Row {
-            // flex-wrap: wrap;
-            display: block;
-            height: unset;
-            margin-bottom: 20px;
-        }
-        .Data-Label {
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-    }
-
-    @include respond-to(small-medium-screens) {
-        width: 100%;
-        &:last-child {
-            margin-left: 0;
-        }
-        &:not(:first-child) {
-            margin-top: 30px;
-        }
-    }
-
-}
-
-.Content-Row {
-    display: flex;
-    flex-wrap: wrap;
-    &:not(:first-child) {
-        margin-top: 20px;
-    }
-    @include respond-to(small-medium-screens) {
-        flex-wrap: wrap;
-    }
-}
-
-.Data-Row {
-    display: flex;
-    align-items: center;
-    height: 42px;
-    &:not(:last-child) {
-        margin-bottom: 15px;
-    }
-    &.disabled {
-        .Data-Label {
-            opacity: .5;
-        }
-    }
-
-    @include respond-to(small-medium-screens) {
-        &:not(:last-child) {
-            margin-bottom: 10px;
-        }
-    }
-
-    @include respond-to(handlers) {
-        height: unset;
-        &:not(:last-child) {
-            margin-bottom: 15px;
-        }
-    }
-}
-
-.Data-Item {
-    @include flex-a_center;
-    min-width: 220px;
-    width: 100%;
-    cursor: pointer;
-    
-    @include respond-to(handlers) {
-        flex-wrap: wrap;
-        .Data-Label, .Data-Input, .Data-Singleselect {
-            width: 100%;
-            margin: 0;
-            max-width: 100%;
-        }
-        .Data-Label {
-            margin-bottom: 5px;
-        }
-        .Toggler {
-            margin-left: 0;
-            & ~ .Data-Input.small {
-                margin-left: 0;
-                margin-right: 20px;
-                order: -1;
-            }
-            & ~ .Data-Label {
-                margin-bottom: 15px;
-            }
-        }
-    }
-}
-
-.Toggler {
-    margin-left: auto;
-    cursor: pointer;
-    // margin: 0 10px 0 0;
-    appearance: unset;
-    background-color: rgba(0,0,0,.5);
-    width: 38px;
-    height: 22px;
-    border-radius: 100px;
-    border: 1px solid rgba(255, 255, 255, .2);
-    position: relative;
-    cursor: pointer;
-    flex-shrink: 0;
-    &:focus {
-        outline: none;
-    }
-    &:after {
-        @include trans-ease-out;
-        content: "";
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        z-index: 1;
-        top: 2px;
-        left: 2px;
-        border-radius: 100%;
-        background-color: #fff;
-        box-shadow: 0 0 0 #f655a0;
-        opacity: .25;
-    }
-    &:checked {
-        background-color: rgba(97,0,45,.1);
-        border-color: #fff;
-        &:after {
-            background-color: #fff;
-            box-shadow: 0 0 15px #fff;
-            opacity: 1;
-            left: calc(100% - 18px);
-        }
-    }
-    &.pink {
-        &:checked {
-            background-color: rgba(97,0,45,.1);
-            border-color: #f655a0;
-            &:after {
-                background-color: #f655a0;
-                box-shadow: 0 0 15px #f655a0;
-                opacity: 1;
-                left: calc(100% - 18px);
-            }
-        }   
-    }
-
-    & ~ .Data-Input {
-        margin-left: 20px;
-    }
-    & + .Data-Label {
-        order: -1;
-    }
-    &:not(:checked) + .Data-Label {
-        opacity: .5;
-    }
-    &:not(:checked) ~ .Data-Input {
-        pointer-events: none;
-        opacity: .5;
-    }
-
-    @include respond-to(small-medium-screens) {
-        & ~ .Data-Input {
-            margin-left: 10px;
-        }
-    }
-}
-
-.Data-Label {
-    margin-right: auto;
-    color: var(--palette-blue);
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .2ex;
-    @include respond-to(handlers) {
-        font-size: 10px;
-    }
-}
-
-.Data-Input {
-    @include trans-ease-in;
-    position: relative;
-    // width: 250px;
-    width: 100%;
-    max-width: 220px;
-    height: 42px;
-    margin-left: 20px;
-    text-transform: uppercase;
-    background-color: rgba(0, 0, 0, .75);
-    border-radius: 2px;
-    border: none;
-    color: #fff;
-    font-size: 12px;
-    letter-spacing: .1ex;
-    padding: 10px 15px;
-    border: 2px solid rgba(0, 0, 0, .75);
-    &:focus {
-        outline: none;
-        border-color: var(--palette-dark-light);
-    }
-    &[type="date"] {
-        // width: 160px;
-        &::-webkit-calendar-picker-indicator {
-            @include trans-ease-out;
-            background-color: var(--palette-dark-light);
-            background: url("data:image/svg+xml,%3Csvg id='Bold' width='14px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300F0FF'%3E%3Ctitle%3E130 calendar%3C/title%3E%3Cpath d='M18.5,2H18V1.5A1.5,1.5,0,0,0,16.5,0h0A1.5,1.5,0,0,0,15,1.5V2H9V1.5A1.5,1.5,0,0,0,7.5,0h0A1.5,1.5,0,0,0,6,1.5V2H5.5A5.5,5.5,0,0,0,0,7.5v11A5.5,5.5,0,0,0,5.5,24h13A5.5,5.5,0,0,0,24,18.5V7.5A5.5,5.5,0,0,0,18.5,2Zm0,19H5.5A2.5,2.5,0,0,1,3,18.5V10H21v8.5A2.5,2.5,0,0,1,18.5,21Z'/%3E%3C/svg%3E") no-repeat;
-            display: block;
-            background-size: 16px;
-            background-position: center;
-            cursor: pointer;
-            &:hover {
-                // background: var(--palette-dark-semilight);
-                opacity: .75;
-            }
-            @include respond-to(small-medium-screens) {
-                width: 10px;
-            }
-        }
-    }
-    &:disabled {
-        opacity: .5;
-    }
-    &.small {
-        max-width: 110px;
-        @include respond-to(small-medium-screens) {
-            max-width: 100px;
-        }
-    }
-    
-    @include respond-to(small-medium-screens) {
-        max-width: 50%;
-    }
-}
-
-.Data-Social-Bind {
-    .icon {
-        fill: var(--palette-blue);
-    }
-    a {
-        color: #fff;
-        text-align: center;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        span {
-            margin-left: 1em;
-        }
-        &:hover {
-            color: var(--palette-blue);
-        }
     }
 }
 
@@ -833,14 +570,12 @@ input[type="number"] {
     @include trans-ease-out;
     z-index: 2;
     top: 0;
-    // left: 0;
     width: 285px;
     height: 100%;
     opacity: 0;
     background-color: var(--palette-transparent-bg);
     @include respond-to(small-medium-screens) {
         opacity: 1;
-        // background-color: transparent;
         .User-Avatar-UploadPhoto {
             transform: translateY(0);
             opacity: 1;
@@ -859,8 +594,6 @@ input[type="number"] {
     background-color: var(--palette-transparent-bg);
     background-color: rgba(0, 0, 0, .5);
     border-radius: 100%;
-    // bottom: 20px;
-    // opacity: 0.75;
     .icon {
         fill: var(--palette-blue);
     }
@@ -868,7 +601,6 @@ input[type="number"] {
         background-color: rgba(0, 0, 0, .75);
     }
 }
-
 
 .profile_preview {
     position: absolute;
@@ -888,328 +620,6 @@ input[type="number"] {
     &:hover {
         opacity: 1;
         background-color: rgba(0, 0, 0, .75);
-    }
-}
-
-.Column-Heading {
-    text-transform: uppercase;
-    margin-bottom: 1em;
-    &:after {
-        content: '';
-        margin-top: .5em;
-        display: block;
-        width: 100%;
-        height: 1px;
-        opacity: .2;
-        background-color: #fff;
-    }
-    h3 {
-        font-size: 13px;
-        letter-spacing: 0.3ex;
-        opacity: .8;
-    }
-}
-
-.Radio-Group {
-    background-color: var(--palette-dark-light);
-    width: fit-content;
-    padding: 5px;
-    border-radius: 4px;
-    @include respond-to(small-medium-screens) {
-        max-width: 100%;
-    }
-}
-
-.Radio-Item {
-    cursor: pointer;
-    white-space: nowrap;
-    margin: 10px 15px;
-    display: inline-flex;
-    align-items: center; 
-    max-width: 100%;
-    span {
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 14px;
-    }
-    input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-        margin: 0;
-        padding: 0;
-        &:checked ~ .Radio {
-            border: 2px solid var(--palette-blue);
-            box-shadow: 0 0 8px var(--palette-blue);
-            &:after {
-                opacity: 1;
-            }
-        }
-        &:checked ~ span {
-            color: var(--palette-blue);
-        }
-    }
-
-    @include respond-to(small-medium-screens) {
-        white-space: inherit;
-        display: flex;
-    }
-}
-
-.Radio {
-    @include trans-ease-out;
-    width: 14px;
-    height: 14px;
-    border: 2px solid #fff;
-    border-radius: 100%;
-    position: relative;
-    margin-right: 7px;
-    box-shadow: 0 0 0 var(--palette-blue);
-    flex-shrink: 0;
-    &:after {
-        content: '';
-        @include trans-ease-out;
-        position: absolute;
-        display: block;
-        z-index: 1;
-        width: calc(100% - 4px);
-        height: calc(100% - 4px);
-        border-radius: 100%;
-        top: 2px;
-        left: 2px;
-        background-color: var(--palette-blue);
-        opacity: 0;
-    }
-    @include respond-to(small-medium-screens) {
-        margin-right: 10px;
-    }
-}
-
-.TextArea {
-    @include trans-ease-out;
-    background: rgba(0, 0, 0, .75);
-    color: #fff;
-    border: none;
-    border: 1px solid rgba(0, 0, 0, .75);
-    padding: 1em;
-    font-size: 13px;
-    max-width: 100%;
-    &::placeholder {
-        color: rgba(255, 255, 255, .5);
-        text-transform: uppercase;
-    }
-    &:focus {
-        outline: none;
-        border-color: var(--palette-dark-light);
-    }
-}
-
-.Data-Multiselect-Tags, .Data-Singleselect {
-    // 
-}
-
-
-
-// .multiselect__placeholder {
-//     display: inline-block;
-//     white-space: nowrap;
-//     max-width: 100%;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-// }
-// .multiselect {
-//     box-sizing: content-box;
-//     display: block;
-//     position: relative;
-//     width: 100%;
-//     min-height: 40px;
-//     text-align: left;
-//     outline: none;
-//     &.multiselect--active {
-//         .multiselect__select {
-//             transform: rotate(180deg);
-//         }
-//     }
-// }
-// .multiselect__select {
-//     position: absolute;
-//     width: 40px;
-//     height: 38px;
-//     right: 1px;
-//     top: 1px;
-//     padding: 4px 8px;
-//     text-align: center;
-//     transition: transform .2s ease;
-//     &:before {
-//         position: relative;
-//         right: 0;
-//         top: 65%;
-//         color: #999;
-//         color: var(--palette-blue);
-//         margin-top: 4px;
-//         border-style: solid;
-//         border-width: 5px 5px 0;
-//         border-color: var(--palette-blue) transparent transparent;
-//         content: "";
-//     } 
-// }
-// .multiselect__current, .multiselect__select {
-//     line-height: 16px;
-//     box-sizing: border-box;
-//     display: block;
-//     margin: 0;
-//     text-decoration: none;
-//     cursor: pointer;
-// }
-// .multiselect__tags {
-//     min-height: 40px;
-//     display: block;
-//     padding: 10px 40px 0 20px;
-//     border-radius: 5px;
-//     background-color: var(--palette-dark-light);
-//     font-size: 14px;
-//     text-transform: uppercase;
-// }
-// .multiselect__tags-wrap {
-//     display: inline;
-// }
-// .multiselect__tag {
-//     position: relative;
-//     display: inline-block;
-//     padding: 4px 26px 4px 10px;
-//     border-radius: 5px;
-//     margin-right: 10px;
-//     color: #fff;
-//     line-height: 1;
-//     background: #253850;
-//     margin-bottom: 5px;
-//     white-space: nowrap;
-//     overflow: hidden;
-//     max-width: 100%;
-//     text-overflow: ellipsis;
-//     font-weight: 700;
-//     letter-spacing: .1ex;
-// }
-// .multiselect__tag-icon {
-//     cursor: pointer;
-//     margin-left: 7px;
-//     position: absolute;
-//     right: 0;
-//     top: 0;
-//     bottom: 0;
-//     font-weight: 700;
-//     font-style: normal;
-//     width: 22px;
-//     text-align: center;
-//     line-height: 22px;
-//     transition: all .2s ease;
-//     border-radius: 5px;
-//     &:after {
-//         content: "\D7";
-//         color: var(--palette-pink);
-//         font-size: 14px;
-//     }
-// }
-// .multiselect__spinner {
-//     position: absolute;
-//     right: 1px;
-//     top: 1px;
-//     width: 48px;
-//     height: 35px;
-//     background: #fff;
-//     display: block;
-// }
-// .multiselect__input, .multiselect__single {
-//     position: relative;
-//     display: inline-block;
-//     min-height: 20px;
-//     line-height: 20px;
-//     border: none;
-//     border-radius: 5px;
-//     background-color: var(--palette-dark-light);
-//     width: 100%;
-//     transition: border .1s ease;
-//     box-sizing: border-box;
-//     margin-bottom: 10px;
-//     vertical-align: top;
-//     color: #fff;
-//     text-transform: uppercase;
-//     &:focus {
-//         outline: none;
-//     }
-// }
-// .multiselect__content-wrapper {
-//     @include CustomScroll;
-//     position: absolute;
-//     display: block;
-//     background: var(--palette-dark-semilight);
-//     width: 100%;
-//     max-height: 240px;
-//     overflow: auto;
-//     border-top: none;
-//     border-bottom-left-radius: 5px;
-//     border-bottom-right-radius: 5px;
-//     z-index: 3;
-//     -webkit-overflow-scrolling: touch;
-// }
-// .multiselect__content {
-//     list-style: none;
-//     display: inline-block;
-//     padding: 0;
-//     margin: 0;
-//     min-width: 100%;
-//     vertical-align: top;
-//     background: var(--palette-dark-semilight);
-// }
-// .multiselect__element {
-//     display: block;
-// }
-// .multiselect__option--selected {
-//     background: #f3f3f3;
-//     color: #35495e;
-//     font-weight: 700;
-//     display: none !important;
-// }
-// .multiselect__option {
-//     @include trans-ease-out;
-//     display: block;
-//     padding: 10px 20px;
-//     min-height: 40px;
-//     font-size: 13px;
-//     font-weight: 700;
-//     letter-spacing: .2ex;
-//     line-height: 16px;
-//     text-decoration: none;
-//     text-transform: none;
-//     vertical-align: middle;
-//     position: relative;
-//     cursor: pointer;
-//     white-space: nowrap;
-//     text-transform: uppercase;
-//     &:hover {
-//         background-color: var(--palette-dark-light);
-//     }
-// }
-
-.Data-Singleselect {
-    width: 100%;
-    max-width: 220px;
-    .multiselect__single {
-        color: var(--palette-blue);
-    }
-    .multiselect__tags, .multiselect__single {
-        background-color: rgba(0, 0, 0, 0.75);
-    }
-    .multiselect__option {
-        &.multiselect__option--selected {
-            display: block !important;
-            background: rgba(0, 0, 0, .25);
-            color: var(--palette-blue);
-        }
-    }
-    @include respond-to(small-medium-screens) {
-        max-width: 50%;
     }
 }
 

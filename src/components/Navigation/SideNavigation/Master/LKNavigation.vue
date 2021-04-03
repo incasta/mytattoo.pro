@@ -4,7 +4,7 @@
             li(v-for='link in links' :key='link.id')
                 router-link.Section-Link(:to="link.link") {{ link.name }}
                 .Anchor-List
-                    a.Anchor-Link(v-for='anchor in link.anchors' :key='anchor.id' :href='anchor.link') {{ anchor.name }}
+                    router-link.Anchor-Link(v-for='anchor in link.anchors' :key='anchor.id' :to='anchor.link') {{ anchor.name }}
 </template>
 
 <script>
@@ -19,20 +19,20 @@ export default {
                     name: 'Мой профиль',
                     anchors: [
                         {
-                            link: '#',
-                            name: 'Основная информация'
+                            link: '#section-1',
+                            name: '# Основная информация'
                         },
                         {
-                            link: '#',
-                            name: 'Мои услуги'
+                            link: '#section-2',
+                            name: '# Мои услуги'
                         },
                         {
-                            link: '#',
-                            name: 'Мои стили'
+                            link: '#section-3',
+                            name: '# Мои стили'
                         },
                         {
-                            link: '#',
-                            name: 'Мой адрес'
+                            link: '#section-4',
+                            name: '# Мой адрес'
                         },
                     ]
                 },
@@ -72,7 +72,21 @@ export default {
                 },
                 {
                     link: '/masterLK/rating',
-                    name: 'Рейтинг'
+                    name: 'Рейтинг',
+                    anchors: [
+                        {
+                            link: '/masterLK/rating/my-rating',
+                            name: 'Мой рейтинг'
+                        },
+                        {
+                            link: '/masterLK/rating/my-charts',
+                            name: 'Мои чарты'
+                        },
+                        {
+                            link: '/masterLK/rating/my-reposts',
+                            name: 'Мои репосты'
+                        },
+                    ]
                 },
                 {
                     link: '/masterLK/balance-sub',
@@ -132,7 +146,8 @@ export default {
             width: 4px;
             background-color: var(--palette-dark-semilight);
         }
-        &.router-link-exact-active {
+        &.router-link-exact-active,
+        &.router-link-active {
             color: var(--palette-blue);
             text-shadow: 0 0 5px var(--palette-blue);
             &:before {

@@ -41,11 +41,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @include SlideContent;
 @include SlideHeader;
 @include RatingStars;
+
+.Rating_Points {
+    .icon {
+        fill: var(--palette-blue) !important;
+    }
+}
 
 .userRating_Points {
     justify-content: center;
@@ -123,6 +129,7 @@ export default {
     }    
 
 }
+
 
 
 </style>

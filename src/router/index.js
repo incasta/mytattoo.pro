@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/masters',
@@ -62,21 +62,56 @@ const routes = [
       {
         name: 'MyProfile',
         path: 'my-profile',
-        component: () => import(/* webpackChunkName: "masterLK_my-profile" */ '../views/MyProfile.vue')
+        component: () => import(/* webpackChunkName: "masterLK_my-profile" */ '../views/MyProfile.vue'),
+        meta: { scrollToTop: true }
       },
       {
         path: 'messages',
         component: () => import(/* webpackChunkName: "masterLK_my-profile" */ '../views/Messages.vue')
-      }
+      },
+      {
+        // name: 'MyProfile',
+        path: 'rating',
+        redirect: { name: 'MyRating' },
+        component: () => import(/* webpackChunkName: "masterLK_rating" */ '../views/Rating.vue'),
+        children: [
+          {
+            name: 'MyRating',
+            path: 'my-rating',
+            component: () => import(/* webpackChunkName: "masterLK_my_rating" */ '../views/My-Rating/MyRating.vue'),
+          },
+          {
+            name: 'MyCharts',
+            path: 'my-charts',
+            component: () => import(/* webpackChunkName: "masterLK_my_charts" */ '../views/My-Rating/MyCharts.vue'),
+          },
+          {
+            name: 'MyReposts',
+            path: 'my-reposts',
+            component: () => import(/* webpackChunkName: "masterLK_my_reposts" */ '../views/My-Rating/MyReposts.vue'),
+          },
+        ]
+
+      },
     ]
   }
-  
+
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior (to) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    } else {
+      return { x: 0, y: 0 };
+    }
+    
+  }
 })
 
 export default router
