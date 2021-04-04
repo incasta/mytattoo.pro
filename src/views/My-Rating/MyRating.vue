@@ -1,7 +1,7 @@
 <template lang="pug">
     .content
         .Page-Block
-            .Page-Block-Header#main-info 
+            .Page-Block-Header#section-1
                 h2 ФАКТОРЫ, ВЛИЯЮЩИЕ НА РЕЙТИНГ
             .Page-Block-Content
                 .Table-DoubleCol
@@ -205,12 +205,14 @@
                     //- 
                     
         .Page-Block
-            .Page-Block-Header#main-info 
+            .Page-Block-Header#section-2
                 h2 История рейтинга
                 app-icon.tooltip(name="tooltip" width="18")
             .Page-Block-Content
                 .Table-SingleCol
                     .Table-Header
+                        .Table-Columm-Name
+                            app-icon.tooltip(name="tooltip" width="18")
                         .Table-Columm-Name
                             span Баллы
                         .Table-Columm-Name
@@ -221,6 +223,7 @@
                         .Table-Cell
                             .Gift-Status
                                 app-icon(name="gift" size="15")
+                        .Table-Cell
                             .Rating_Points.added 
                                 span.value 150
                                 app-icon(name='token')
@@ -234,8 +237,9 @@
                     //- 
                     .Table-Row
                         .Table-Cell
-                            //- .Gift-Status
-                            //-     app-icon(name="gift" size="15")
+                            .Gift-Status
+                                app-icon(name="gift" size="15")
+                        .Table-Cell
                             .Rating_Points.removed 
                                 span.value 150
                                 app-icon(name='token')       
@@ -250,6 +254,7 @@
                         .Table-Cell
                             //- .Gift-Status
                             //-     app-icon(name="gift" size="15")
+                        .Table-Cell
                             .Rating_Points.added 
                                 span.value 150
                                 app-icon(name='token')      
@@ -264,6 +269,7 @@
                         .Table-Cell
                             .Gift-Status
                                 app-icon(name="gift" size="15")
+                        .Table-Cell
                             .Rating_Points.added 
                                 span.value 150
                                 app-icon(name='token')      
@@ -278,6 +284,7 @@
                         .Table-Cell
                             //- .Gift-Status
                             //-     app-icon(name="gift" size="15")
+                        .Table-Cell
                             .Rating_Points.added 
                                 span.value 150
                                 app-icon(name='token')      
@@ -290,8 +297,9 @@
                     //- 
                     .Table-Row
                         .Table-Cell
-                            //- .Gift-Status
-                            //-     app-icon(name="gift" size="15")
+                            .Gift-Status
+                                app-icon(name="gift" size="15")
+                        .Table-Cell
                             .Rating_Points.added 
                                 span.value 150
                                 app-icon(name='token')      
@@ -302,6 +310,19 @@
                             .Table-Date
                                 span 20 / 20 / 2044
                     //- 
+                
+                .Paginator
+                    .prev
+                        app-icon(name="angle-double-left" size="10")
+                    .Paginator-Page-List
+                        .Paginator-Page.current
+                            span 1
+                        .Paginator-Page
+                            span 2
+                        .Paginator-Page
+                            span 3
+                    .next
+                        app-icon(name="angle-double-right" size="10")
 
 
                           
@@ -316,6 +337,8 @@ export default {
 <style lang="scss" scoped>
 @include tooltip;
 @include TableDoubleCol;
+@include TableSingleCol;
+@include Paginator;
 
 .Page-Block-Header h2 {
     text-align: center;
@@ -385,90 +408,11 @@ export default {
 }
 
 
-.Table-SingleCol {
-    @include respond-to(handlers) {
-        overflow: auto;
-    }
-    .Table-Header {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        gap: 3px;
-
-        @include respond-to(handlers) {
-            grid-template-columns: minmax(100px, 1fr) minmax(300px, 1fr) minmax(100px, 1fr);
-        }
-    }
-
-    .Table-Columm-Name {
-        text-align: center;
-        padding: 15px;
-        background-color: var(--palette-dark-light);
-        text-transform: uppercase;
-        color: var(--palette-pink);
-        font-weight: 700;
-        letter-spacing: 0.1ex;
-        font-size: 15px;
-        border-radius: 4px;
-        &:not(:first-child) {
-            &:nth-child(even) {
-                // margin: 0 3px;
-            }
-        }
-        @include respond-to(handlers) {
-            padding: 10px;
-        }
-    }
-
-    .Table-Row {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        gap: 3px;
-        border-bottom: 1px solid #232D38;
-        padding: 20px 0;
-        text-align: center;
-
-        @include respond-to(handlers) {
-            grid-template-columns: minmax(100px, 1fr) minmax(300px, 1fr) minmax(100px, 1fr);
-        }
-    }
-
-    .Table-Cell {
-        position: relative;
-    }
-}
-
-.Rating_Points {
-    font-weight: 700;
-    &.added {
-        color: var(--palette-blue);
-        &:before {
-            content: '+';
-        }
-        .icon {
-            fill: var(--palette-blue);
-        }
-    }
-    &.removed {
-        color: var(--palette-pink);
-        &:before {
-            content: '-';
-        }
-        .icon {
-            fill: var(--palette-pink);
-        }
-    }
-
-    .icon {
-        vertical-align: middle;
-        margin-left: 5px;
-    }
-}
-
 .Gift-Status {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
+    // margin-right: 20px;
     border-radius: 100%;
     background-color: var(--palette-dark-light);
     width: 32px;
@@ -478,5 +422,7 @@ export default {
         filter: drop-shadow(0 0 5px var(--palette-blue));
     }
 }
+
+
 
 </style>

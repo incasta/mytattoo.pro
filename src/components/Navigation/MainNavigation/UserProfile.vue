@@ -12,7 +12,9 @@
         .user-avatar
           .angle-small-down
             app-icon(name='angle-small-down' size='13')
-          img(src='@/assets/img/users/user.jpg', alt='')
+          //- img(src='@/assets/img/users/user.jpg', alt='')
+          img(src='@/assets/img/avaMale.jpg', alt='')
+          //- img(src='@/assets/img/avaFemale.jpg', alt='')
         .UserProfile-links
           router-link(to='/masterLK')
             app-icon(name='user' size='16')

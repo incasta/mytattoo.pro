@@ -1197,6 +1197,7 @@
         border-radius: 4px;
         @include respond-to(handlers) {
             padding: 10px 20px;
+            padding-right: 60px;
             text-align: left;
             justify-content: space-between;
             font-size: 14px;
@@ -1251,6 +1252,188 @@
 }
 
 
-@mixin TableSingleCol {
+@mixin TableSingleCol {  
+  .Table-SingleCol {
+    @include respond-to(handlers) {
+        overflow: auto;
+    }
+    .Table-Header {
+        display: grid;
+        grid-template-columns: 52px 1fr 3fr 1fr;
+        gap: 3px;
 
+        @include respond-to(handlers) {
+            grid-template-columns: 52px minmax(100px, 1fr) minmax(300px, 1fr) minmax(100px, 1fr);
+            min-width: fit-content;
+        }
+    }
+
+    .Table-Columm-Name {
+        text-align: center;
+        padding: 15px;
+        background-color: var(--palette-dark-light);
+        text-transform: uppercase;
+        color: var(--palette-pink);
+        font-weight: 700;
+        letter-spacing: 0.1ex;
+        font-size: 15px;
+        border-radius: 4px;
+        &:not(:first-child) {
+            &:nth-child(even) {
+                // margin: 0 3px;
+            }
+        }
+        @include respond-to(handlers) {
+            padding: 10px;
+        }
+        .tooltip {
+            margin-left: 0;
+        }
+    }
+
+    .Table-Row {
+        @include trans-ease-out;
+        display: grid;
+        grid-template-columns: 52px 1fr 3fr 1fr;
+        gap: 3px;
+        border-bottom: 1px solid #232D38;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 14px;
+        @include respond-to(handlers) {
+            grid-template-columns: 52px minmax(100px, 1fr) minmax(300px, 1fr) minmax(100px, 1fr);
+            min-width: fit-content;
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, .1);
+        }
+    }
+
+    .Table-Cell {
+        position: relative;
+        @include flex-ja_center;
+    }
+  }
+
+  .Rating_Points {
+    font-weight: 700;
+    @include flex-a_center; 
+    &.added {
+        color: var(--palette-blue);
+        &:before {
+            content: '+';
+        }
+        .icon {
+            fill: var(--palette-blue);
+        }
+    }
+    &.removed {
+        color: var(--palette-pink);
+        &:before {
+            content: '-';
+        }
+        .icon {
+            fill: var(--palette-pink);
+        }
+    }
+
+    .icon {
+        // vertical-align: middle;
+        margin-left: 5px;
+    }
+  }
+}
+
+@mixin Paginator {
+  .Paginator {
+    @include flex-ja_center;
+    margin: 30px 0 20px 0;
+    .Paginator-Page-List {
+        @include flex-ja_center;
+    }
+    .Paginator-Page {
+        cursor: pointer;
+        font-weight: 700;
+        padding: 8px 15px;
+        &:not(:first-child) {
+            &:nth-child(even) {
+                margin: 0 2px;
+            }
+        }
+        &.current {
+            text-shadow: 0 0 5px var(--palette-blue);
+            color: var(--palette-blue);
+            border: 1px solid var(--palette-blue);
+            border-radius: 3px;
+            box-shadow: 0 0 5px var(--palette-blue), inset 0 0 5px var(--palette-blue);
+        }
+    }
+    .prev,
+    .next {
+        cursor: pointer;
+        padding: 8px 15px;
+    }
+
+    .prev {
+        margin-right: 10px;
+    }
+    .next {
+        margin-left: 10px;
+    }
+  }
+}
+
+
+// ТОКЕН
+@mixin token {
+  .token {
+    margin-left: 5px;
+    fill: var(--palette-blue);
+  }
+} 
+
+
+// ДЕФОЛТНАЯ ПЛОСКАЯ КНОПКА
+@mixin Button-Default {
+  .Button-Default {
+    @include flex-a_center;
+    @include trans-ease-out;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--palette-blue);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .1ex;
+    text-shadow: 0 0 5px var(--palette-blue);
+    background-color: var(--palette-dark-light);
+    > span {
+      &:not(.Button-Icon) {
+        padding: 0px 30px;
+        @include trans-ease-out;
+        
+      }
+    }
+    .Button-Icon {
+      @include flex-ja_center;
+      @include trans-ease-out;
+      overflow: hidden;
+      width: 60px;
+      height: 60px;
+      background-color: var(--palette-dark-lighter);
+      .token {
+        margin-left: 0;
+        @include trans-ease-out;
+      }
+    }
+    &:hover {
+      text-shadow: 0 0 1px var(--palette-blue);
+      .Button-Icon {
+        // width: 70px;
+        .icon {
+          // animation: swipe-right .3s ease;
+          // filter: drop-shadow(0 0 2px rgba());
+        }        
+      }
+    }
+  }
 }

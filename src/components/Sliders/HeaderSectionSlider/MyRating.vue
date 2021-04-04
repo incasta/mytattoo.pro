@@ -12,7 +12,7 @@
             .userRatingProgress
                 .userRatingProgress-Header
                     label Ваш прогресс
-                    app-icon(name="rating-up" size="24")
+                    //- app-icon(name="rating-up" size="24")
                 .progressBar
                     .progressCurrent(style="width: 44%;")
                 .userRatingProgress-Footer
@@ -76,6 +76,10 @@ export default {
     text-transform: uppercase;
     color: var(--palette-blue);
     font-weight: 700;
+    label {
+        margin: 0 auto;
+        // color: #fff
+    }
 }
 
 .userRatingProgress-Footer {
