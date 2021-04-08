@@ -15,6 +15,24 @@
     }
 }
 
+@keyframes swipe-v {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+    }
+    33% {
+        transform: translate3d(0, 200%, 0);
+    }
+    66% {
+        transform: translate3d(0, -200%, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
 
 // глитч эффект hover для ссылок
 @mixin glitchCopy { 

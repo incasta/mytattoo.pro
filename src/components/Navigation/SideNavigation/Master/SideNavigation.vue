@@ -5,12 +5,15 @@
                 router-link.Section-Link(:to="link.link") {{ link.name }}
                 .Anchor-List
                     router-link.Anchor-Link(v-for='anchor in link.anchors' :key='anchor.id' :to='anchor.link') {{ anchor.name }}
+        slot(name="panel") 
+
+
 </template>
 
 <script>
 
 export default {
-    name: 'LKNavigation',
+    name: 'SideNavigation',
     data () {
         return {
             links: [
@@ -101,9 +104,13 @@ export default {
 
 <style lang="scss" scoped>
 
+@include splideCustomStyles;
+
 .SideNavigation {
+    @include trans-ease-in;
     position: sticky;
-    top: 100px;
+    // top: 100px;
+    top: 20px;
     font-size: 13px;
     letter-spacing: .2ex;
     ul {
@@ -184,6 +191,44 @@ export default {
     transition: opacity .3s ease, max-height .3s ease;
     opacity: 0;
     max-height: 0px;
+}
+
+// Extra Side Panels
+
+.Side-Panel {
+    margin-top: 20px;
+}
+
+.Side-Panel-Header {
+    @include flex-ja_center;
+    border-radius: 2px;
+    padding: 15px 10px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--palette-dark-light);
+    h2 {
+        font-size: 15px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    &:before {
+        content: '';
+        transition-property: all;
+        transition-duration: .15s;
+        transition-timing-function: ease-in;
+        transition-delay: 0s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 4px;
+        background-color: var(--palette-blue);
+    }
+}
+
+.Side-Panel-Content {
+    background-color: var(--palette-dark-regular);
+    padding: 20px;
 }
 
 

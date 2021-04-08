@@ -3,15 +3,18 @@
   #app
     Navigation
     router-view
+    Footer
 
 </template>
 
 <script>
-import Navigation from '@/components/Navigation/Navigation.vue'
+import Navigation from '@/components/Navigation/Navigation.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   components: {
     Navigation,
+    Footer
   },
 }
 </script>
@@ -26,7 +29,7 @@ export default {
   text-align: center;
   color: white;
   letter-spacing: .1ex;
-  
+  min-height: 100vh;
   @include respond-to(large-screens) {
     font-size: 13px;
   }
@@ -34,7 +37,8 @@ export default {
 
 body, html { 
   background-color: var(--palette-black-bg);
-  min-height: 300vh;
+  // min-height: 300vh;
+  scroll-behavior: smooth;
 }
 
 .hidden {

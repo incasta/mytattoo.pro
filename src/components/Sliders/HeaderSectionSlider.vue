@@ -30,6 +30,7 @@ export default {
         return {
             options: {
                 type: "loop",
+                autoplay: true,
                 perPage: 1,
                 rewind: true,
                 speed: 600,
@@ -49,69 +50,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-.splide {
-    padding: 0;
-    &:hover {
-        cursor: grab;
-        &:active {
-            cursor: grabbing;
-        }
-        .splide__arrow {
-            opacity: 1;
-            &.splide__arrow--prev, 
-            &.splide__arrow--next {
-                transform: translate3d(0, -50%, 0);
-            }
-        }
-        .splide__pagination {
-            opacity: 1;
-            transform: translate3d(-50%, 0%, 0);
-        }
-    }
-}
+@include splideCustomStyles;
 
-.splide__arrow {
-    @include trans-ease-in;
-    opacity: 0;
-    &.splide__arrow--prev {
-        transform: translate3d(100%, -50%, 0);
-    }
-    &.splide__arrow--next {
-        transform: translate3d(-100%, -50%, 0);
-    }
-    svg {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-.splide__arrows {
-    @include respond-to(small-medium-screens) {
-        display: none;
-    }
-}
-
-
-.splide__pagination {
-    @include trans-ease-out;
-    @include respond-to(wide-screens) {
-        transform: translate3d(-50%, 100%, 0);
-        opacity: 0;
-    }
-}
-
-.splide__pagination__page {
-    height: 14px;
-    width: 14px;
-    transform: skew(-20deg, 0);
-    opacity: .5;
-    &.is-active {
-        opacity: 1;
-        background-color: var(--palette-blue);
-        box-shadow: 0 0 5px var(--palette-blue);
-    }
-}
 
 </style>

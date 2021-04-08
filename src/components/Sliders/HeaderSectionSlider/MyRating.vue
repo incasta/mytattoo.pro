@@ -14,7 +14,7 @@
                     label Ваш прогресс
                     //- app-icon(name="rating-up" size="24")
                 .progressBar
-                    .progressCurrent(style="width: 44%;")
+                    .progressCurrent(:style="{ width: RatingValue + '%' }")
                 .userRatingProgress-Footer
                     .progress-left.Rating_Points 
                         | Еще 
@@ -35,7 +35,7 @@ export default {
     name: "MyRating",
     data () {
         return {
-            RatingValue: 44 + "%",
+            RatingValue: 20,
         }
     },
 }
@@ -123,6 +123,11 @@ export default {
     overflow: hidden;
     border-radius: 10px;
     margin: 15px 0;
+    &.maximum {
+        .progressCurrent {
+            background: linear-gradient(270deg, #FFFF70 20%, rgba(0, 240, 255, 0) 100%);
+        }
+    }
 }
 
 .progress-left {

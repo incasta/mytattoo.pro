@@ -1,188 +1,208 @@
 <template lang="pug">
-    .content
-        .Page-Block
-            .Page-Block-Header
-                h2 Доступные задания
-                app-icon.tooltip(name="tooltip" size="18")
-            .Page-Block-Content
-                .Repost-Quest-List
-                    .Repost-Quest.timer
-                        .Repost-Quest-Name Репостов эскизов: 
-                        .Repost-Quest-Status
-                            .Repost-Quest-Timer 6 д : 23 ч : 59 с
-                        .Repost-Quest-Reward
-                            span
-                                span +50
-                    //-  
-                    .Repost-Quest.error
-                        .Repost-Quest-Name Репостов тату: 
-                        .Repost-Quest-Status
-                            .status-message Не выполнено
-                        .Repost-Quest-Reload
-                            a.Quest-Reload(href="javascript:void(0);")
-                                app-icon(name="refresh" size="12")
-                        //- .Repost-Quest-Reward
-                        //-     | + 
-                        //-     span 50
-                    //-  
-                    .Repost-Quest.completed
-                        .Repost-Quest-Name Репостов эскизов: 
-                        .Repost-Quest-Status
-                            .status-message Выполнено
-                        .Repost-Quest-Reward
-                            span
-                                span +50
-                    //-  
-                    .Repost-Quest.available
-                        .Repost-Quest-Name Репостов эскизов: 
-                        .Repost-Quest-Status
-                            a.Button-Take-Reward(href="javascript:void(0);") Получить 
-                        .Repost-Quest-Reward
-                            span
-                                span +50
-                    //-  
-                    .Repost-Quest
-                        .Repost-Quest-Name Репостов эскизов: 
-                        .Repost-Quest-Status
-                            .Quest-Counter
-                                span 1 
-                                | / 
-                                span 2 
-                        .Repost-Quest-Reward
-                            span
-                                span +50
-                    //-  
-                .Repost-Quest-Footer
-                    .Available-Points 
-                        span Доступные баллы:
-                        span.value 50
-                        app-icon.token(name='token')
-                    .Button-Wrap
-                        a.Button-Default(href="javascript:void(0);") 
-                            span Забрать награду
-                            span.Button-Icon 
-                                app-icon.token(name='token')
-        .Page-Block
-            .Page-Block-Header#section-2
-                h2 История рейтинга
-                app-icon.tooltip(name="tooltip" width="18")
-            .Page-Block-Content
-                .Table-SingleCol
-                    .Table-Header
-                        .Table-Columm-Name
+
+    .container
+        .Row
+            .SideBar
+                SideNavigation
+
+            .Main
+                .content
+                    .Page-Block
+                        .Page-Block-Header
+                            h2 Доступные задания
+                            app-icon.tooltip(name="tooltip" size="18")
+                        .Page-Block-Content
+                            .Repost-Quest-List
+                                .Repost-Quest.timer
+                                    .Repost-Quest-Name Репостов эскизов: 
+                                    .Repost-Quest-Status
+                                        .Repost-Quest-Timer 6 д : 23 ч : 59 с
+                                    .Repost-Quest-Reward
+                                        span
+                                            span +50
+                                //-  
+                                .Repost-Quest.error
+                                    .Repost-Quest-Name Репостов тату: 
+                                    .Repost-Quest-Status
+                                        .status-message Не выполнено
+                                    .Repost-Quest-Reload
+                                        a.Quest-Reload(href="javascript:void(0);")
+                                            app-icon(name="refresh" size="12")
+                                    //- .Repost-Quest-Reward
+                                    //-     | + 
+                                    //-     span 50
+                                //-  
+                                .Repost-Quest.completed
+                                    .Repost-Quest-Name Репостов эскизов: 
+                                    .Repost-Quest-Status
+                                        .status-message Выполнено
+                                    .Repost-Quest-Reward
+                                        span
+                                            span +50
+                                //-  
+                                .Repost-Quest.available
+                                    .Repost-Quest-Name Репостов эскизов: 
+                                    .Repost-Quest-Status
+                                        a.Button-Take-Reward(href="javascript:void(0);") Получить 
+                                    .Repost-Quest-Reward
+                                        span
+                                            span +50
+                                //-  
+                                .Repost-Quest
+                                    .Repost-Quest-Name Репостов эскизов: 
+                                    .Repost-Quest-Status
+                                        .Quest-Counter
+                                            span 1 
+                                            | / 
+                                            span 2 
+                                    .Repost-Quest-Reward
+                                        span
+                                            span +50
+                                //-  
+                            .Repost-Quest-Footer
+                                .Available-Points 
+                                    span Доступные баллы:
+                                    span.value 50
+                                    app-icon.token(name='token')
+                                .Button-Wrap
+                                    Button(text="Забрать награду" icon="token" extraClass="token")
+                                    //- a.Button-Default(href="javascript:void(0);") 
+                                    //-     span Забрать награду
+                                    //-     span.Button-Icon 
+                                    //-         app-icon.token(name='token')
+                    .Page-Block
+                        .Page-Block-Header#section-2
+                            h2 История рейтинга
                             app-icon.tooltip(name="tooltip" width="18")
-                        .Table-Columm-Name
-                            span Баллы
-                        .Table-Columm-Name
-                            span Фактор
-                        .Table-Columm-Name
-                            span Дата
-                    .Table-Row
-                        .Table-Cell
-                            .Gift-Status
-                                app-icon(name="gift" size="15")
-                        .Table-Cell
-                            .Rating_Points.added 
-                                span.value 150
-                                app-icon(name='token')
-                            
-                        .Table-Cell
-                            .Table-Factor-Name
-                                span Ежедневные: Ежедневное посещение сайта
-                        .Table-Cell
-                            .Table-Date
-                                span 20 / 20 / 2044
-                    //- 
-                    .Table-Row
-                        .Table-Cell
-                            .Gift-Status
-                                app-icon(name="gift" size="15")
-                        .Table-Cell
-                            .Rating_Points.removed 
-                                span.value 150
-                                app-icon(name='token')       
-                        .Table-Cell
-                            .Table-Factor-Name
-                                span Ежедневные: Ежедневное посещение сайта
-                        .Table-Cell
-                            .Table-Date
-                                span 20 / 20 / 2044
-                    //- 
-                    .Table-Row
-                        .Table-Cell
-                            //- .Gift-Status
-                            //-     app-icon(name="gift" size="15")
-                        .Table-Cell
-                            .Rating_Points.added 
-                                span.value 150
-                                app-icon(name='token')      
-                        .Table-Cell
-                            .Table-Factor-Name
-                                span Ежедневные: Ежедневное посещение сайта
-                        .Table-Cell
-                            .Table-Date
-                                span 20 / 20 / 2044
-                    //- 
-                    .Table-Row
-                        .Table-Cell
-                            .Gift-Status
-                                app-icon(name="gift" size="15")
-                        .Table-Cell
-                            .Rating_Points.added 
-                                span.value 150
-                                app-icon(name='token')      
-                        .Table-Cell
-                            .Table-Factor-Name
-                                span Ежедневные: Ежедневное посещение сайта
-                        .Table-Cell
-                            .Table-Date
-                                span 20 / 20 / 2044
-                    //- 
-                    .Table-Row
-                        .Table-Cell
-                            //- .Gift-Status
-                            //-     app-icon(name="gift" size="15")
-                        .Table-Cell
-                            .Rating_Points.added 
-                                span.value 150
-                                app-icon(name='token')      
-                        .Table-Cell
-                            .Table-Factor-Name
-                                span Ежедневные: Ежедневное посещение сайта
-                        .Table-Cell
-                            .Table-Date
-                                span 20 / 20 / 2044
-                    //- 
-                    .Table-Row
-                        .Table-Cell
-                            .Gift-Status
-                                app-icon(name="gift" size="15")
-                        .Table-Cell
-                            .Rating_Points.added 
-                                span.value 150
-                                app-icon(name='token')      
-                        .Table-Cell
-                            .Table-Factor-Name
-                                span Ежедневные: Ежедневное посещение сайта
-                        .Table-Cell
-                            .Table-Date
-                                span 20 / 20 / 2044
-                    //- 
-                
-                .Paginator
-                    .prev
-                        app-icon(name="angle-double-left" size="10")
-                    .Paginator-Page-List
-                        .Paginator-Page.current
-                            span 1
-                        .Paginator-Page
-                            span 2
-                        .Paginator-Page
-                            span 3
-                    .next
-                        app-icon(name="angle-double-right" size="10")
+                        .Page-Block-Content
+                            .Table-SingleCol
+                                .Table-Header
+                                    .Table-Columm-Name
+                                        app-icon.tooltip(name="tooltip" width="18")
+                                    .Table-Columm-Name
+                                        span Баллы
+                                    .Table-Columm-Name
+                                        span Фактор
+                                    .Table-Columm-Name
+                                        span Дата
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150
+                                            app-icon(name='token')
+
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.removed 
+                                            span.value 150
+                                            app-icon(name='token')       
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        //- .Gift-Status
+                                        //-     app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150
+                                            app-icon(name='token')      
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150
+                                            app-icon(name='token')      
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        //- .Gift-Status
+                                        //-     app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150
+                                            app-icon(name='token')      
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150
+                                            app-icon(name='token')      
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                //- 
+
+                            .Paginator
+                                .prev
+                                    app-icon(name="angle-double-left" size="10")
+                                .Paginator-Page-List
+                                    .Paginator-Page.current
+                                        span 1
+                                    .Paginator-Page
+                                        span 2
+                                    .Paginator-Page
+                                        span 3
+                                .next
+                                    app-icon(name="angle-double-right" size="10")
 
 </template>
+
+<script>
+import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNavigation.vue';
+import Button from '@/components/common/Button.vue';
+
+export default {
+    components: {
+        SideNavigation,
+        Button
+    },
+}
+</script>
 
 <style lang="scss" scoped>
 
@@ -190,7 +210,11 @@
 @include TableSingleCol;
 @include Paginator;
 @include token;
-@include Button-Default;
+// @include Button-Default;
+
+.Page-Block-Header {
+    justify-content: center;
+}
 
 .Gift-Status {
     display: inline-flex;

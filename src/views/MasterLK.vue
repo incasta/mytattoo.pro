@@ -1,19 +1,14 @@
 <template lang='pug'>
     main
         HeaderSection
-        .container
-            .Row
-                .SideBar
-                    SideNavigation
-                .Main
-                    router-view
+        router-view
                     
         
 </template>
 
 <script>
 import HeaderSection from '@/components/HeaderSection.vue';
-import SideNavigation from '@/components/Navigation/SideNavigation/Master/LKNavigation.vue';
+// import SideNavigation from '@/components/Navigation/SideNavigation/Master/LKNavigation.vue';
 
 
 export default {
@@ -25,7 +20,7 @@ export default {
     },
     components: {
         HeaderSection,
-        SideNavigation,
+        // SideNavigation,
 
     }
 }

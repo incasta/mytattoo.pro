@@ -129,6 +129,7 @@
     .star-rating {
         height: 100%;
         width: 0;
+        // background-repeat: no-repeat;
         background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.3047 19.8941L10.0428 16.9792L4.78088 19.8941C4.24445 20.1881 3.44594 19.8615 3.56879 19.0205L4.57204 12.8191L0.272404 8.40591C-0.223077 7.86702 -0.0265222 7.15666 0.731032 7.03418L6.61948 6.1197L9.2484 0.498067C9.37534 0.208209 9.66608 0 10.0018 0C10.3376 0 10.6283 0.167383 10.7553 0.498067L13.3842 6.1197L19.2726 7.03418C20.0834 7.1934 20.1858 7.85885 19.7313 8.40591L15.5135 12.8191L16.5168 19.0205C16.656 19.7594 15.8984 20.2044 15.3047 19.8941ZM10.4604 15.2727L14.6372 17.563L13.8428 12.6109C13.8019 12.3619 13.8838 12.0679 14.0517 11.9046L17.5159 8.36508L12.7577 7.69963C12.4669 7.65881 12.2581 7.49142 12.1312 7.24239L10.0428 2.82919L7.95441 7.24239C7.82747 7.49142 7.61863 7.65881 7.3279 7.69963L2.56964 8.40591L6.03391 11.9455C6.2018 12.1537 6.2837 12.4027 6.24275 12.6517L5.44834 17.6038L9.62513 15.3135C10.0059 15.1012 10.3376 15.2319 10.4604 15.2727Z' fill='%2300F0FF'/%3E%3C/svg%3E%0A");
         background-size: contain;
         filter: drop-shadow(0 0 5px var(--palette-blue));
@@ -138,6 +139,11 @@
         .star-rating[data-stars="#{$i * 0.5}"] {
             width: #{$i * 10%};
         }
+    }
+
+    .star-rating[data-stars="0.5"] {
+      background-size: 200% 100%;
+      width: 10%;
     }
 }
 
@@ -204,6 +210,8 @@
     overflow: hidden;
     border-radius: 2px;
     text-transform: uppercase;
+    display: flex;
+    // justify-content: center;
     h2 {
         display: inline-block;
         vertical-align: middle;
@@ -250,7 +258,8 @@
   } 
 
   .Content-Column {
-    width: calc(100% / 2 - 20px);
+    // width: calc(100% / 2 - 20px);
+    width: calc(100% / 2 - 10px);
     &:last-child {
         margin-left: 20px;
     }
@@ -346,7 +355,7 @@
           order: -1;
         }
         & ~ .Data-Label {
-          margin-bottom: 15px;
+          margin-bottom: 5px;
         }
       }
     }
@@ -436,7 +445,9 @@
     }
     
     @include respond-to(small-medium-screens) {
-      max-width: 50%;
+      // max-width: 50%;
+      max-width: 100%;
+      margin-left: 0;
     }
   }
 
@@ -531,6 +542,13 @@
     @include respond-to(small-medium-screens) {
       & ~ .Data-Input {
         margin-left: 10px;
+      }
+    }
+
+    @include respond-to (handlers) {
+      margin-left: 0;
+      & ~ .Data-Input.small {
+        margin-right: auto;
       }
     }
   }
@@ -634,7 +652,6 @@
     }
   }
 }
-
 
 
 // vue-multiselect
@@ -1393,47 +1410,72 @@
 } 
 
 
-// ДЕФОЛТНАЯ ПЛОСКАЯ КНОПКА
-@mixin Button-Default {
-  .Button-Default {
-    @include flex-a_center;
-    @include trans-ease-out;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: var(--palette-blue);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: .1ex;
-    text-shadow: 0 0 5px var(--palette-blue);
-    background-color: var(--palette-dark-light);
-    > span {
-      &:not(.Button-Icon) {
-        padding: 0px 30px;
-        @include trans-ease-out;
-        
-      }
-    }
-    .Button-Icon {
-      @include flex-ja_center;
-      @include trans-ease-out;
-      overflow: hidden;
-      width: 60px;
-      height: 60px;
-      background-color: var(--palette-dark-lighter);
-      .token {
-        margin-left: 0;
-        @include trans-ease-out;
-      }
-    }
+@mixin splideCustomStyles {
+  ::v-deep.splide {
+    padding: 0;
     &:hover {
-      text-shadow: 0 0 1px var(--palette-blue);
-      .Button-Icon {
-        // width: 70px;
-        .icon {
-          // animation: swipe-right .3s ease;
-          // filter: drop-shadow(0 0 2px rgba());
-        }        
-      }
+        cursor: grab;
+        &:active {
+            cursor: grabbing;
+        }
+        .splide__arrow {
+            opacity: 1;
+            &.splide__arrow--prev, 
+            &.splide__arrow--next {
+                transform: translate3d(0, -50%, 0);
+            }
+        }
+        .splide__pagination {
+            opacity: 1;
+            transform: translate3d(-50%, 0%, 0);
+        }
+    }
+
+    .splide__arrow {
+        @include trans-ease-in;
+        opacity: 0;
+        &.splide__arrow--prev {
+            transform: translate3d(100%, -50%, 0);
+        }
+        &.splide__arrow--next {
+            transform: translate3d(-100%, -50%, 0);
+        }
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .splide__arrows {
+        @include respond-to(small-medium-screens) {
+            display: none;
+        }
+    }
+
+    .splide__pagination {
+        @include trans-ease-out;
+        @include respond-to(wide-screens) {
+            transform: translate3d(-50%, 100%, 0);
+            opacity: 0;
+        }
+    }
+    
+    .splide__pagination__page {
+        height: 14px;
+        width: 14px;
+        transform: skew(-20deg, 0);
+        opacity: .5;
+        &.is-active {
+            opacity: 1;
+            background-color: var(--palette-blue);
+            box-shadow: 0 0 5px var(--palette-blue);
+        }
+    }
+    
+    .splide__arrow svg {
+        fill: var(--palette-blue);
+        width: 20px;
+        height: 20px;
     }
   }
 }
