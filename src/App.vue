@@ -82,7 +82,47 @@ img {
   
 }
 
-// 
+// Tippy theme
+
+.tippy-tooltip.custom-theme {
+  background-color: var(--palette-dark-purple);
+  font-family: Jura, sans-serif;
+
+  &[data-animatefill] {
+    background-color: transparent;
+  }
+
+  .tippy-backdrop {
+    background-color: var(--palette-dark-purple);
+  }
+  // arrow
+  &[x-placement^='top'] .tippy-arrow,
+  &[x-placement^='bottom'] .tippy-arrow,
+  &[x-placement^='left'] .tippy-arrow,
+  &,[x-placement^='right'] .tippy-arrow {
+    background-color: var(--palette-dark-purple);
+  }
+  .tippy-roundarrow {
+    fill: var(--palette-dark-purple);
+  }
+
+  .tippy-content {
+    padding: 10px;
+    a {
+      color: var(--palette-blue);
+    }
+    
+  }
+} 
+
+* {
+  &.disabled {
+    user-select: none;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: .5;
+  }
+}
 
 
 </style>

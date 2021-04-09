@@ -28,12 +28,12 @@
                     .Page-Block
                         .Page-Block-Header
                             h2 История чарта
-                            app-icon.tooltip(name="tooltip" size="18")
+                            app-icon.tooltip(name="tooltip" size="18" content="Счетчики обновления чартов можно отслеживать в разделе 'Мастера'" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                         .Page-Block-Content
                             .Table-SingleCol
                                 .Table-Header
                                     .Table-Columm-Name
-                                        app-icon.rating-updown(name="rating-updown" size="28")
+                                        app-icon.rating-updown(name="rating-updown" size="28" content="Потеря / достижение места в чарте" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                     .Table-Columm-Name
                                         span Место
                                     .Table-Columm-Name
@@ -43,7 +43,7 @@
                                 .Table-Row
                                     .Table-Cell
                                         .Rank-Status
-                                            app-icon(name="rank-up" size="15")
+                                            app-icon(name="rank-up" size="15" :content="`<span>Вы заняли более высокую позицию в чарте. Зарабатывайте баллы, чтобы не потерять место в рейтинге и занимать лидирующие позиции.<br> <a href='#'><strong>Как получить больше баллов?</strong></a></span>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                     .Table-Cell
                                         .Chart-Place
                                             span.value 1 
@@ -60,7 +60,7 @@
                                 .Table-Row
                                     .Table-Cell
                                         .Rank-Status
-                                            app-icon(name="rank-down" size="15")
+                                            app-icon(name="rank-down" size="15" :content="`<span>Вы потеряли место в рейтинге. Получайте баллы, чтобы занимать более высокие позиции в чартах. <br> <a href='#'><strong>Как получить больше баллов?</strong></a></span>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                     .Table-Cell
                                         .Chart-Place
                                             span.value 3 
@@ -77,7 +77,7 @@
                                 .Table-Row
                                     .Table-Cell
                                         .Rank-Status
-                                            app-icon(name="rank-down" size="15")
+                                            app-icon(name="rank-down" size="15" :content="`<span>Вы потеряли место в рейтинге. Получайте баллы, чтобы занимать более высокие позиции в чартах. <br> <a href='#'><strong>Как получить больше баллов?</strong></a></span>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                     .Table-Cell
                                         .Chart-Place
                                             span.value 14 
@@ -94,7 +94,7 @@
                                 .Table-Row
                                     .Table-Cell
                                         .Rank-Status
-                                            app-icon(name="rank-up" size="15")
+                                            app-icon(name="rank-up" size="15" :content="`<span>Вы заняли более высокую позицию в чарте. Зарабатывайте баллы, чтобы не потерять место в рейтинге и занимать лидирующие позиции.<br> <a href='#'><strong>Как получить больше баллов?</strong></a></span>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                     .Table-Cell
                                         .Chart-Place
                                             span.value 31 
@@ -111,7 +111,7 @@
                                 .Table-Row
                                     .Table-Cell
                                         .Rank-Status
-                                            app-icon(name="rank-up" size="15")
+                                            app-icon(name="rank-up" size="15" :content="`<span>Вы заняли более высокую позицию в чарте. Зарабатывайте баллы, чтобы не потерять место в рейтинге и занимать лидирующие позиции.<br> <a href='#'><strong>Как получить больше баллов?</strong></a></span>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                     .Table-Cell
                                         .Chart-Place
                                             span.value 123 
@@ -128,7 +128,7 @@
                                 .Table-Row
                                     .Table-Cell
                                         .Rank-Status
-                                            app-icon(name="rank-down" size="15")
+                                            app-icon(name="rank-down" size="15" :content="`<span>Вы потеряли место в рейтинге. Получайте баллы, чтобы занимать более высокие позиции в чартах. <br> <a href='#'><strong>Как получить больше баллов?</strong></a></span>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                     .Table-Cell
                                         .Chart-Place
                                             span.value 11312 

@@ -6,6 +6,7 @@
                 SideNavigation
             .Main
                 .content
+                    SaveButton
                     .Page-Block
                         .Page-Block-Header#section-1
                             h2 Основная информация
@@ -58,7 +59,8 @@
                                         label.Data-Item
                                             input.Toggler.pink(type="checkbox" )
                                             span.Data-Label Скрыть возраст
-                                            app-icon.tooltip(name="tooltip" width="18")
+                                            app-icon.tooltip(name="tooltip" width="18" content="Если поле активно, то Ваш возраст будете видеть только Вы" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            
 
 
                             //-
@@ -200,7 +202,7 @@
                                 .Content-Column.wide
                                     .Data-Row
                                         span.Data-Label Обучаю в следующих стилях *
-                                            app-icon.tooltip(name="tooltip" width="15")
+                                            app-icon.tooltip(name="tooltip" width="15" content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик рядом с названием" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                         .Data-Multiselect-Tags
                                             multiselect(
                                                 v-model="diseaseValue",
@@ -374,7 +376,7 @@
                                 .Content-Column.wide
                                     .Data-Row
                                         span.Data-Label В каких стилях я работаю
-                                        app-icon.tooltip(name="tooltip" width="15")
+                                        app-icon.tooltip(name="tooltip" width="15" content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                         .Data-Multiselect-Tags
                                             multiselect(
                                                 v-model="styleValue",
@@ -437,6 +439,8 @@ import Multiselect from 'vue-multiselect';
 import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNavigation.vue';
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
+import SaveButton from '@/components/common/SaveButton.vue';
+
 
 export default {
     name: 'MyProfile',
@@ -449,6 +453,7 @@ export default {
         SideNavigation,
         Splide,
         SplideSlide,
+        SaveButton,
     },
     data () {
         return {

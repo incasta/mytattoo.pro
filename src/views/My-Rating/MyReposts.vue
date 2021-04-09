@@ -10,13 +10,13 @@
                     .Page-Block
                         .Page-Block-Header
                             h2 Доступные задания
-                            app-icon.tooltip(name="tooltip" size="18")
+                            app-icon.tooltip(name="tooltip" size="18" :content="`<span>Что нужно делать? Репостите различный контент с нашего ресурса на свою страницу в одну из соц сетей: ВКонтакте / facebook / Одноклассники, получайте баллы за каждое выполненное задание. После того, как вы заберете награду, все задания станут недоступны на 21 день (в том числе задания, находящиеся в процессе выполнения или еще не выполненные)</span>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                         .Page-Block-Content
                             .Repost-Quest-List
                                 .Repost-Quest.timer
                                     .Repost-Quest-Name Репостов эскизов: 
                                     .Repost-Quest-Status
-                                        .Repost-Quest-Timer 6 д : 23 ч : 59 с
+                                        .Repost-Quest-Timer(:content="`<span>Когда таймер закончится, Вы сможете получить свою награду за это задание. Но сперва мы проверим наличие репостов на вашей странице, в соц сети которой вы разместили репосты. </span>`" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }") 6 д : 23 ч : 59 с
                                     .Repost-Quest-Reward
                                         span
                                             span +50
@@ -24,34 +24,34 @@
                                 .Repost-Quest.error
                                     .Repost-Quest-Name Репостов тату: 
                                     .Repost-Quest-Status
-                                        .status-message Не выполнено
+                                        .status-message(:content="`<span>Вы не выполнили условия для выполнения этого задания. Чтобы получить награду нужно сделать необходимое количество репостов именно на вашу страницу в соц сети, не удаляя их со страницы 7 дней. Как только таймер закончится Вы сможете получить свою награду.</span>`" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }") Не выполнено
                                     .Repost-Quest-Reload
-                                        a.Quest-Reload(href="javascript:void(0);")
+                                        a.Quest-Reload(href="javascript:void(0);" :content="`<span>Выполните все условия задания, чтобы получить награду! Нажмите на эту иконку, чтобы мы заново могли проверить ваши репосты. </span>`" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                             app-icon(name="refresh" size="12")
                                     //- .Repost-Quest-Reward
                                     //-     | + 
                                     //-     span 50
                                 //-  
                                 .Repost-Quest.completed
-                                    .Repost-Quest-Name Репостов эскизов: 
+                                    .Repost-Quest-Name Репостов новостей: 
                                     .Repost-Quest-Status
-                                        .status-message Выполнено
+                                        .status-message(:content="`<span>Супер! Вы выполнили это задание и награда за него уже учтена. Готовы забрать награду за выполненные задания? Просто нажмите на кнопку “ЗАБРАТЬ НАГРАДУ” в окошке “НАГРАДА”. </span>`" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }") Выполнено
                                     .Repost-Quest-Reward
                                         span
                                             span +50
                                 //-  
                                 .Repost-Quest.available
-                                    .Repost-Quest-Name Репостов эскизов: 
+                                    .Repost-Quest-Name Репостов статей:  
                                     .Repost-Quest-Status
-                                        a.Button-Take-Reward(href="javascript:void(0);") Получить 
+                                        a.Button-Take-Reward(href="javascript:void(0);" :content="`<span>Нажмите на “Получить”, чтобы мы проверили наличие репостов на вашей странице в соц сети. Если все условия выполнены, то награда за это задание будет учтена. </span>`" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }") Получить 
                                     .Repost-Quest-Reward
                                         span
                                             span +50
                                 //-  
                                 .Repost-Quest
-                                    .Repost-Quest-Name Репостов эскизов: 
+                                    .Repost-Quest-Name Репостов Анкет мастеров:  
                                     .Repost-Quest-Status
-                                        .Quest-Counter
+                                        .Quest-Counter(:content="`<span>Количество учтенных репостов на вашей странице в соц сети. Сделайте требуемое количество репостов, чтобы забрать награду! </span>`" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                             span 1 
                                             | / 
                                             span 2 
@@ -60,7 +60,7 @@
                                             span +50
                                 //-  
                             .Repost-Quest-Footer
-                                .Available-Points 
+                                .Available-Points(:content="`<span>Количество баллов, которые мы учли за выполненные задания. Готовы забрать награду? Нажмите на кнопку “ЗАБРАТЬ НАГРАДУ”. Все невыполненные задания станут недоступны. </span>`" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom', interactive : true, }")
                                     span Доступные баллы:
                                     span.value 50
                                     app-icon.token(name='token')
@@ -73,12 +73,12 @@
                     .Page-Block
                         .Page-Block-Header#section-2
                             h2 История рейтинга
-                            app-icon.tooltip(name="tooltip" width="18")
+                            app-icon.tooltip(name="tooltip" width="18" content="Все изменения Вашего рейтинга отображаются здесь. В том числе и те, которые были совершенны администрацией сервиса" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                         .Page-Block-Content
                             .Table-SingleCol
                                 .Table-Header
                                     .Table-Columm-Name
-                                        app-icon.tooltip(name="tooltip" width="18")
+                                        app-icon.tooltip(name="tooltip" width="18" content="Дополнительные отметки о статусе операции" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                     .Table-Columm-Name
                                         span Баллы
                                     .Table-Columm-Name
@@ -87,7 +87,7 @@
                                         span Дата
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 
@@ -103,7 +103,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.removed 
@@ -133,7 +133,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 
@@ -148,7 +148,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        //- .Gift-Status
+                                        //- .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                         //-     app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 
@@ -163,7 +163,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 

@@ -7,6 +7,24 @@ import AppIcon from './components/common/app-icon.vue';
 import VScrollLock from 'v-scroll-lock';
 import VueFlicking from "@egjs/vue-flicking";
 import Sticky from 'vue-sticky-directive';
+import VueTippy, { TippyComponent } from "vue-tippy";
+
+// Vue.use(VueTippy);
+// Vue.component("tippy", TippyComponent);
+
+Vue.use(VueTippy, {
+  directive: "tippy", // => v-tippy
+  flipDuration: 0,
+  popperOptions: {
+    modifiers: {
+      preventOverflow: {
+        enabled: false
+      }
+    }
+  }
+});
+Vue.component("tippy", TippyComponent);
+// import "tippy.js/themes/translucent.css";
 
 Vue.use(Sticky);
 
@@ -21,7 +39,7 @@ Vue.use(VScrollLock, {
   },
 });
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,

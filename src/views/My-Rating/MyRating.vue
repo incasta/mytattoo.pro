@@ -8,7 +8,7 @@
                         .Side-Panel
                             .Side-Panel-Header
                                 h2 Распределение звезд
-                                app-icon.tooltip(name="tooltip" width="18")
+                                app-icon.tooltip(name="tooltip" width="18" :content="`<span>Звезды присуждаются мастерам в зависимости от количества заработанных баллов. Чем больше баллов - тем больше звезд.</span><br><a href='#'><strong>Как заработать баллы?</strong></a>`" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme : 'custom', interactive : true, }")
                             .Side-Panel-Content
                                 splide(:options="options")
                                     splide-slide
@@ -261,12 +261,12 @@
                     .Page-Block
                         .Page-Block-Header#section-2
                             h2 История рейтинга
-                            app-icon.tooltip(name="tooltip" width="18")
+                            app-icon.tooltip(name="tooltip" width="18" content="Все изменения Вашего рейтинга отображаются здесь. В том числе и те, которые были совершенны администрацией сервиса" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                         .Page-Block-Content
                             .Table-SingleCol
                                 .Table-Header
                                     .Table-Columm-Name
-                                        app-icon.tooltip(name="tooltip" width="18")
+                                        app-icon.tooltip(name="tooltip" width="18" content="Дополнительные отметки о статусе операции" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                     .Table-Columm-Name
                                         span Баллы
                                     .Table-Columm-Name
@@ -275,7 +275,7 @@
                                         span Дата
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 
@@ -291,7 +291,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.removed 
@@ -321,7 +321,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 
@@ -336,7 +336,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        //- .Gift-Status
+                                        //- .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                         //-     app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 
@@ -351,7 +351,7 @@
                                 //- 
                                 .Table-Row
                                     .Table-Cell
-                                        .Gift-Status
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon(name="gift" size="15")
                                     .Table-Cell
                                         .Rating_Points.added 
@@ -386,11 +386,13 @@ import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNa
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
 
+
 export default {
     components: {
         SideNavigation,
         Splide,
         SplideSlide,
+        
     },
 
     data() {
