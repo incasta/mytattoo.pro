@@ -93,6 +93,38 @@ const routes = [
         ]
 
       },
+      {
+        path: 'favorites',
+        redirect: { name: 'FavPhoto' },
+        component: () => import(/* webpackChunkName: "Favorites" */ '../views/Favorites.vue'),
+        children: [
+          {
+            name: 'FavPhoto',
+            path: 'photo',
+            component: () => import(/* webpackChunkName: "fav-photo" */ '../views/Favorites/Photo.vue'),
+          },
+          {
+            name: 'FavSketches',
+            path: 'sketches',
+            component: () => import(/* webpackChunkName: "fav-sketches" */ '../views/Favorites/Sketches.vue'),
+          },
+          {
+            name: 'FavAds',
+            path: 'ads',
+            component: () => import(/* webpackChunkName: "fav-ads" */ '../views/Favorites/Ads.vue'),
+          },
+          {
+            name: 'FavArticles',
+            path: 'articles',
+            component: () => import(/* webpackChunkName: "fav-articles" */ '../views/Favorites/Articles.vue'),
+          },
+          {
+            name: 'FavMasters',
+            path: 'masters',
+            component: () => import(/* webpackChunkName: "fav-masters" */ '../views/Favorites/Masters.vue'),
+          },
+        ]
+      },
     ]
   }
 

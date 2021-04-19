@@ -71,7 +71,29 @@ export default {
                 },
                 {
                     link: '/masterLK/favorites',
-                    name: 'Избранное'
+                    name: 'Избранное',
+                    anchors: [
+                        {
+                            link: '/masterLK/favorites/photo',
+                            name: 'Фотографии'
+                        },
+                        {
+                            link: '/masterLK/favorites/sketches',
+                            name: 'Эскизы'
+                        },
+                        {
+                            link: '/masterLK/favorites/ads',
+                            name: 'Объявления'
+                        },
+                        {
+                            link: '/masterLK/favorites/articles',
+                            name: 'Статьи'
+                        },
+                        {
+                            link: '/masterLK/favorites/masters',
+                            name: 'Мастера'
+                        },
+                    ],
                 },
                 {
                     link: '/masterLK/rating',

@@ -193,9 +193,8 @@
   }
 
   .Page-Block {
-    // height: 300vh;
     &:not(:first-child) {
-        margin-top: 20px;
+      margin-top: 20px;
     }
     @include respond-to(large-screens) {
         margin-top: 20px;

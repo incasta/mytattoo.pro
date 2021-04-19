@@ -5,8 +5,8 @@
             .SideBar
                 SideNavigation
             .Main
+                SaveButton
                 .content
-                    SaveButton
                     .Page-Block
                         .Page-Block-Header#section-1
                             h2 Основная информация
