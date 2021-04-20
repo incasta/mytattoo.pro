@@ -1,7 +1,7 @@
 <template lang="pug">
     .Author
         a(href="#")
-            img(:src="path")
+            img(:src="require('@/assets/img/users/' + image)")
 
 </template>
 
@@ -9,19 +9,16 @@
 export default {
     
     props: {
-        path: {
+        image: {
             type: String, 
             required: false,
-            default: require("@/assets/img/avaMale.jpg")
+            default: "avaMale.jpg"
         }
     },
 
     computed: {
-        src() {
-            return this.path ? (this.path) : undefined; 
-        }
-    }
 
+    },
 }
 </script>
 

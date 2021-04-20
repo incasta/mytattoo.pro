@@ -17,12 +17,14 @@
                         .Page-Block-Content
                             GridCards
                                 template(#cards)
-                                    CardPhoto(path="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80")
+                                    CardPhoto(image="1.jpg")
                                     CardPhoto
                                     CardPhoto
+                                    CardPhoto(image="2.jpg")
+                                    CardPhoto(image="3.jpg")
                                     CardPhoto
-                                    CardPhoto
-                                    CardPhoto
+                                    CardPhoto(image="4.jpg")
+                                    CardPhoto(image="5.jpg")
                                     CardPhoto 
 
 </template>

@@ -8,7 +8,7 @@
                 Author
                 .Favorite
         .Card-Image
-            img(:src="path")
+            img(:src="require('@/assets/img/photo/' + image)")
 
 </template>
 
@@ -20,9 +20,10 @@ export default {
         Author,
     },
     props: {
-        path: {
+        image: {
             type: String, 
             required: false,
+            default: "no-image.png"
         }
     },
 
