@@ -9,8 +9,12 @@
                 a.Favorite(href="#")
                     app-icon(name="bookmark-solid" size="12")
                 Author 
+            .Overlay-Bottom
+                .Price.money
+                    span.value {{ price }} 
+                    span.currency ₽
         .Card-Image
-            img(:src="require('@/assets/img/photo/' + image)")
+            img(:src="require('@/assets/img/sketches/' + image)")
 
 </template>
 
@@ -26,6 +30,10 @@ export default {
             type: String, 
             required: false,
             default: "no-image.png"
+        },
+        price: {
+            type: String,
+            required: true,
         }
     },
 
@@ -143,8 +151,37 @@ export default {
                     opacity: 1;
                 }
             }
+            .Price {
+                background-color: rgba(0,0,0, .8);
+            }
         }
     }
 }
 
+.Overlay-Bottom {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    .Price {
+        @include trans-ease-out;
+        margin-left: auto;
+        background-color: rgba(0,0,0, .4);
+        padding: .25em .5em;
+        border-radius: 4px;
+    }
+}
+
+.currency {
+    margin-left: 5px;
+}
+
+.money {
+    color: var(--palette-green);
+    font-weight: 700;
+    font-size: 12px;
+}
 </style>

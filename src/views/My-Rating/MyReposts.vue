@@ -177,29 +177,20 @@
                                             span 20 / 20 / 2044
                                 //- 
 
-                            .Paginator
-                                .prev
-                                    app-icon(name="angle-double-left" size="10")
-                                .Paginator-Page-List
-                                    .Paginator-Page.current
-                                        span 1
-                                    .Paginator-Page
-                                        span 2
-                                    .Paginator-Page
-                                        span 3
-                                .next
-                                    app-icon(name="angle-double-right" size="10")
+                            Paginator
 
 </template>
 
 <script>
 import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNavigation.vue';
 import Button from '@/components/common/Button.vue';
+import Paginator from '@/components/common/Paginator.vue';
 
 export default {
     components: {
         SideNavigation,
-        Button
+        Button,
+        Paginator
     },
 }
 </script>
@@ -208,9 +199,7 @@ export default {
 
 @include tooltip;
 @include TableSingleCol;
-@include Paginator;
 @include token;
-// @include Button-Default;
 
 .Page-Block-Header {
     justify-content: center;

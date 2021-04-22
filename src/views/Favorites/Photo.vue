@@ -26,6 +26,35 @@
                                     CardPhoto(image="4.jpg")
                                     CardPhoto(image="5.jpg")
                                     CardPhoto 
+                                    CardPhoto(image="1.jpg")
+                                    CardPhoto
+                                    CardPhoto
+                                    CardPhoto(image="2.jpg")
+                                    CardPhoto(image="3.jpg")
+                                    CardPhoto
+                                    CardPhoto(image="4.jpg")
+                                    CardPhoto(image="5.jpg")
+                                    CardPhoto 
+                                    CardPhoto(image="1.jpg")
+                                    CardPhoto
+                                    CardPhoto
+                                    CardPhoto(image="2.jpg")
+                                    CardPhoto(image="3.jpg")
+                                    CardPhoto
+                                    CardPhoto(image="4.jpg")
+                                    CardPhoto(image="5.jpg")
+                                    CardPhoto 
+                                    CardPhoto(image="1.jpg")
+                                    CardPhoto
+                                    CardPhoto
+                                    CardPhoto(image="2.jpg")
+                                    CardPhoto(image="3.jpg")
+                                    CardPhoto
+                                    CardPhoto(image="4.jpg")
+                                    CardPhoto(image="5.jpg")
+                                    CardPhoto 
+                            Hr
+                            Paginator
 
 </template>
 
@@ -33,6 +62,8 @@
 import GridCards from "@/components/CardTemplates/GridCards.vue";
 import CardPhoto from "@/components/CardTemplates/CardPhoto.vue";
 import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNavigation.vue';
+import Paginator from "@/components/common/Paginator.vue";
+import Hr from "@/components/common/Hr.vue";
 
 export default {
     name: 'FavPhoto',
@@ -40,12 +71,12 @@ export default {
         CardPhoto,
         SideNavigation,
         GridCards,
+        Paginator,
+        Hr,
     }
 }
 </script>
 
 <style lang="scss" scoped>
-
-
 
 </style>

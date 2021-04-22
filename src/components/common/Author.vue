@@ -26,6 +26,7 @@ export default {
 
 
 .Author {
+    @include trans-ease-out;
     width: 50px;
     height: 50px;
     overflow: hidden;

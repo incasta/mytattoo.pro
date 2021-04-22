@@ -213,6 +213,7 @@ export default {
     transition: opacity .3s ease, max-height .3s ease;
     opacity: 0;
     max-height: 0px;
+    overflow: hidden;
 }
 
 // Extra Side Panels
