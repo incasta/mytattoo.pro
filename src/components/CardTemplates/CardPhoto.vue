@@ -35,14 +35,6 @@ export default {
 
 <style lang="scss" scoped>
 
-.Card-Template {
-    height: 230px;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-
 .Card-Image {
     width: 100%;
     height: 100%;
@@ -61,7 +53,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    cursor: pointer;
+    // cursor: pointer;
     &:after {
         content: '';
         background: linear-gradient(180deg, rgba(3, 2, 26, 0) 0%, rgba(3, 2, 26, 0.85) 100%);
@@ -89,7 +81,7 @@ export default {
 .Overlay-Details {
     @include flex-ja_center;
     position: absolute;
-    z-index: 99;
+    z-index: 4;
     opacity: 1;
     width: 100%;
     height: 100%;
@@ -99,12 +91,20 @@ export default {
     @include trans-ease-out;
     transform: scale(0);
     opacity: 0;
+    @include flex-ja_center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: 1;
     .icon {
         fill: var(--palette-blue);
     }
 }
 
 .Overlay-Top {
+    position: relative;
+    z-index: 10;
     top: 0;
     right: 0;
     display: flex;
@@ -124,6 +124,9 @@ export default {
     .icon {
         fill: var(--palette-pink);
     }
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .Author {
@@ -131,8 +134,26 @@ export default {
     opacity: 0;
 }
 
+
 .Card-Template {
+    height: 230px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
     &:hover {
+        .Card-Overlay {
+            .Overlay-Top {
+                .Author {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                // .Favorite {
+                //     opacity: 1;
+                // }
+            }
+        }
+    }
+    @include respond-to (tablets-screens) {
         .Card-Overlay {
             .Overlay-Top {
                 .Author {
@@ -143,6 +164,7 @@ export default {
                     opacity: 1;
                 }
             }
+            
         }
     }
 }

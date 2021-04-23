@@ -23,4 +23,5 @@ export default {
     align-content: flex-start;
 }
 
+
 </style>

@@ -42,7 +42,7 @@ import Paginator from "@/components/common/Paginator.vue";
 import Hr from "@/components/common/Hr.vue";
 
 export default {
-    name: 'FavSketches',
+    name: 'FavAds',
     components: {
         CardAds,
         SideNavigation,
