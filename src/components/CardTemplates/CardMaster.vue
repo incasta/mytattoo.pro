@@ -10,8 +10,10 @@
             .Overlay-Top
                 a.Favorite(href="#")
                     app-icon(name="bookmark-solid" size="12")
-                .proStatus
-                    .pro.top-1 PRO
+                .Rating
+                    StarRating(value="3.5" small="true")
+                    PointRating(value="3314" small="true")
+
             .Overlay-Bottom
                 .Smart-Panel
                     a(href="#" content="Работы мастера" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom',}").Smart-Panel-Option
@@ -30,7 +32,7 @@
                             span.value 9 
                             //- span новостей
                     a(href="#" content="Отзывы мастера" v-tippy="{ delay: [400, 300], arrow : true, arrowType : 'round', theme: 'custom',}").Smart-Panel-Option
-                        app-icon.pink(name="feedback" size="24")
+                        app-icon.pink(name="comment-alt" size="24")
                         .counter
                             span.value 3123 
                             //- span отзывов
@@ -42,10 +44,14 @@
 
 <script>
 import Author from "@/components/common/Author.vue";
+import StarRating from "@/components/common/StarRating.vue";
+import PointRating from "@/components/common/PointRating.vue";
 
 export default {
     components: {
         Author,
+        StarRating,
+        PointRating,
     },
     props: {
         image: {
@@ -70,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 
 .Card-Template {
-    height: 320px;
+    height: 330px;
     position: relative;
     border-radius: 4px;
     overflow: hidden;
@@ -118,9 +124,19 @@ export default {
         }
         .Overlay-Bottom {
             transform: translateY(0);
+            padding-top: 20px;
         }
         .CardName {
             height: 75%;
+            .nickname {
+                opacity: .5;
+            }
+        }
+        .Rating {
+            .userRating_Points {
+                opacity: .3;
+                transform: translateY(0);
+            }
         }
     }
     @include respond-to (tablets-screens) {
@@ -250,6 +266,7 @@ export default {
     text-decoration: none;
     color: var(--palette-blue);
     .icon {
+        @include trans-ease-out;
         fill: var(--palette-blue);
         &.pink {
             fill: var(--palette-pink);
@@ -258,13 +275,27 @@ export default {
             }
         }
     }
-
     .counter {
         font-size: 11px;
         text-transform: uppercase;
-        // display: none;
         font-weight: 700;
+        opacity: .5;
+    }
 
+    &:hover {
+        .icon {
+            filter: drop-shadow(0 0 10px var(--palette-blue));
+            &.pink {
+                filter: drop-shadow(0 0 10px var(--palette-pink));
+                ~ .counter {
+                    text-shadow: 0 0 10px var(--palette-pink);
+                }
+            }
+        }
+        .counter {
+            opacity: 1;
+            text-shadow: 0 0 10px var(--palette-blue);
+        }
     }
 }
 
@@ -272,7 +303,6 @@ export default {
     @include trans-ease-out;
     display: flex;
     width: 100%;
-    // height: 75%;
     height: 100%;
     flex-direction: column;
     align-items: center;
@@ -287,13 +317,11 @@ export default {
     text-align: center;
     position: relative;
     z-index: 4;
-    &:hover{
-        color: var(--palette-blue);
-    }
     
     .nickname {
-        color: var(--palette-blue);
-        opacity: .5;
+        color: var(--palette-yellow);
+        opacity: 1;
+        @include trans-ease-out;
         &:before {
             content: '‘’';
         }
@@ -318,22 +346,15 @@ export default {
     }
 }
 
-
-.proStatus {
-    pointer-events: none;
-    .pro {
-        pointer-events: none;
-        user-select: none;
-        font-weight: 700;
-        background-color: var(--palette-yellow);
-        color: var(--palette-black-bg);
-        font-size: 12px;
-        padding: .15em .5em;
-        border-radius: 100px;
-        box-shadow: 0 0 8px var(--palette-yellow);
-    }
+.Rating {
+    position: relative;
 }
 
-
+.userRating_Points {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+}
 
 </style>

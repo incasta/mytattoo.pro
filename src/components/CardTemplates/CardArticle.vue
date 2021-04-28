@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 
 .Card-Template {
-    height: 320px;
+    height: 330px;
     position: relative;
     border-radius: 4px;
     overflow: hidden;
