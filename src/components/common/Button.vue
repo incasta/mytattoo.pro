@@ -17,7 +17,7 @@ export default {
         icon: {
           type: String,
           required: false,
-          default: "angle-small-right",
+          default: "arrow-small-right",
         },
         extraClass: {
           type: String,

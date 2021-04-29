@@ -115,7 +115,17 @@ export default {
                 },
                 {
                     link: '/masterLK/balance-sub',
-                    name: 'Баланс и подписка'
+                    name: 'Баланс и подписка',
+                    anchors: [
+                        {
+                            link: '/masterLK/balance-sub/my-balance',
+                            name: 'Мой баланс'
+                        },
+                        {
+                            link: '/masterLK/balance-sub/my-subscribe',
+                            name: 'Моя подписка'
+                        },
+                    ]
                 },
             ],
         }

@@ -197,21 +197,13 @@ export default {
     .icon {
         fill: var(--palette-pink);
     }
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .Card-Template {
     &:hover {
-        .Card-Overlay {
-            .Overlay-Top {
-                .Author {
-                    transform: translateY(0);
-                    opacity: 1;
-                }
-                .Favorite {
-                    opacity: 1;
-                }
-            }
-        }
         .views,
         .tag,
         .date {

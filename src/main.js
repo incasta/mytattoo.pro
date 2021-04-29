@@ -8,6 +8,10 @@ import VScrollLock from 'v-scroll-lock';
 import VueFlicking from "@egjs/vue-flicking";
 import Sticky from 'vue-sticky-directive';
 import VueTippy, { TippyComponent } from "vue-tippy";
+import VueClipboard from 'vue-clipboard2';
+
+
+Vue.use(VueClipboard);
 
 // Vue.use(VueTippy);
 // Vue.component("tippy", TippyComponent);

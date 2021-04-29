@@ -125,6 +125,23 @@ const routes = [
           },
         ]
       },
+      {
+        path: 'balance-sub',
+        redirect: { name: 'MyBalance' },
+        component: () => import(/* webpackChunkName: "balance" */ '../views/Balance.vue'),
+        children: [
+          {
+            name: 'MyBalance',
+            path: 'my-balance',
+            component: () => import(/* webpackChunkName: "my-balance" */ '../views/Balance/MyBalance.vue'),
+          },
+          {
+            name: 'MySubscribe',
+            path: 'my-subscribe',
+            component: () => import(/* webpackChunkName: "my-subscribe" */ '../views/Balance/MySubscribe.vue'),
+          },
+        ]
+      },
     ]
   }
 
