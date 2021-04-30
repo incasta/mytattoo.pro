@@ -37,8 +37,130 @@
                                     
                                 Hr
                                 .SumTemplate-List
-                                    div(v-for='template in templates' :key="template.id" class="SumTemplate") {{ template.text }}
+                                    div(@click="paymentValue = template.value" v-for='template in templates' :key="template.id" class="SumTemplate") {{ template.text }}
                                 Button(:text="`Пополнить на ${paymentValue}`")
+                    
+                    .Page-Block
+                        .Page-Block-Header
+                            h2 История операций
+                        .Page-Block-Content
+                            .Table-SingleCol
+                                .Table-Header
+                                    .Table-Columm-Name
+                                        app-icon.tooltip(name="tooltip" width="18" content="Дополнительные отметки о статусе операции" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                    .Table-Columm-Name
+                                        span Сумма
+                                    .Table-Columm-Name
+                                        span Описание
+                                    .Table-Columm-Name
+                                        span Дата
+                                    .Table-Columm-Name
+                                        span Статус
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150 ₽
+
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                    .Table-Cell
+                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon.success(name="check-filled" size="20")
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.removed 
+                                            span.value 150 ₽       
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                    .Table-Cell
+                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon.success(name="check-filled" size="20")
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        //- .Gift-Status
+                                        //-     app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150 ₽      
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                    .Table-Cell
+                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon.success(name="check-filled" size="20")
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150 ₽      
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                    .Table-Cell
+                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon.fail(name="cross-filled" size="20")
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        //- .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                        //-     app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150 ₽      
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                    .Table-Cell
+                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon.success(name="check-filled" size="20")
+                                //- 
+                                .Table-Row
+                                    .Table-Cell
+                                        .Gift-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon(name="gift" size="15")
+                                    .Table-Cell
+                                        .Rating_Points.added 
+                                            span.value 150 ₽    
+                                    .Table-Cell
+                                        .Table-Factor-Name
+                                            span Ежедневные: Ежедневное посещение сайта
+                                    .Table-Cell
+                                        .Table-Date
+                                            span 20 / 20 / 2044
+                                    .Table-Cell
+                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                            app-icon.success(name="check-filled" size="20")
+                                //- 
+
+                            Paginator
                                 
 
 </template>
@@ -49,6 +171,7 @@ import Hr from '@/components/common/Hr.vue';
 import Button from '@/components/common/Button.vue';
 import {mask} from 'vue-the-mask';
 import {VMoney} from 'v-money';
+import Paginator from '@/components/common/Paginator.vue';
 
 
 export default {
@@ -57,6 +180,7 @@ export default {
         SideNavigation,
         Hr,
         Button,
+        Paginator,
     },
     directives: {
         mask,
@@ -109,12 +233,13 @@ export default {
 <style lang="scss" scoped>
 
 @include blockUI;
+@include TableSingleCol;
+@include tooltip;
+
 
 .content {
     display: flex;
-    @include respond-to(medium-screens) {
-        flex-wrap: wrap;
-    }
+    flex-wrap: wrap;
 }
 
 .Page-Block {
@@ -129,10 +254,10 @@ export default {
         .Page-Block-Content {
             text-align: center;
         }
-        ~ .Page-Block {
+        + .Page-Block {
             margin-top: 0;
             margin-left: 20px;
-            width: 100%;
+            width: calc(100% - 320px);
             @include respond-to(large-screens) {
                 margin-top: 20px;
             }
@@ -145,6 +270,10 @@ export default {
             }
         }
     }
+}
+
+.Page-Block {
+    width: 100%;
 }
 
 .label {
@@ -310,6 +439,63 @@ export default {
     }
     @include respond-to(handlers) {
         text-align: center; 
+    }
+}
+
+.status-factor {
+    @include trans-ease-out;
+    opacity: 0;
+    right: 0;
+    .icon {
+        @include trans-ease-out;
+    }
+}
+
+
+.Gift-Status {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: var(--palette-dark-light);
+    width: 32px;
+    height: 32px;
+    .icon {
+        fill: var(--palette-blue);
+        filter: drop-shadow(0 0 5px var(--palette-blue));
+    }
+}
+
+.Action-Status {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    .icon {
+        &.success {
+            fill: var(--palette-blue);
+            filter: drop-shadow(0 0 5px var(--palette-blue));
+        }
+        &.fail {
+            fill: var(--palette-pink);
+            filter: drop-shadow(0 0 5px var(--palette-pink));
+        }
+    }
+}
+
+.Table-SingleCol {
+    .Table-Header {
+        display: grid;
+        grid-template-columns: 52px 1fr 3fr 1fr .75fr;
+        gap: 3px;
+        @include respond-to(handlers) {
+            grid-template-columns: 52px minmax(100px, 1fr) minmax(300px, 1fr) minmax(100px, 1fr) 80px;
+        }
+    }
+    .Table-Row {
+        grid-template-columns: 52px 1fr 3fr 1fr .75fr;
+        @include respond-to(handlers) {
+            grid-template-columns: 52px minmax(100px, 1fr) minmax(300px, 1fr) minmax(100px, 1fr) 80px;
+        }
     }
 }
 

@@ -490,7 +490,6 @@ export default {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    // margin-right: 20px;
     border-radius: 100%;
     background-color: var(--palette-dark-light);
     width: 32px;
