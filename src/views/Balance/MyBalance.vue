@@ -4,10 +4,6 @@
         .Row
             .SideBar
                 SideNavigation
-                    template(#panel)
-                        .Side-Panel
-                            .Side-Panel-Content
-                                div Получите дополнительные привилегии с PRO-аккаунтом
                 
             .Main
                 .content
