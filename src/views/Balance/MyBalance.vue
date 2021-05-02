@@ -67,7 +67,7 @@
                                         .Table-Date
                                             span 20 / 20 / 2044
                                     .Table-Cell
-                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                        .Action-Status(content="Успешно" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon.success(name="check-filled" size="20")
                                 //- 
                                 .Table-Row
@@ -84,7 +84,7 @@
                                         .Table-Date
                                             span 20 / 20 / 2044
                                     .Table-Cell
-                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                        .Action-Status(content="Успешно" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon.success(name="check-filled" size="20")
                                 //- 
                                 .Table-Row
@@ -101,7 +101,7 @@
                                         .Table-Date
                                             span 20 / 20 / 2044
                                     .Table-Cell
-                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                        .Action-Status(content="Успешно" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon.success(name="check-filled" size="20")
                                 //- 
                                 .Table-Row
@@ -118,7 +118,7 @@
                                         .Table-Date
                                             span 20 / 20 / 2044
                                     .Table-Cell
-                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                        .Action-Status(content="Ошибка" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon.fail(name="cross-filled" size="20")
                                 //- 
                                 .Table-Row
@@ -135,7 +135,7 @@
                                         .Table-Date
                                             span 20 / 20 / 2044
                                     .Table-Cell
-                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                        .Action-Status(content="Успешно" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon.success(name="check-filled" size="20")
                                 //- 
                                 .Table-Row
@@ -152,7 +152,7 @@
                                         .Table-Date
                                             span 20 / 20 / 2044
                                     .Table-Cell
-                                        .Action-Status(content="Это действие было выполнено администрацией" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+                                        .Action-Status(content="Успешно" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
                                             app-icon.success(name="check-filled" size="20")
                                 //- 
 
@@ -469,11 +469,11 @@ export default {
     .icon {
         &.success {
             fill: var(--palette-blue);
-            filter: drop-shadow(0 0 5px var(--palette-blue));
+            // filter: drop-shadow(0 0 5px var(--palette-blue));
         }
         &.fail {
             fill: var(--palette-pink);
-            filter: drop-shadow(0 0 5px var(--palette-pink));
+            // filter: drop-shadow(0 0 5px var(--palette-pink));
         }
     }
 }
