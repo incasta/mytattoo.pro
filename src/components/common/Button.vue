@@ -1,8 +1,8 @@
 <template lang="pug">
     a.Button-Default(href="javascript:void(0);") 
         span {{ text }}
-        span.Button-Icon 
-            app-icon(:name="icon" :class="extraClass")
+        span.Button-Icon(v-if="icon !== undefined") 
+            app-icon(:name="icon" :class="iconClass")
 </template>
 
 <script>
@@ -17,9 +17,9 @@ export default {
         icon: {
           type: String,
           required: false,
-          default: "arrow-small-right",
+          // default: "arrow-small-right",
         },
-        extraClass: {
+        iconClass: {
           type: String,
           required: false,
           default: "",
@@ -63,7 +63,7 @@ export default {
   }
   &:hover {
     text-shadow: 0 0 5px var(--palette-blue);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2) ;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
     .Button-Icon {
     //   width: 70px;
       .icon {
@@ -71,6 +71,31 @@ export default {
         filter: drop-shadow(0 0 10px var(--palette-blue));
         transform: translate3d(0, 0, 0);
       }
+    }
+    &.outline {
+      &.yellow {
+        text-shadow: none;
+        box-shadow: inset 0 0 10px var(--palette-yellow), 0 0 0px var(--palette-yellow);
+      }
+    }
+    
+  }
+
+  &.outline {
+    @include trans-ease-out;
+    border-radius: 200px;
+    border: 2px solid var(--palette-blue);
+    padding: 1em 0;
+    background: repeating-linear-gradient(0, transparent, transparent 2px, rgba(0, 0, 0, 0.3) 4px, rgba(0, 0, 0, 0.3) 3px), rgba(0,0,0, .1);
+    &.yellow {
+      border-color: var(--palette-yellow);
+      color: var(--palette-yellow);
+      text-shadow: 0 0 15px var(--palette-yellow);
+      box-shadow: inset 0 0 0px var(--palette-yellow), 0 0 5px var(--palette-yellow);
+    }
+    &.pink {
+      border-color: var(--palette-pink);
+      color: var(--palette-pink);
     }
   }
 }

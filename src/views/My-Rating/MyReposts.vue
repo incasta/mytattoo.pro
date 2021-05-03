@@ -65,7 +65,7 @@
                                     span.value 50
                                     app-icon.token(name='token')
                                 .Button-Wrap
-                                    Button(text="Забрать награду" icon="token" extraClass="token")
+                                    Button(text="Забрать награду" icon="token" iconClass="token")
                                     //- a.Button-Default(href="javascript:void(0);") 
                                     //-     span Забрать награду
                                     //-     span.Button-Icon 

@@ -34,7 +34,7 @@
                                 Hr
                                 .SumTemplate-List
                                     div(@click="paymentValue = template.value" v-for='template in templates' :key="template.id" class="SumTemplate") {{ template.text }}
-                                Button(:text="`Пополнить на ${paymentValue}`")
+                                Button(:text="`Пополнить на ${paymentValue}`" icon="arrow-small-right")
                     
                     .Page-Block
                         .Page-Block-Header

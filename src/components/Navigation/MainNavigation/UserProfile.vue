@@ -1,7 +1,7 @@
 <template lang="pug">
     .UserProfile
       .user-balance-wrap
-        router-link(to="/").user-balance
+        router-link(to="/masterLK/balance-sub/my-balance").user-balance
           .user-balance--pay.hidden
             app-icon(name="plus-small" size='18')
           .user-balance--current
