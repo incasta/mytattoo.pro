@@ -9,7 +9,16 @@ import VueFlicking from "@egjs/vue-flicking";
 import Sticky from 'vue-sticky-directive';
 import VueTippy, { TippyComponent } from "vue-tippy";
 import VueClipboard from 'vue-clipboard2';
+import VModal from 'vue-js-modal';
 
+Vue.use(VModal);
+// Vue.use(VModal, {
+//   dynamic: true,
+//   injectModalsContainer: true,
+//   dynamicDefaults: {
+//     clickToClose: true
+//   }
+// });
 
 Vue.use(VueClipboard);
 

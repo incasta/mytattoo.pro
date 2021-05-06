@@ -1,6 +1,7 @@
 <template lang="pug">
     
-    .container        
+    .container
+        slot(name="modal")
         .Row
             .SideBar
                 SideNavigation

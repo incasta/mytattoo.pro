@@ -44,7 +44,7 @@ export default {
 
 .HeaderSectionWrap {
     position: relative;
-    z-index: 9000;
+    z-index: 99;
     height: 100%;
 }
 

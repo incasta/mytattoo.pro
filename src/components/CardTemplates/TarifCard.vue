@@ -11,7 +11,7 @@
             span {{ price }}₽ / мес.
         .Tarif-TotalPrice Одним платежом {{ totalPrice }}₽
         .Tarif-Button
-            Button.yellow.outline(text="Оплатить")
+            Button.yellow.outline(text="Оплатить" )
         .Tarif-Points 
             span {{ points }} 
             app-icon.token(name="token" size="14") 
@@ -22,11 +22,22 @@
 
 <script>
 import Button from "@/components/common/Button.vue";
+import ModalWarning from '@/components/Modals/ModalWarning.vue';
 
 export default {
     name: "TarifCard",
     components: {
         Button,
+
+    },
+    methods: {
+        ModalWarning () {
+          this.$modal.show(ModalWarning, {
+            text: 'Мой текст'
+          },{
+            draggable: true
+          })
+        },
     },
     props: {
         name: {

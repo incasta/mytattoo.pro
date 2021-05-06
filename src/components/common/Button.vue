@@ -1,5 +1,5 @@
 <template lang="pug">
-    a.Button-Default(href="javascript:void(0);") 
+    a.Button-Default(href="javascript:void(0);" @click="show") 
         span {{ text }}
         span.Button-Icon(v-if="icon !== undefined") 
             app-icon(:name="icon" :class="iconClass")
@@ -8,23 +8,34 @@
 <script>
 export default {
     
-    name: 'Button',
-    props: {
-        text: {
-          type: String,
-          required: true,
-        },
-        icon: {
-          type: String,
-          required: false,
-          // default: "arrow-small-right",
-        },
-        iconClass: {
-          type: String,
-          required: false,
-          default: "",
-        },
+  name: 'Button',
+  props: {
+      text: {
+        type: String,
+        required: true,
+      },
+      icon: {
+        type: String,
+        required: false,
+        // default: "arrow-small-right",
+      },
+      iconClass: {
+        type: String,
+        required: false,
+        default: "",
+      },
+  },
+  methods: {
+    show () {
+      this.$modal.show('ModalWarning');
     },
+    hide () {
+      this.$modal.hide('ModalWarning');
+    }
+  },
+  mount () {
+    this.show()
+  }   
 }
 </script>
 
