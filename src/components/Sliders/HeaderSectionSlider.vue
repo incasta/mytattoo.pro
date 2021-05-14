@@ -2,11 +2,14 @@
     
     splide(:options="options")
         splide-slide
-            //- MyRating
-            MySub   
+            SelectLocation
+
+        splide-slide
+            MySub
                
         splide-slide
             MyRating
+
 
 </template>
 
@@ -17,13 +20,15 @@ import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
 
 import MyRating from "@/components/Sliders/HeaderSectionSlider/MyRating.vue";
 import MySub from "@/components/Sliders/HeaderSectionSlider/MySub.vue";
+import SelectLocation from "@/components/Sliders/HeaderSectionSlider/SelectLocation.vue";
 
 export default {
     components: {
         Splide,
         SplideSlide,
         MyRating,
-        MySub
+        MySub,
+        SelectLocation,
     },
 
     data () {

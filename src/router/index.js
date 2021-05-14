@@ -142,6 +142,18 @@ const routes = [
           },
         ]
       },
+      {
+        path: 'feedbacks',
+        redirect: { name: 'AllFeedbacks' },
+        component: () => import(/* webpackChunkName: "feedbacks" */ '../views/Feedbacks.vue'),
+        children: [
+          {
+            name: 'AllFeedbacks',
+            path: 'all-feedbacks',
+            component: () => import(/* webpackChunkName: "all-feedbacks" */ '../views/Feedbacks/AllFeedbacks.vue'),
+          }
+        ]
+      },
     ]
   }
 
