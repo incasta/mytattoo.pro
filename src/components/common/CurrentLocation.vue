@@ -1,0 +1,50 @@
+<template lang="pug">
+    
+    .HeaderSection.animation-flickering
+        .HeaderSectionWrap.container
+            SelectLocation     
+
+</template>
+
+
+<script>
+import SelectLocation from "@/components/Sliders/HeaderSectionSlider/SelectLocation.vue";
+
+export default {
+    components: {
+        SelectLocation,
+    },
+
+}
+</script>
+
+<style lang="scss" scoped>
+
+.HeaderSection {
+    background: repeating-linear-gradient(0, transparent, transparent 2px, rgba(0, 0, 0, .1) 4px, rgba(0, 0, 0, .1) 3px), url('../../assets/img/main-min.jpg');
+    background-size: cover;
+    background-position: center 80%;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    height: var(--HeaderSectionHeightSmall);
+    position: relative;
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: inherit;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(9, 10, 5, 1) 0%, transparent 20%);
+    }
+}
+
+.HeaderSectionWrap {
+    @include flex-ja_center;
+    position: relative;
+    z-index: 99;
+    height: 100%;
+}
+
+</style>

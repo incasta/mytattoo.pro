@@ -1,11 +1,10 @@
 <template lang="pug">
 
-    .SlideContent 
-        .SelectLocation
-            .label Мое местоположение
-            a.Current-City(href="javascript:void(0);")
-                span Старый Крым
-                app-icon(name="edit-alt" size="14")
+    .SelectLocation
+        .label Мое местоположение
+        a.Current-City(href="javascript:void(0);")
+            span Старый Крым
+            app-icon(name="edit-alt" size="14")
                 
 </template>
 
@@ -14,7 +13,6 @@
 
 
 export default {
-    name: "MyRating",
     data () {
         return {
             
@@ -24,8 +22,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@include SlideContent;
-
 
 .SelectLocation { 
     .label {

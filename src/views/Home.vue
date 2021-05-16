@@ -1,18 +1,17 @@
 <template lang="pug">
   
-  HeaderSection
+  CurrentLocation
   
-
 </template>
 
 <script>
 // @ is an alias to /src
-import HeaderSection from '@/components/HeaderSection.vue'
+import CurrentLocation from '@/components/common/CurrentLocation.vue';
 
 export default {
   name: 'Home',
   components: {
-    HeaderSection,
+    CurrentLocation,
   }
 }
 </script>
