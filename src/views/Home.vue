@@ -1,6 +1,7 @@
 <template lang="pug">
   
-  CurrentLocation
+  main
+    CurrentLocation
   
 </template>
 

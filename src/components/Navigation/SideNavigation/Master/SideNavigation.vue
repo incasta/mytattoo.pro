@@ -67,7 +67,21 @@ export default {
                 },
                 {
                     link: '/masterLK/feedbacks',
-                    name: 'Отзывы'
+                    name: 'Отзывы',
+                    anchors: [
+                        {
+                            link: '/masterLK/feedbacks/all-feedbacks',
+                            name: 'Все отзывы'
+                        },
+                        {
+                            link: '/masterLK/feedbacks/positive-feedbacks',
+                            name: 'Положительные'
+                        },
+                        {
+                            link: '/masterLK/feedbacks/negative-feedbacks',
+                            name: 'Отрицательные'
+                        },
+                    ]
                 },
                 {
                     link: '/masterLK/favorites',
