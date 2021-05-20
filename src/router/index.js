@@ -157,12 +157,22 @@ const routes = [
     ]
   },
   {
-    path: '/master-01/feedacks/create-feedback',
+    path: '/master-01/feedbacks/create-feedback',
     name: 'Create-Feedback',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Create-Feedback" */ '../views/Create-Feedback.vue')
+    component: () => import(/* webpackChunkName: "Create-Feedback" */ '../views/Create-Feedback.vue'),
+  },
+  {
+    path: '/create-feedback/success',
+    name: 'Feedback-Success',
+    component: () => import(/* webpackChunkName: "Success" */ '../views/Create-Feedback/Success.vue'),
+  },
+  {
+    path: '/create-feedback/fail',
+    name: 'Feedback-Fail',
+    component: () => import(/* webpackChunkName: "Fail" */ '../views/Create-Feedback/Fail.vue'),
   },
 
 ]

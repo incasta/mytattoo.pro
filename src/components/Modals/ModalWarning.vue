@@ -2,7 +2,7 @@
     
     modal.Modal-Warning(
     name="ModalWarning" 
-    pivot-y=".35" 
+    :pivot-y="0.35" 
     :scrollable="true" 
     :reset="true" 
     height="auto" 

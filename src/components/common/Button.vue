@@ -1,5 +1,5 @@
 <template lang="pug">
-    a.Button-Default(href="javascript:void(0);" @click="show") 
+    a.Button-Default(:href="href" @click="show") 
         span {{ text }}
         span.Button-Icon(v-if="icon !== undefined") 
             app-icon(:name="icon" :class="iconClass")
@@ -23,6 +23,11 @@ export default {
         type: String,
         required: false,
         default: "",
+      },
+      href: {
+        type: String,
+        required: false,
+        default: "javascript:void(0);",
       },
   },
   methods: {

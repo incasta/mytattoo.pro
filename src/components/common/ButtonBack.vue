@@ -1,5 +1,5 @@
 <template lang="pug">
-    a.Button-Back(href="javascript:void(0);" @click="show") 
+    a.Button-Back(:href="href" @click="show") 
       span.Button-Icon(v-if="icon !== undefined") 
         app-icon(:name="icon" :class="iconClass")
       span {{ text }}
@@ -25,6 +25,11 @@ export default {
         required: false,
         default: "",
       },
+      href: {
+        type: String,
+        required: false,
+        default: "javascript:void(0);",
+      }
   },
   methods: {
     show () {

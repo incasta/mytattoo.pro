@@ -135,7 +135,6 @@ export default {
 
 <style lang="scss" scoped>
 @include splideCustomStyles;
-// @include blockUI;
 
 ::v-deep.TarifSlider {
     @include respond-to (extra-large-screens) {
