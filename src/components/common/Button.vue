@@ -2,7 +2,7 @@
     a.Button-Default(:href="href" @click="show") 
         span {{ text }}
         span.Button-Icon(v-if="icon !== undefined") 
-            app-icon(:name="icon" :class="iconClass")
+            app-icon(:name="icon" :class="iconClass" :size="iconSize")
 </template>
 
 <script>
@@ -29,6 +29,10 @@ export default {
         required: false,
         default: "javascript:void(0);",
       },
+      iconSize: {
+        type: Number,
+        required: false,
+      }
   },
   methods: {
     show () {
@@ -59,6 +63,7 @@ export default {
   background-color: var(--palette-dark-light);
   > span {
     &:not(.Button-Icon) {
+      margin: 0 auto;
       padding: 0px 30px;
       @include trans-ease-out;
       

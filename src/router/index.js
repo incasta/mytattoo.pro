@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// import { component } from 'vue/types/umd'
 import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
@@ -157,24 +158,52 @@ const routes = [
     ]
   },
   {
-    path: '/master-01/feedbacks/create-feedback',
-    name: 'Create-Feedback',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Create-Feedback" */ '../views/Create-Feedback.vue'),
+    name: 'Master',
+    path: '/master',
+    redirect: { name: 'Master-Profile' },
+    component: () => import(/* webpackChunkName: "Master" */ '../views/Master.vue'),
+    children: [
+      {
+        name: 'Master-Profile',
+        path: 'master-profile',
+        component: () => import(/* webpackChunkName: "Master-Profile" */ '../views/Master/Master-Profile.vue'),
+      },
+      {
+        name: 'Master-Feedbacks',
+        path: 'master-feedbacks',
+        redirect: { name: 'MasterAllFeedbacks' },
+        component: () => import(/* webpackChunkName: "Master-Feedbacks" */ '../views/Master/Master-Feedbacks.vue'),
+        children: [
+          {
+            name: 'MasterAllFeedbacks',
+            path: 'all-feedbacks',
+            component: () => import(/* webpackChunkName: "MasterAllFeedbacks" */ '../views/Master/Feedbacks/AllFeedbacks.vue'),
+          },
+          {
+            name: 'Create-Feedback',
+            path: 'create-feedback',
+            component: () => import(/* webpackChunkName: "Create-Feedback" */ '../views/Master/Feedbacks/Create-Feedback.vue'),
+            children: [
+              
+            ]
+          },
+          {
+            path: 'success',
+            name: 'Feedback-Success',
+            component: () => import(/* webpackChunkName: "Success" */ '../views/Master/Feedbacks/Create-Feedback/Success.vue'),
+          },
+          {
+            path: 'fail',
+            name: 'Feedback-Fail',
+            component: () => import(/* webpackChunkName: "Fail" */ '../views/Master/Feedbacks/Create-Feedback/Fail.vue'),
+          },
+        ]
+      },
+      
+    ]
+    
   },
-  {
-    path: '/create-feedback/success',
-    name: 'Feedback-Success',
-    component: () => import(/* webpackChunkName: "Success" */ '../views/Create-Feedback/Success.vue'),
-  },
-  {
-    path: '/create-feedback/fail',
-    name: 'Feedback-Fail',
-    component: () => import(/* webpackChunkName: "Fail" */ '../views/Create-Feedback/Fail.vue'),
-  },
-
+  
 ]
 
 const router = new VueRouter({
