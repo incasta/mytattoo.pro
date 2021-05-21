@@ -31,6 +31,11 @@
                     //- .Feedback-AnswerBtn
                     //-     a.feedbackAnswerBtn(href="javascript:void(0);" @click="answered = !answered" v-if="!answered") Ответить
 
+            //- Slot(name="FeedbackAnswer")
+            //-     FeedbackAnswer
+            //- Slot(name="FeedbackReplyForm")
+            //-     FeedbackReplyForm
+
             .Feedback-Answer-Content
                 .Feedback-Answer-Header
                     MasterAvatar(avatar="1" online=true pro=true)

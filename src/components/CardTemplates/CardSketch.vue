@@ -3,8 +3,7 @@
     .Card-Template
         .Card-Overlay
             .Overlay-Details
-                a.CardDetails(href="javascript:void(0);")
-                    app-icon(name="zoom-in" size="20")
+                CardDetails
             .Overlay-Top
                 a.Favorite(href="#")
                     app-icon(name="bookmark-solid" size="12")
@@ -20,10 +19,12 @@
 
 <script>
 import Author from "@/components/common/Author.vue";
+import CardDetails from "@/components/CardTemplates/CardDetails.vue";
 
 export default {
     components: {
         Author,
+        CardDetails,
     },
     props: {
         image: {
@@ -96,17 +97,7 @@ export default {
     height: 100%;
 }
 
-.CardDetails {
-    @include trans-ease-out;
-    transform: scale(0);
-    opacity: 0;
-    @include flex-ja_center;
-    width: 100%;
-    height: 100%;
-    .icon {
-        fill: var(--palette-blue);
-    }
-}
+
 
 .Overlay-Top {
     position: relative;

@@ -11,7 +11,13 @@ import VueTippy, { TippyComponent } from "vue-tippy";
 import VueClipboard from 'vue-clipboard2';
 import VModal from 'vue-js-modal';
 
-Vue.use(VModal);
+Vue.use(VModal, {
+  dynamic: true,
+  injectModalsContainer: true,
+  dynamicDefaults: {
+    
+  },
+});
 // Vue.use(VModal, {
 //   dynamic: true,
 //   injectModalsContainer: true,

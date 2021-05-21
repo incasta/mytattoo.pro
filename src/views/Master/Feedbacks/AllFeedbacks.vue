@@ -27,6 +27,19 @@
                             )
                                 //- template(#feedbackAnswer)
                                 //- template(#feedbackFormAnswer)
+                            //- FeedbackTemplate(
+                            //- v-for="feedback in feedbacks" 
+                            //- :key="feedback.id" 
+                            //- :userName="feedback.name" 
+                            //- :userAvatar="feedback.avatar" 
+                            //- :date="feedback.date" 
+                            //- :text="feedback.text" 
+                            //- :mark="feedback.mark" 
+                            //- :images="feedback.images" 
+                            //- :answered="feedback.answered" 
+                            //- :answerText="feedback.answerText"
+                            //- :masterName="feedback.masterName"
+                            //- )
                             Hr
                             Paginator
 

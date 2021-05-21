@@ -21,6 +21,16 @@ export default {
 
 <style lang="scss">
 
+.vm--modal {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.vm--overlay {
+  background-color: #09101699 !important;
+  cursor: pointer !important;
+}
+
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: Jura, sans-serif;
@@ -123,6 +133,7 @@ img {
     opacity: .5;
   }
 }
+
 
 
 </style>
