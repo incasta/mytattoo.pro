@@ -131,6 +131,9 @@ export default {
                 breakpoints: {
                     576: {
                         speed: 200,
+                    },
+                    768: {
+                        height: "95vh",
                     }
                 }
             },
