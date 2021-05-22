@@ -21,15 +21,21 @@ export default {
 
 <style lang="scss">
 
-.vm--modal {
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
+
+// .vm--modal {
+//   &.Modal--Gallery {
+//     background-color: transparent !important;
+//     box-shadow: none !important;
+//   }
+// }
+
 
 .vm--overlay {
-  background-color: #09101699 !important;
+  background-color: rgba(9,16,22, .85) !important;
   cursor: pointer !important;
 }
+
+
 
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;

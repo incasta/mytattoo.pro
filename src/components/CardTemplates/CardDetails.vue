@@ -31,6 +31,11 @@ export default {
                 // height: "600px", 
                 height: "auto", 
                 // adaptive: true, 
+                classes: "Modal--Gallery",
+                styles: {
+                    "background-color" : "unset",
+                    "box-shadow" : "none",
+                }
             },
             )
         },
