@@ -38,5 +38,8 @@ export default {
   .icon {
     fill: #fff;
     opacity: 1;
+    &.blue {
+      fill: var(--palette-blue);
+    }
   }
 </style>

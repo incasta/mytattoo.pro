@@ -4,6 +4,7 @@
             li(v-for='link in links' :key='link.id')
                 router-link.Section-Link(:to="link.link") {{ link.name }}
                 .Anchor-List
+                    slot(name="ActionButtons")
                     router-link.Anchor-Link(v-for='anchor in link.anchors' :key='anchor.id' :to='anchor.link') {{ anchor.name }}
         slot(name="panel") 
 
@@ -44,26 +45,88 @@ export default {
                     name: 'Сообщения',
                     anchors: [
                         {
-                            link: '#',
+                            link: '/masterLK/messages/inbox',
                             name: 'Диалоги'
                         },
                         {
-                            link: '#',
+                            link: '/masterLK/messages/support',
                             name: 'Поддержка MYTATTOO.PRO'
                         },
                     ]
                 },
                 {
-                    link: '/masterLK/my-photos',
-                    name: 'Мои фотографии'
+                    link: '/masterLK/my-tattoo',
+                    name: 'Мои татуировки',
+                    anchors: [
+                        {
+                            link: '/masterLK/my-tattoo/all-tattoo',
+                            name: 'Все татуировки'
+                        },
+                        {
+                            link: '/masterLK/my-tattoo/publish-tattoo',
+                            name: 'Опубликованные'
+                        },
+                        {
+                            link: '/masterLK/my-tattoo/moderation-tattoo',
+                            name: 'На модерации'
+                        },
+                        {
+                            link: '/masterLK/my-tattoo/canceled-tattoo',
+                            name: 'Отклоненные'
+                        },
+                        {
+                            link: '/masterLK/my-tattoo/deleted-tattoo',
+                            name: 'Удаленные'
+                        },
+                    ]
                 },
                 {
                     link: '/masterLK/my-sketches',
-                    name: 'Мои эскизы'
+                    name: 'Мои эскизы',
+                    anchors: [
+                        {
+                            link: '/masterLK/my-sketches/all-sketch',
+                            name: 'Все эскизы'
+                        },
+                        {
+                            link: '/masterLK/my-sketches/publish-sketch',
+                            name: 'Опубликованные'
+                        },
+                        {
+                            link: '/masterLK/my-sketches/moderation-sketch',
+                            name: 'На модерации'
+                        },
+                        {
+                            link: '/masterLK/my-sketches/canceled-sketch',
+                            name: 'Отклоненные'
+                        },
+                        {
+                            link: '/masterLK/my-sketches/deleted-sketch',
+                            name: 'Удаленные'
+                        },
+                    ]
                 },
                 {
-                    link: '/masterLK/publics',
-                    name: 'Объявления'
+                    link: '/masterLK/my-publications',
+                    name: 'Мои объявления',
+                    anchors: [
+                        {
+                            link: '/masterLK/my-publications/published',
+                            name: 'Опубликованные'
+                        },
+                        {
+                            link: '/masterLK/my-publications/drafts',
+                            name: 'Черновики'
+                        },
+                        {
+                            link: '/masterLK/my-publications/moderation',
+                            name: 'На модерации'
+                        },
+                        {
+                            link: '/masterLK/my-publications/canceled',
+                            name: 'Отклоненные'
+                        },
+                    ]
                 },
                 {
                     link: '/masterLK/feedbacks',

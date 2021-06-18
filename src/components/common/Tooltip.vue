@@ -1,6 +1,6 @@
 <template lang="pug">
     
-    app-icon.tooltip(name="tooltip" width="18" :content="content" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
+    app-icon.tooltip(name="tooltip" :width="size" :content="content" v-tippy="{ delay: [0, 300], arrow : true, arrowType : 'round', theme: 'custom',}")
 
     //- Если поле активно, то Ваш возраст будете видеть только Вы
 </template>
@@ -11,6 +11,11 @@ export default {
         content: {
             type: String,
             required: true,
+        },
+        size: {
+            type: Number,
+            required: false,
+            default: 18,
         }
     }
 }

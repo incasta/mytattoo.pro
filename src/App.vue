@@ -103,6 +103,7 @@ img {
 .tippy-tooltip.custom-theme {
   background-color: var(--palette-dark-purple);
   font-family: Jura, sans-serif;
+  font-size: 12px;
 
   &[data-animatefill] {
     background-color: transparent;
@@ -123,7 +124,8 @@ img {
   }
 
   .tippy-content {
-    padding: 10px;
+    // padding: 5px;
+    padding: .25em .5em;
     a {
       color: var(--palette-blue);
     }
@@ -140,6 +142,38 @@ img {
   }
 }
 
+
+.thin-scrollbar {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #474c50 #091016;
+  scrollbar-width: thin;
+  border-color: transparent;
+  transition: border-color .33s ease;
+  margin: 5px 5px 5px 0;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 0;
+  }
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    border-right-style: inset;
+    border-right-width: 100vh;
+    border-color: inherit;
+    -webkit-transition: border-color .45s ease;
+    transition: border-color .45s ease;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &:hover {
+    border-color: hsla(0,0%,100%,.16);
+  }
+}
 
 
 </style>

@@ -1,6 +1,6 @@
 <template lang="pug">
     
-    textarea.TextArea(:rows="rows" :cols="cols" :name="name" :placeholder="placeholder")
+    textarea.TextArea.thin-scrollbar(:rows="rows" :cols="cols" :name="name" :placeholder="placeholder")
 
 </template>
 
@@ -18,14 +18,14 @@ export default {
             default: "text",
         },
         rows: {
-            type: Number,
+            type: String,
             required: false,
-            default: 7,
+            default: "7",
         },
         cols: {
-            type: Number,
+            type: String,
             required: false,
-            default: 80,
+            default: "80",
         }
     }
 }
@@ -35,10 +35,12 @@ export default {
 
 .TextArea {
     @include trans-ease-out;
-    background: rgba(0, 0, 0, .75);
+    // background: rgba(0, 0, 0, .75);
+    background-color: var(--palette-dark-regular);
+    border: 1px solid #232d38;
     color: #fff;
     border: none;
-    border: 1px solid rgba(0, 0, 0, .75);
+    // border: 1px solid rgba(0, 0, 0, .75);
     padding: 1em;
     font-size: 13px;
     max-width: 100%;

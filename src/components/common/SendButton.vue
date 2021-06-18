@@ -2,7 +2,7 @@
     
     label.SendButton
         button(type="submit")
-        app-icon(name="send-alt" size="25")
+        app-icon(name="send-alt" size="18")
 
 </template>
 
@@ -16,6 +16,7 @@ export default {
 <style lang="scss">
 
 .SendButton {
+    @include trans-ease-out;
     cursor: pointer;
     width: 42px;
     height: 42px;
@@ -28,6 +29,7 @@ export default {
     }
     .icon {
         fill: var(--palette-light-icon);
+        @include trans-ease-out;    
     }
     &:hover {
         .icon {

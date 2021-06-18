@@ -45,6 +45,8 @@ export default {
 .Toggler-Wrap {
     display: inline-flex;
     align-items: center;
+    color: var(--palette-pink);
+    text-transform: uppercase;
     &.reverse {
         .Toggler {
             order: -1;

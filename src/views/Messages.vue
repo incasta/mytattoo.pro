@@ -1,6 +1,6 @@
 <template lang="pug">
     
-    div Messages
+    router-view
 
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-    height: 400vh;
-}
+
+
+
 </style>
