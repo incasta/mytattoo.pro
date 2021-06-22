@@ -67,6 +67,12 @@ const routes = [
         meta: { scrollToTop: true }
       },
       {
+        name: 'MySettings',
+        path: 'my-settings',
+        component: () => import(/* webpackChunkName: "masterLK_my-settings" */ '../views/MySettings.vue'),
+        meta: { scrollToTop: true }
+      },
+      {
         path: 'messages',
         component: () => import(/* webpackChunkName: "masterLK_messages" */ '../views/Messages.vue'),
         redirect: { name: "inbox" },

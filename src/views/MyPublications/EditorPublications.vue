@@ -20,7 +20,7 @@
 
 <script>
 import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNavigation.vue';
-import WorkEditor from "@/components/MyPublications/WorkEditor.vue";
+import WorkEditor from "@/components/MyPublications/WorkEditorVer2.vue";
 import ActionButton from '@/components/Navigation/SideNavigation/ActionButton.vue';
 
 export default {

@@ -3,6 +3,7 @@
     .UploaderPhoto
         .UploadedPhoto-Area
             .UploadedPhoto(v-for="file in files" :key="file.id" )
+                LightBoxTrigger
                 a.RemoveUploadedFile(href="javascript:void(0);")
                     app-icon(name="cross-small" size="16")
                 img(:src="require('@/assets/img/uploaded/user-01/' + file.img + '.jpg')")
@@ -19,6 +20,8 @@
 </template>
 
 <script>
+import LightBoxTrigger from "@/components/common/LightBoxTrigger.vue";
+
 export default {
     data() {
         return {
@@ -34,6 +37,9 @@ export default {
                 },
             ]
         }
+    },
+    components: {
+        LightBoxTrigger,
     }
 }
 </script>
