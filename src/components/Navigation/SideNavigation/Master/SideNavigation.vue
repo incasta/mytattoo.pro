@@ -3,6 +3,11 @@
         ul.Section-Link-List
             li(v-for='link in links' :key='link.id')
                 router-link.Section-Link(:to="link.link") {{ link.name }}
+                slot(name="ExtraAction")
+                    router-link.ExtraAction(v-if="link.extra" :to="link.extra")
+                        app-icon(name="settings-alt" size="24")
+
+                        
                 .Anchor-List
                     slot(name="ActionButtons")
                     router-link.Anchor-Link(v-for='anchor in link.anchors' :key='anchor.id' :to='anchor.link') {{ anchor.name }}
@@ -21,6 +26,7 @@ export default {
                 {
                     link: '/masterLK/my-profile',
                     name: 'Мой профиль',
+                    extra: '/masterLK/my-settings',
                     anchors: [
                         {
                             link: '#section-1',
@@ -341,6 +347,32 @@ export default {
     padding: 20px;
 }
 
+.ExtraAction {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    height: 50px;
+    width: 50px;
+    @include flex-ja_center;
+    background-color: rgba(0,0,0,.15);
 
+    &.router-link-exact-active {
+        background-color: rgba(255,255,255,.03);
+        .icon {
+            fill: var(--palette-blue);
+        }
+    }
+    .icon {
+        fill: var(--palette-blue);
+        @include trans-ease-out;
+    }
+
+    &:hover {
+        .icon {
+            filter: drop-shadow(0 0 10px var(--palette-blue));
+        }
+    }
+}
 
 </style>
