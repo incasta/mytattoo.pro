@@ -29,10 +29,6 @@ export default {
 //   }
 // }
 
-::v-deep.vm--modal {
-  background: transparent;
-  background-color: transparent;
-}
 
 .vm--overlay {
   background-color: rgba(9,16,22, .85) !important;
