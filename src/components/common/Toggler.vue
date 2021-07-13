@@ -47,6 +47,9 @@ export default {
     align-items: center;
     color: var(--palette-pink);
     text-transform: uppercase;
+    .Toggler {
+        margin-left: 10px;
+    }
     &.reverse {
         .Toggler {
             order: -1;

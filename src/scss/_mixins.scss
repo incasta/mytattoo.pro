@@ -403,6 +403,43 @@
   }
 }
 
+@mixin Verification-Input {
+  ::v-deep.Verification-Input {
+    min-width: 220px;
+    input {
+      @include trans-ease-in;
+      position: relative;
+      // width: 250px;
+      font-weight: 700;
+      width: 100%;
+      max-width: 220px;
+      text-transform: uppercase;
+      background-color: rgba(0, 0, 0, .75);
+      border-radius: 2px;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: .1ex;
+      // padding: 10px 15px;
+      border: 2px solid rgba(0, 0, 0, .75);
+      border-radius: 4px;
+      color: var(--palette-blue);
+      &:last-child {
+        border-right: none;
+        // border-top-right-radius: 0;
+        // border-bottom-right-radius: 0;
+      }
+      &:not(:first-child) {
+        margin-left: 5px;
+      }
+      &:focus {
+        outline: none;
+        border-color: var(--palette-dark-light);
+      }
+    }
+  }
+}
+
 @mixin data-inputs {
   .Data-Label {
     margin-right: auto;

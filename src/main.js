@@ -10,6 +10,9 @@ import Sticky from 'vue-sticky-directive';
 import VueTippy, { TippyComponent } from "vue-tippy";
 import VueClipboard from 'vue-clipboard2';
 import VModal from 'vue-js-modal';
+import VueRenderlessWizard from 'vue-renderless-wizard';
+
+Vue.use(VueRenderlessWizard);
 
 Vue.use(VModal, {
   dynamic: true,
@@ -28,8 +31,6 @@ Vue.use(VModal, {
 
 Vue.use(VueClipboard);
 
-// Vue.use(VueTippy);
-// Vue.component("tippy", TippyComponent);
 
 Vue.use(VueTippy, {
   directive: "tippy", // => v-tippy

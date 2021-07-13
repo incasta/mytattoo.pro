@@ -22,7 +22,7 @@
 
 <script>
 import Button from "@/components/common/Button.vue";
-import ModalWarning from '@/components/Modals/ModalWarning.vue';
+// import ModalWarning from '@/components/Modals/ModalWarning.vue';
 
 export default {
     name: "TarifCard",
@@ -31,13 +31,13 @@ export default {
 
     },
     methods: {
-        ModalWarning () {
-          this.$modal.show(ModalWarning, {
-            text: 'Мой текст'
-          },{
-            draggable: true
-          })
-        },
+        // ModalWarning () {
+        //   this.$modal.show(ModalWarning, {
+        //     text: 'Мой текст'
+        //   },{
+        //     draggable: true
+        //   })
+        // },
     },
     props: {
         name: {
