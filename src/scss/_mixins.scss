@@ -441,6 +441,34 @@
 }
 
 @mixin data-inputs {
+  .Data-Input-Range-Group {
+    display: flex;
+    align-items: center;
+    .Data-Input-Range {
+      display: flex;
+      align-items: center;
+      .Data-Input-Range-Prefix {
+        font-size: 13px;
+        opacity: .75;
+      }
+
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .Data-Label-Desc {
+    font-size: 13px;
+    opacity: .5;
+    margin-bottom: 20px;
+    text-transform: none;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 10px;
+    max-width: 420px;
+  }
+
   .Data-Label {
     margin-right: auto;
     color: var(--palette-blue);

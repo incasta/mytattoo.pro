@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { WizardStep } from './entry/entry';
+// import { WizardStep } from './entry/entry';
 import { translateFade, translateFadeBackwarding } from './transitions';
 
 export default {

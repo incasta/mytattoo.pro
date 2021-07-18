@@ -35,6 +35,19 @@ export default {
   cursor: pointer !important;
 }
 
+.vm--overlay + .vm--modal {
+  background: transparent;
+  @include trans-ease-out;
+  // box-shadow: 
+}
+
+.vm--overlay + .vm--modal.modalMasterRequest {
+  @include respond-to (handlers) {
+    left: 0px !important; 
+    max-width: 100vw;
+  }
+}
+
 
 
 #app {

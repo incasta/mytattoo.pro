@@ -289,7 +289,7 @@
                                                 span Нет
                                     .Data-Row
                                         span.Data-Label Расскажите о своем курсе более подробно
-                                        .Text-Grop
+                                        .Text-Group
                                             textarea.TextArea(rows="7" cols="80" name="text" placeholder="о курсе...")
                     //- 
 
@@ -365,7 +365,7 @@
                                                 span Неименной флаер-визитка
                                     .Data-Row
                                         span.Data-Label Расскажите о своем курсе более подробно
-                                        .Text-Grop
+                                        .Text-Group
                                             textarea.TextArea(rows="7" cols="80" name="text" placeholder="о сертификате...")
                     //- 
                     .Page-Block
@@ -399,7 +399,7 @@
                                 .Content-Column.wide
                                     .Data-Row
                                         span.Data-Label Расскажите о себе
-                                        .Text-Grop
+                                        .Text-Group
                                             textarea.TextArea(rows="7" cols="80" name="text" placeholder="о себе...")
                     //- 
                     .Page-Block

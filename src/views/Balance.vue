@@ -4,7 +4,7 @@
         template(#modal)
             ModalWarning(title="Подтвердите действие")
                 template(#modalContent)
-                    ModalBlockFrame(label="Списание средств:" currentBalance=2950 invoicedAmount=2840)
+                    ModalBlockFrame(label="Списание средств:" :currentBalance="2950" :invoicedAmount="2840")
                 template(#modalText)
                     p Вы уверены, что хотите оплатить тариф  
                         span.blue
