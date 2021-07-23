@@ -199,6 +199,13 @@
     @include respond-to(large-screens) {
         margin-top: 20px;
     }
+    &.w-50 {
+      width: calc(50% - 10px);
+      margin-top: 0;
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
   }
 
   .Page-Block-Header {
@@ -212,6 +219,15 @@
     display: flex;
     // justify-content: center;
     align-items: center;
+    &.left-border-none {
+      &:before {
+          display: none;
+      }
+    }
+
+    &.disabled {
+      opacity: .5;
+    }
     h2 {
         display: inline-block;
         vertical-align: middle;

@@ -29,6 +29,9 @@ export default {
 //   }
 // }
 
+#modals-container .vm--container {
+  z-index: 9999 !important;
+}
 
 .vm--overlay {
   background-color: rgba(9,16,22, .85) !important;
@@ -41,12 +44,20 @@ export default {
   // box-shadow: 
 }
 
-.vm--overlay + .vm--modal.modalMasterRequest {
+.vm--overlay + .vm--modal.modalMasterRequest,
+.vm--overlay + .vm--modal.modalServiceTerms, 
+.vm--overlay + .vm--modal.ModalCongratulationsReg, 
+.vm--overlay + .vm--modal[class*="Modal"] {
   @include respond-to (handlers) {
-    left: 0px !important; 
     max-width: 100vw;
+    z-index: 8900;
+
+    &:not(.vm--modal.ModalLogout) {
+      left: 0px !important; 
+    }
   }
 }
+
 
 
 

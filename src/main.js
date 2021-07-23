@@ -12,6 +12,7 @@ import VueClipboard from 'vue-clipboard2';
 import VModal from 'vue-js-modal';
 import VueRenderlessWizard from 'vue-renderless-wizard';
 
+
 Vue.use(VueRenderlessWizard);
 
 Vue.use(VModal, {
@@ -21,6 +22,8 @@ Vue.use(VModal, {
     
   },
 });
+
+
 // Vue.use(VModal, {
 //   dynamic: true,
 //   injectModalsContainer: true,

@@ -8,377 +8,370 @@
                 app-icon(name="cross" size="12")
         .Modal-Body
             WizardManager(v-slot="scope" lazy @finished="handleFinished")
-                    WizardContainer(:scope="scope")
-                        WizardStep
-                            .Wizard-Content
-                                .Data-Row
-                                    label.Data-Item
-                                        span.Data-Label какая услуга вас интересует? *
-                                        .Data-Singleselect
-                                            multiselect.Dropdown(
-                                            v-model="value", 
-                                            :close-on-select="true"
-                                            :show-labels="false" 
-                                            :placeholder="`Не выбрано`", 
-                                            :options="options", 
-                                            :searchable="false", 
-                                            :preselect-first="true", 
-                                            :allow-empty="false"
-                                            )
-                                                template(slot="noOptions")
-                                                    span Нет доступных услуг
-                                    
-                        WizardStep
-                            .Wizard-Content
-                                .Data-Row
-                                    span.Data-Label Сколько вам лет? *
-                                        .Data-Label-Desc Если вам нет 18 лет, мастер может попросить разрешение родителя или опекуна
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-1")
-                                            span.Radio
-                                            span Младше 16
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-1")
-                                            span.Radio
-                                            span 16-17 лет
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-1")
-                                            span.Radio
-                                            span Старше 18 лет
-                                Hr
+                WizardContainer(:scope="scope")
+                    StepBase
+                        .Data-Row
+                            label.Data-Item
+                                span.Data-Label какая услуга вас интересует? *
+                                .Data-Singleselect
+                                    multiselect.Dropdown(
+                                    v-model="value", 
+                                    :close-on-select="true"
+                                    :show-labels="false" 
+                                    :placeholder="`Не выбрано`", 
+                                    :options="options", 
+                                    :searchable="false", 
+                                    :preselect-first="true", 
+                                    :allow-empty="false"
+                                    )
+                                        template(slot="noOptions")
+                                            span Нет доступных услуг
+                    
+                    //- 
+                    StepBase
+                        .Data-Row
+                            span.Data-Label Сколько вам лет? *
+                                .Data-Label-Desc Если вам нет 18 лет, мастер может попросить разрешение родителя или опекуна
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-1")
+                                    span.Radio
+                                    span Младше 16
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-1")
+                                    span.Radio
+                                    span 16-17 лет
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-1")
+                                    span.Radio
+                                    span Старше 18 лет
+                        Hr
 
-                                .Data-Row(v-if="value !== 'Обучение татуировке'")
-                                    span.Data-Label Укажите при наличии
-                                        Tooltip(content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик рядом с названием") 
-                                    .Data-Multiselect-Tags
-                                        multiselect(
-                                            v-model="diseaseValue",
-                                            placeholder="Начните писать или выберите из списка",
-                                            label="name",
-                                            track-by="name",
-                                            :show-labels="false",
-                                            :options="diseaseOptions",
-                                            :multiple="true",
-                                            :taggable="false",
-                                            :hide-selected="true",
-                                        )
+                        .Data-Row(v-if="value !== 'Обучение татуировке'")
+                            span.Data-Label Укажите при наличии
+                                Tooltip(content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик рядом с названием") 
+                            .Data-Multiselect-Tags
+                                multiselect(
+                                    v-model="diseaseValue",
+                                    placeholder="Начните писать или выберите из списка",
+                                    label="name",
+                                    track-by="name",
+                                    :show-labels="false",
+                                    :options="diseaseOptions",
+                                    :multiple="true",
+                                    :taggable="false",
+                                    :hide-selected="true",
+                                )
 
-                                //- Hr(v-if="value !== 'Обучение татуировке'")
+                        .Data-Row(v-if="value == 'Обучение татуировке'")
+                            span.Data-Label Мастер преподает в следующих стилях. Выберите наиболее подходящий
+                            .Data-Multiselect-Tags
+                                multiselect(
+                                    v-model="styleValue",
+                                    placeholder="Начните писать или выберите из списка",
+                                    label="name",
+                                    track-by="name",
+                                    :show-labels="false",
+                                    :options="styleOptions",
+                                    :multiple="true",
+                                    :taggable="false",
+                                    :hide-selected="true",
+                                )
+                    //- 
+                    StepBase(v-if="value == 'Обучение татуировке'")
+                        .Data-Row
+                            span.Data-Label Укажите уровень обучения
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-10")
+                                    span.Radio
+                                    span Обучаюсь с нуля
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-10")
+                                    span.Radio
+                                    span Необходимо повысить квалификацию
+                        Hr
 
-                                .Data-Row(v-if="value == 'Обучение татуировке'")
-                                    span.Data-Label Мастер преподает в следующих стилях. Выберите наиболее подходящий
-                                    .Data-Multiselect-Tags
-                                        multiselect(
-                                            v-model="diseaseValue",
-                                            placeholder="Начните писать или выберите из списка",
-                                            label="name",
-                                            track-by="name",
-                                            :show-labels="false",
-                                            :options="diseaseOptions",
-                                            :multiple="true",
-                                            :taggable="false",
-                                            :hide-selected="true",
-                                        )
+                        .Data-Row
+                           span.Data-Label Формат обучения
+                           .Radio-Group
+                               label.Radio-Item
+                                   input(type="radio" name="Radio-Item-11")
+                                   span.Radio
+                                   span Индивидуально
+                               label.Radio-Item
+                                   input(type="radio" name="Radio-Item-11")
+                                   span.Radio
+                                   span В группе
+                               label.Radio-Item
+                                   input(type="radio" name="Radio-Item-11")
+                                   span.Radio
+                                   span Подойдет любой формат
+                        Hr
 
-                        WizardStep(v-if="value == 'Обучение татуировке'")
-                            .Wizard-Content
-                                .Data-Row
-                                    span.Data-Label Укажите уровень обучения
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-10")
-                                            span.Radio
-                                            span Обучаюсь с нуля
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-10")
-                                            span.Radio
-                                            span Необходимо повысить квалификацию
-                                Hr
+                        .Data-Row
+                           span.Data-Label Материалы и инструменты
+                           .Radio-Group
+                               label.Radio-Item
+                                   input(type="radio" name="Radio-Item-12")
+                                   span.Radio
+                                   span Есть свои
+                               label.Radio-Item
+                                   input(type="radio" name="Radio-Item-12")
+                                   span.Radio
+                                   span Нужны от специалиста
 
-                                .Data-Row
-                                   span.Data-Label Формат обучения
-                                   .Radio-Group
-                                       label.Radio-Item
-                                           input(type="radio" name="Radio-Item-11")
-                                           span.Radio
-                                           span Индивидуально
-                                       label.Radio-Item
-                                           input(type="radio" name="Radio-Item-11")
-                                           span.Radio
-                                           span В группе
-                                       label.Radio-Item
-                                           input(type="radio" name="Radio-Item-11")
-                                           span.Radio
-                                           span Подойдет любой формат
-                                Hr
+                    //- 
+                    StepBase(v-if="value == 'Обучение татуировке'")
+                        .Data-Row
+                            span.Data-Label Нужен сертификат об обучении?
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-12")
+                                    span.Radio
+                                    span да
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-12")
+                                    span.Radio
+                                    span Нет
+                        Hr
 
-                                .Data-Row
-                                   span.Data-Label Материалы и инструменты
-                                   .Radio-Group
-                                       label.Radio-Item
-                                           input(type="radio" name="Radio-Item-12")
-                                           span.Radio
-                                           span Есть свои
-                                       label.Radio-Item
-                                           input(type="radio" name="Radio-Item-12")
-                                           span.Radio
-                                           span Нужны от специалиста
-
-                                           
-                        WizardStep(v-if="value == 'Обучение татуировке'")
-                            .Wizard-Content
-                                .Data-Row
-                                    span.Data-Label Нужен сертификат об обучении?
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-12")
-                                            span.Radio
-                                            span да
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-12")
-                                            span.Radio
-                                            span Нет
-                                Hr
-
-                                .Data-Row
-                                    span.Data-Label Можете оставить комментарий
-                                    .Text-Group
-                                        TextArea(placeholder="Напишите любую мастеру любую полезную информацию..." cols="" rows="")
-                                
-                                Hr
-
-                                .Data-Row
-                                    span.Data-Label Длительность обучения составит 
-                                    .Duration-Value 2 недели
-
-                                
-
-                        WizardStep(v-if="value == 'Набить татуировку' || value == 'Интимная татуировка' || value == 'Удаление татуировки' || value =='Коррекция татуировки' || value == 'Перекрытие татуировки' || value == 'Шрамирование татуировкой'")
-                            .Wizard-Content
-                                .Data-Row
-                                    span.Data-Label Размер
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-2")
-                                            span.Radio
-                                            span маленькая (до 5см)
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-2")
-                                            span.Radio
-                                            span Средняя (до 15 см)
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-2")
-                                            span.Radio
-                                            span Крупная (более 15 см)
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-2")
-                                            span.Radio
-                                            span Масштабная работа (от 30 см)
-                                Hr
-
-                                .Data-Row
-                                    label.Data-Item
-                                        span.Data-Label Сколько вы готовы заплатить за работу *
-                                        .Data-Input-Range-Group
-                                            .Data-Input-Range
-                                                span.Data-Input-Range-Prefix от: 
-                                                input.PaymentValue(v-model="paymentValueFrom" type="text" placeholder="1000"  value="1000" v-money="money")
-                                                //- input.Data-Input(type="text" placeholder="ссылка на ваш сайт" value="")
-                                            .Data-Input-Range
-                                                span.Data-Input-Range-Prefix до: 
-                                                input.PaymentValue(v-model="paymentValueTo" type="text" placeholder="1000"  value="1000" v-money="money")
-                                Hr
-
-                                .Data-Row(v-if="value !== 'Удаление татуировки' && value !=='Коррекция татуировки' && value !== 'Перекрытие татуировки' && value !== 'Шрамирование татуировкой'")
-                                    span.Data-Label Выберите Стиль 
-                                        Tooltip(content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик рядом с названием")
-                                    .Data-Multiselect-Tags
-                                        multiselect(
-                                            v-model="styleValue",
-                                            placeholder="Начните писать или выберите из списка",
-                                            label="name",
-                                            track-by="name",
-                                            :show-labels="false",
-                                            :options="styleOptions",
-                                            :multiple="true",
-                                            :taggable="false",
-                                            :max="5",
-                                            :hide-selected="true"
-                                        )
-
-                                .Data-Row(v-if="value == 'Удаление татуировки' || value == 'Коррекция татуировки' || value == 'Перекрытие татуировки'")
-                                    span.Data-Label Когда была нанесена татуировка? *
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-4")
-                                            span.Radio
-                                            span Меньше 1 года назад
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-4")
-                                            span.Radio
-                                            span 1-3 года назад
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-4")
-                                            span.Radio
-                                            span 3-5 лет назад
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-4")
-                                            span.Radio
-                                            span Более 5 лет назад
-
-                                .Data-Row(v-if="value == 'Шрамирование татуировкой'")
-                                    span.Data-Label Когда была получена травма? *
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-9")
-                                            span.Radio
-                                            span Меньше 1 года назад
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-9")
-                                            span.Radio
-                                            span 1-3 года назад
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-9")
-                                            span.Radio
-                                            span 3-5 лет назад
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-9")
-                                            span.Radio
-                                            span Более 5 лет назад
-                                    
-                                Hr
-
-                                .Data-Row(v-if="value == 'Удаление татуировки' ||  value == 'Коррекция татуировки' || value == 'Перекрытие татуировки' || value == 'Шрамирование татуировкой'")
-                                    span.Data-Label Цвет татуировки
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-5")
-                                            span.Radio
-                                            span Чёрно-белая
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-5")
-                                            span.Radio
-                                            span Цветная
-
-                                .Data-Row(v-if="value !== 'Удаление татуировки' &&  value !== 'Коррекция татуировки' && value !== 'Перекрытие татуировки' && value !== 'Шрамирование татуировкой'")
-                                    span.Data-Label Расположение 
-                                        Tooltip(content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик рядом с названием")
-                                    .Data-Multiselect-Tags
-                                        multiselect(
-                                            v-model="placeValue",
-                                            placeholder="Начните писать или выберите из списка",
-                                            label="name",
-                                            track-by="name",
-                                            :show-labels="false",
-                                            :options="placeOptions",
-                                            :multiple="true",
-                                            :taggable="false",
-                                            :max="5",
-                                            :hide-selected="true"
-                                        )
-
-                        WizardStep(v-if="value == 'Набить татуировку' || value == 'Интимная татуировка' || value == 'Удаление татуировки'")
-                            .Wizard-Content
-                                .Data-Row(v-if="value !== 'Удаление татуировки'")
-                                    span.Data-Label Наличие эскиза
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-3")
-                                            span.Radio
-                                            span у меня нет эскиза
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-3")
-                                            span.Radio
-                                            span у меня есть эскиз
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-3")
-                                            span.Radio
-                                            span пускай мастер предложит свой
-
-                                .Data-Row
-                                    span.Data-Label Способ удаления
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-6")
-                                            span.Radio
-                                            span Лазером
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-6")
-                                            span.Radio
-                                            span Ремувером
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-6")
-                                            span.Radio
-                                            span По рекомендации мастера
-                                
-                                Hr
-
-                                .Data-Row
-                                    span.Data-Label Оставьте комментарий
-                                    .Text-Group
-                                        TextArea(placeholder="Напишите любую мастеру любую полезную информацию..." cols="" rows="")
-
-                                Hr
-
-                                .Data-Row
-                                    span.Data-Label Загрузите фотографию тату, которое нужно удалить *
-                                    UploaderPhoto
+                        .Data-Row
+                            span.Data-Label Можете оставить комментарий
+                            .Text-Group
+                                TextArea(placeholder="Напишите любую мастеру любую полезную информацию..." cols="" rows="")
                         
-                        WizardStep(v-if="value == 'Коррекция татуировки' || value == 'Перекрытие татуировки' || value == 'Шрамирование татуировкой'")
-                            .Wizard-Content
-                                .Data-Row(v-if="value !== 'Перекрытие татуировки' && value !== 'Шрамирование татуировкой'")
-                                    span.Data-Label Причина реставрации
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-7")
-                                            span.Radio
-                                            span Контуры потеряли прежнюю чёткость
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-7")
-                                            span.Radio
-                                            span Потеря цвета и яркости
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-7")
-                                            span.Radio
-                                            span Татуировка стала неоднородной
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-7")
-                                            span.Radio
-                                            span Дорисовать новые элементы
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-7")
-                                            span.Radio
-                                            span Изменить цветовую гамму
+                        Hr
 
-                                .Data-Row(v-if="value == 'Перекрытие татуировки'")
-                                    span.Data-Label Что хотите изобразить поверх прежней татуировки? *
-                                    .Radio-Group
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-8")
-                                            span.Radio
-                                            span Рисунок
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-8")
-                                            span.Radio
-                                            span Текст, иероглиф
-                                        label.Radio-Item
-                                            input(type="radio" name="Radio-Item-8")
-                                            span.Radio
-                                            span Пускай мастер порекомендует
+                        .Data-Row
+                            span.Data-Label Длительность обучения составит 
+                            .Duration-Value 2 недели
+                    
+                    //- 
+                    StepBase(v-if="value == 'Набить татуировку' || value == 'Интимная татуировка' || value == 'Удаление татуировки' || value =='Коррекция татуировки' || value == 'Перекрытие татуировки' || value == 'Шрамирование татуировкой'")
+                        .Data-Row
+                            span.Data-Label Размер
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-2")
+                                    span.Radio
+                                    span маленькая (до 5см)
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-2")
+                                    span.Radio
+                                    span Средняя (до 15 см)
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-2")
+                                    span.Radio
+                                    span Крупная (более 15 см)
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-2")
+                                    span.Radio
+                                    span Масштабная работа (от 30 см)
+                        Hr
 
-                                Hr(v-if="value !== 'Шрамирование татуировкой'")
+                        .Data-Row
+                            label.Data-Item
+                                span.Data-Label Сколько вы готовы заплатить за работу *
+                                .Data-Input-Range-Group
+                                    .Data-Input-Range
+                                        span.Data-Input-Range-Prefix от: 
+                                        input.PaymentValue(v-model="paymentValueFrom" type="text" placeholder="1000"  value="1000" v-money="money")
+                                        //- input.Data-Input(type="text" placeholder="ссылка на ваш сайт" value="")
+                                    .Data-Input-Range
+                                        span.Data-Input-Range-Prefix до: 
+                                        input.PaymentValue(v-model="paymentValueTo" type="text" placeholder="1000"  value="1000" v-money="money")
+                        Hr
 
-                                .Data-Row
-                                    span.Data-Label Оставьте комментарий
-                                    .Text-Group
-                                        TextArea(placeholder="Напишите любую мастеру любую полезную информацию..." cols="" rows="")
+                        .Data-Row(v-if="value !== 'Удаление татуировки' && value !=='Коррекция татуировки' && value !== 'Перекрытие татуировки' && value !== 'Шрамирование татуировкой'")
+                            span.Data-Label Выберите Стиль 
+                                Tooltip(content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик рядом с названием")
+                            .Data-Multiselect-Tags
+                                multiselect(
+                                    v-model="styleValue",
+                                    placeholder="Начните писать или выберите из списка",
+                                    label="name",
+                                    track-by="name",
+                                    :show-labels="false",
+                                    :options="styleOptions",
+                                    :multiple="true",
+                                    :taggable="false",
+                                    :max="5",
+                                    :hide-selected="true"
+                                )
 
-                                Hr
+                        .Data-Row(v-if="value == 'Удаление татуировки' || value == 'Коррекция татуировки' || value == 'Перекрытие татуировки'")
+                            span.Data-Label Когда была нанесена татуировка? *
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-4")
+                                    span.Radio
+                                    span Меньше 1 года назад
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-4")
+                                    span.Radio
+                                    span 1-3 года назад
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-4")
+                                    span.Radio
+                                    span 3-5 лет назад
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-4")
+                                    span.Radio
+                                    span Более 5 лет назад
 
-                                .Data-Row
-                                    span.Data-Label загрузите фотографию тату, которое нуждается в коррекции *
-                                    UploaderPhoto
+                        .Data-Row(v-if="value == 'Шрамирование татуировкой'")
+                            span.Data-Label Когда была получена травма? *
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-9")
+                                    span.Radio
+                                    span Меньше 1 года назад
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-9")
+                                    span.Radio
+                                    span 1-3 года назад
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-9")
+                                    span.Radio
+                                    span 3-5 лет назад
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-9")
+                                    span.Radio
+                                    span Более 5 лет назад
+                            
+                        Hr
+
+                        .Data-Row(v-if="value == 'Удаление татуировки' ||  value == 'Коррекция татуировки' || value == 'Перекрытие татуировки' || value == 'Шрамирование татуировкой'")
+                            span.Data-Label Цвет татуировки
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-5")
+                                    span.Radio
+                                    span Чёрно-белая
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-5")
+                                    span.Radio
+                                    span Цветная
+
+                        .Data-Row(v-if="value !== 'Удаление татуировки' &&  value !== 'Коррекция татуировки' && value !== 'Перекрытие татуировки' && value !== 'Шрамирование татуировкой'")
+                            span.Data-Label Расположение 
+                                Tooltip(content="Вы можете выбрать до 5 тегов. Чтобы удалить лишние выбранные теги, кликните на крестик рядом с названием")
+                            .Data-Multiselect-Tags
+                                multiselect(
+                                    v-model="placeValue",
+                                    placeholder="Начните писать или выберите из списка",
+                                    label="name",
+                                    track-by="name",
+                                    :show-labels="false",
+                                    :options="placeOptions",
+                                    :multiple="true",
+                                    :taggable="false",
+                                    :max="5",
+                                    :hide-selected="true"
+                                )
+                    //- 
+                    StepBase(v-if="value == 'Набить татуировку' || value == 'Интимная татуировка' || value == 'Удаление татуировки'")
+                        .Data-Row(v-if="value !== 'Удаление татуировки'")
+                            span.Data-Label Наличие эскиза
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-3")
+                                    span.Radio
+                                    span у меня нет эскиза
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-3")
+                                    span.Radio
+                                    span у меня есть эскиз
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-3")
+                                    span.Radio
+                                    span пускай мастер предложит свой
+
+                        .Data-Row(v-if="value == 'Удаление татуировки'")
+                            span.Data-Label Способ удаления
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-6")
+                                    span.Radio
+                                    span Лазером
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-6")
+                                    span.Radio
+                                    span Ремувером
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-6")
+                                    span.Radio
+                                    span По рекомендации мастера
+                        
+                        Hr
+
+                        .Data-Row
+                            span.Data-Label Оставьте комментарий
+                            .Text-Group
+                                TextArea(placeholder="Напишите любую мастеру любую полезную информацию..." cols="" rows="")
+
+                        Hr
+
+                        .Data-Row
+                            span.Data-Label Загрузите фотографию тату, которое нужно удалить *
+                            UploaderPhoto
+                    
+                    //- 
+                    StepBase(v-if="value == 'Коррекция татуировки' || value == 'Перекрытие татуировки' || value == 'Шрамирование татуировкой'")
+                        .Data-Row(v-if="value !== 'Перекрытие татуировки' && value !== 'Шрамирование татуировкой'")
+                            span.Data-Label Причина реставрации
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-7")
+                                    span.Radio
+                                    span Контуры потеряли прежнюю чёткость
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-7")
+                                    span.Radio
+                                    span Потеря цвета и яркости
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-7")
+                                    span.Radio
+                                    span Татуировка стала неоднородной
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-7")
+                                    span.Radio
+                                    span Дорисовать новые элементы
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-7")
+                                    span.Radio
+                                    span Изменить цветовую гамму
+
+                        .Data-Row(v-if="value == 'Перекрытие татуировки'")
+                            span.Data-Label Что хотите изобразить поверх прежней татуировки? *
+                            .Radio-Group
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-8")
+                                    span.Radio
+                                    span Рисунок
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-8")
+                                    span.Radio
+                                    span Текст, иероглиф
+                                label.Radio-Item
+                                    input(type="radio" name="Radio-Item-8")
+                                    span.Radio
+                                    span Пускай мастер порекомендует
+
+                        Hr(v-if="value !== 'Шрамирование татуировкой'")
+
+                        .Data-Row
+                            span.Data-Label Оставьте комментарий
+                            .Text-Group
+                                TextArea(placeholder="Напишите любую мастеру любую полезную информацию..." cols="" rows="")
+
+                        Hr
+
+                        .Data-Row
+                            span.Data-Label загрузите фотографию тату, которое нуждается в коррекции *
+                            UploaderPhoto
+                            
 
 </template>
 
@@ -386,16 +379,25 @@
 <script>
 import Multiselect from 'vue-multiselect';
 import "vue-multiselect/dist/vue-multiselect.min.css";
-import WizardContainer from '@/components/RenderlessWizard/wizard-container.vue';
-import '@/components/RenderlessWizard/global.css';
 import Hr from "@/components/common/Hr.vue";
 import Tooltip from "@/components/common/Tooltip.vue";
 import TextArea from "@/components/common/TextArea.vue";
 import UploaderPhoto from "@/components/common/UploaderPhoto.vue";
-import { translateFade, translateFadeBackwarding } from '@/components/RenderlessWizard/transitions';
 import {mask} from 'vue-the-mask';
 import {VMoney} from 'v-money';
 
+
+import WizardContainer from '@/components/RenderlessWizard/wizard-container.vue';
+import StepBase from "@/components/RenderlessWizard/StepBase.vue";
+
+// import Step1 from '@/components/RenderlessWizard/StepTest1.vue';
+// import Step2 from '@/components/RenderlessWizard/StepTest2.vue';
+
+
+
+import '@/components/RenderlessWizard/global.css';
+import { translateFade, translateFadeBackwarding } from '@/components/RenderlessWizard/transitions';
+import '@/components/RenderlessWizard/transitions.css';
 
 export default {
     name: "ModalMasterRequest",
@@ -473,6 +475,9 @@ export default {
         Tooltip,
         TextArea,
         UploaderPhoto,
+        // Step1,
+        // Step2,
+        StepBase
     },
     methods: {
         handleFinished(data) {
@@ -576,24 +581,6 @@ export default {
         display: block;
         margin-bottom: 20px;
     }
-
-    // &.v-leave-to {
-    //     // & ~ .v-enter-to {
-    //     //     transform: translateX(-100%);
-    //     // }
-    // }
-
-    // &.v-enter-to {
-    //     transform: translateX(100%);
-    //     & ~ .v-leave-to {
-    //         // transform: translateX(100%);
-    //     }
-    // }
-
-    // &.v-leave-to {
-    //     transform: translateX(100%);
-    // }
-    // animation: .5s ease-in both wizard;
 
 }
     

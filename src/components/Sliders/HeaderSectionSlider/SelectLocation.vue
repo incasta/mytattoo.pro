@@ -2,7 +2,7 @@
 
     .SelectLocation
         .label Мое местоположение
-        a.Current-City(href="javascript:void(0);")
+        a.Current-City(href="#" @click="showModalAutoLocation")
             span Старый Крым
             app-icon(name="edit-alt" size="14")
                 
@@ -11,6 +11,7 @@
 
 <script>
 
+import ModalAutoLocation from "@/components/Modals/ModalAutoLocation.vue"
 
 export default {
     data () {
@@ -18,6 +19,21 @@ export default {
             
         }
     },
+
+    components: {
+        ModalAutoLocation,
+    },
+
+    methods: {
+        showModalAutoLocation() {
+            // console.log('ModalAutoLocation');
+            this.$modal.show(
+                ModalAutoLocation,
+                { },
+                { height: 'auto', width: 400, shiftY: 0.35, reset: true, scrollable: true, styles: "", classes: "ModalLogout"  }
+            )
+        },
+    }
 }
 </script>
 

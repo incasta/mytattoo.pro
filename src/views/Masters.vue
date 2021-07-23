@@ -10,7 +10,7 @@
                 .Main
                     .content
                         div vue-renderless-wizard
-                        button(@click="showModalMasterRequest") SHOW
+                        button(@click="showModalMasterRequest") ОСТАВИТЬ ЗАЯВКУ
 
 </template>
 
@@ -18,10 +18,8 @@
 <script>
 import HeaderSection from '@/components/HeaderSection.vue';
 import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNavigation.vue';
-// import Multiselect from 'vue-multiselect';
-// import "vue-multiselect/dist/vue-multiselect.min.css";
 
-import ModalMasterRequest from '@/components/Modals/ModalMasterRequest.vue'
+import ModalMasterRequest from '@/components/Modals/ModalMasterRequest.vue';
 
 export default {
 
@@ -30,13 +28,10 @@ export default {
             this.$modal.show(
                 ModalMasterRequest, 
                 {},
-                { height: "auto", shiftY: 0.35, reset: true, scrollable: true, styles: "", classes: "modalMasterRequest" }
+                { height: 'auto', shiftY: 0.35, reset: true, scrollable: true, styles: "", classes: "modalMasterRequest" }
             )
         },
 
-        // hide () {
-        //   this.$modal.hide('ModalMasterRequest');
-        // }
     },
 
     mount () {
@@ -46,8 +41,6 @@ export default {
     components: {
         SideNavigation,
         HeaderSection,
-        // Multiselect,
-        // WizardContainer,
     },
     
 }
@@ -57,5 +50,9 @@ export default {
 <style lang="scss" scoped>
 @include blockUI;
 // @include vue-multiselect;
+
+button {
+    margin-top: 30px;
+}
 
 </style>

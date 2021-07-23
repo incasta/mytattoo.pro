@@ -15,6 +15,10 @@
     }
 }
 
+@mixin anim-swipe-right {
+    animation: swipe-right .3s ease;
+}
+
 @keyframes swipe-v {
     0% {
         transform: translate3d(0, 0, 0) scale(1);

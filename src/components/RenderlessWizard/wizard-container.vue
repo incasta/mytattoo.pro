@@ -32,6 +32,7 @@ export default {
   font-size: 1.2rem;
   margin: 1rem;
   min-height: 300px;
+  // overflow: hidden;
   font-family: 'Jura', sans-serif !important;
   display: flex;
   flex-direction: column;

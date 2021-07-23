@@ -12,6 +12,73 @@ const routes = [
     component: Home,
   },
   {
+    path: '/registration',
+    name: 'Registration',
+    component: () => import(/* webpackChunkName: "registration" */ '../views/Registration.vue'),
+    redirect: { name: 'registration-master' },
+    children: [
+      {
+        name: 'registration-master',
+        path: 'registration-master',
+        component: () => import(/* webpackChunkName: "registration" */ '../views/Registration/Registration-Master.vue'),
+        redirect: { name: 'registration-master-step1' },
+        children: [
+          {
+            name: 'registration-master-step1',
+            path: 'step1',
+            component: () => import(/* webpackChunkName: "registration-master-step1" */ '../views/Registration/Master/Step1.vue'),
+            meta: { scrollToTop: true }
+          },
+          {
+            name: 'registration-master-step2',
+            path: 'step2',
+            component: () => import(/* webpackChunkName: "registration-master-step2" */ '../views/Registration/Master/Verify-Number.vue'),
+            meta: { scrollToTop: true }
+          },
+        ]
+      },
+      {
+        name: 'registration-user',
+        path: 'registration-user',
+        component: () => import(/* webpackChunkName: "registration" */ '../views/Registration/Registration-User.vue'),
+        redirect: { name: 'registration-user-step1' },
+        children: [
+          {
+            name: 'registration-user-step1',
+            path: 'step1',
+            component: () => import(/* webpackChunkName: "registration-user-step1" */ '../views/Registration/User/Step1.vue'),
+            meta: { scrollToTop: true }
+          },
+          {
+            name: 'registration-user-step2',
+            path: 'step2',
+            component: () => import(/* webpackChunkName: "registration-user-step2" */ '../views/Registration/User/Verify-Number.vue'),
+            meta: { scrollToTop: true }
+          },
+        ]
+      },
+      
+      {
+        name: 'RecoveryPass-Step1',
+        path: 'recovery-pass-step1',
+        component: () => import(/* webpackChunkName: "recovery-pass-step1" */ '../views/Registration/RecoveryPass-Step1.vue'),
+        meta: { scrollToTop: true }
+      },
+      {
+        name: 'RecoveryPass-Step2',
+        path: 'recovery-pass-step2',
+        component: () => import(/* webpackChunkName: "recovery-pass-step2" */ '../views/Registration/RecoveryPass-Step2.vue'),
+        meta: { scrollToTop: true }
+      },      
+    ]
+  },
+  {
+    name: 'Authorization',
+    path: '/authorization',
+    component: () => import(/* webpackChunkName: "authorization" */ '../views/Registration/Authorization.vue'),
+    meta: { scrollToTop: true }
+  },
+  {
     path: '/masters',
     name: 'Masters',
     // route level code-splitting
@@ -317,6 +384,16 @@ const routes = [
         name: 'Master-Profile',
         path: 'master-profile',
         component: () => import(/* webpackChunkName: "Master-Profile" */ '../views/Master/Master-Profile.vue'),
+      },
+      {
+        name: 'Master-Banned',
+        path: 'master-banned',
+        component: () => import(/* webpackChunkName: "Master-Banned" */ '../views/Master/Master-Banned.vue'),
+      },
+      {
+        name: 'Master-Inactive',
+        path: 'master-inactive',
+        component: () => import(/* webpackChunkName: "Master-Inactive" */ '../views/Master/Master-Inactive.vue'),
       },
       {
         name: 'Master-Feedbacks',

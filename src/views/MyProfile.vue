@@ -4,6 +4,8 @@
         .Row
             .SideBar
                 SideNavigation
+                    template(#panel)
+                AccountProgressBar
             .Main
                 SaveButton
                 .content
@@ -440,6 +442,7 @@ import SideNavigation from '@/components/Navigation/SideNavigation/Master/SideNa
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
 import SaveButton from '@/components/common/SaveButton.vue';
+import AccountProgressBar from '@/components/common/AccountProgressBar.vue';
 
 
 export default {
@@ -454,6 +457,7 @@ export default {
         Splide,
         SplideSlide,
         SaveButton,
+        AccountProgressBar
     },
     data () {
         return {
@@ -568,6 +572,10 @@ export default {
 @include data-inputs;
 @include RatingStars;
 
+.SideNavigation {
+    position: relative;
+    top: 0;
+}
 
 input[type="number"] {
     appearance: textfield;

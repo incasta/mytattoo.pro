@@ -1,20 +1,14 @@
-<template>
-  <WizardStep
-    v-slot="scope"
-    :transition="getTransition"
-    v-bind="$attrs"
-    :disabled="disabled"
-    v-on="$listeners"
-  >
-    <div v-bind="$attrs.class" class="center fill">
-      <slot v-bind="scope"></slot>
-    </div>
-  </WizardStep>
+<template lang="pug">
+    
+    WizardStep(v-slot="scope" :transition="getTransition" v-bind="$attrs" v-on="$listeners")
+        div(v-bind="$attrs.class" class="fill Wizard-Content")
+            slot(v-bind="scope")
+
 </template>
 
 <script>
 // import { WizardStep } from './entry/entry';
-import { translateFade, translateFadeBackwarding } from './transitions';
+import { translateFade, translateFadeBackwarding } from '@/components/RenderlessWizard/transitions';
 
 export default {
   components: {
@@ -43,3 +37,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>

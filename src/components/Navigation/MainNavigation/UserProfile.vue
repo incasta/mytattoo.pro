@@ -20,17 +20,24 @@
             app-icon(name='user' size='16')
           router-link(to='/')
             app-icon(name='bookmark-fill' size='14')
-          router-link(to='/meanings')
+          //- router-link(to='/meanings' @click="console.log('clicked!')")
+          a(href="#" @click="showModalLogout")
             app-icon(name='sign-out' size='16')        
 </template>
 
 <script>
+import ModalLogout from "@/components/Modals/ModalLogout.vue";
+
 export default {
   name: 'UserProfile',
   data () {
     return {
       show: false
     }
+  },
+
+  components: {
+    ModalLogout,
   },
 
   methods: {
@@ -40,7 +47,15 @@ export default {
           this.show = false;
         }
       })
-    }
+    },
+    showModalLogout() {
+      console.log('ModalLogout');
+      this.$modal.show(
+        ModalLogout,
+        { },
+        { height: 'auto', width: 400, shiftY: 0.35, reset: true, scrollable: true, styles: "", classes: "ModalLogout"  }
+      )
+    },
   },
 
   mounted ()  {

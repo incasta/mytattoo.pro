@@ -228,6 +228,8 @@ export default {
     top: 20px;
     font-size: 13px;
     letter-spacing: .2ex;
+    z-index: 9;
+    
     ul {
         list-style: none;
         padding: 0;
@@ -235,12 +237,14 @@ export default {
 
     @include respond-to(large-screens) {
         width: 100%;
+        position: relative;
     }
     
 }
 
 .Section-Link-List {
     margin: 0;
+    background-color: var(--palette-dark-regular);
     > li {
         &:not(:last-child) {
             margin-bottom: 1px;
