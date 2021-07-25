@@ -4,6 +4,9 @@
         .Card-Overlay
             .Overlay-Details
                 a.CardName(href="#")
+                    .place(:class="{ blue: place > 1, yellow: place == 1 }") 
+                        span(v-if="place > 1") {{ place }}
+                        app-icon(name="crown" size="40" v-if="place == 1")
                     .name {{ name }}
                     .nickname {{ nickname }}
 
@@ -67,6 +70,10 @@ export default {
             type: String, 
             required: true,
         },
+        place: {
+            type: Number,
+            required: false,
+        }
     },
 
 
@@ -137,6 +144,10 @@ export default {
                 opacity: .3;
                 transform: translateY(0);
             }
+        }
+
+        .place {
+            opacity: 0;
         }
     }
     @include respond-to (tablets-screens) {
@@ -319,6 +330,24 @@ export default {
         }
         &:after {
             content: '’’';
+        }
+    }
+
+    .place {
+        font-size: 24px;
+        margin-bottom: 10px;
+        opacity: 1;
+        @include trans-ease-out;
+        &.blue {
+            color: var(--palette-blue);
+            text-shadow: 0 0 10px var(--palette-blue);
+        }
+        &.yellow {
+            color: var(--palette-yellow);
+            text-shadow: 0 0 10px var(--palette-yellow);
+        }
+        .icon {
+            margin-bottom: -10px;
         }
     }
 }
